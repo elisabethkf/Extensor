@@ -11,7 +11,7 @@ const faggrupper = [
     label: 'Leger',
     desc: 'Fullverdig EPJ for privatpraktiserende leger. Lab-integrasjon, e-resept og strukturert journalføring.',
     page: 'leger.html',
-    icon: `<svg viewBox="0 0 32 32" fill="none" width="28" height="28"><rect x="10" y="4" width="12" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M13 10h6M13 13h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="16" cy="26" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M16 22v-2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`
+    icon: `<svg viewBox="0 0 32 32" fill="none" width="28" height="28"><circle cx="16" cy="8" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M16 12v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><rect x="9" y="14" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M13 19h6M13 22h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>`
   },
   {
     id: 'psyk',
