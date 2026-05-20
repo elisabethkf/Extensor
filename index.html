@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extensor — Helhetlig pasientadministrasjon</title>
+  <meta name="description" content="Extensor forenkler hverdagen for norske helsevirksomheter. Elektronisk pasientjournal, timebok og fakturering — tilpasset din faggruppe." />
+  <link rel="canonical" href="https://www.extensor.no/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ─────────────────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">
+        <img src="assets/extensor-logo.png" alt="Extensor — Helhetlig pasientadministrasjon" />
+      </a>
+      <div class="nav-links">
+        <a href="#produkter">Produkter</a>
+        <a href="#faggrupper">Faggrupper</a>
+        <a href="#webinar">Webinar</a>
+        <a href="#om-oss">Om oss</a>
+        <a href="#support">Support</a>
+      </div>
+      <a class="nav-cta" href="#kontakt">Kontakt oss</a>
+    </div>
+  </nav>
+
+  <a class="float-cta" href="#kontakt">Kontakt oss</a>
+
+  <main>
+
+    <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-grid">
+          <div>
+            <span class="pill teal" style="margin-bottom:24px;">Helhetlig pasientadministrasjon</span>
+            <h1>Mer tid til pasienten.<br>Mindre tid til systemet.</h1>
+            <p class="hero-lead">
+              Journal, timebok og fakturering — samlet i ett system, tilpasset din faggruppe. Norsk selskap, norsk support.
+            </p>
+            <div class="hero-ctas">
+              <a class="btn-primary" href="#kontakt">Be om demo</a>
+              <a class="btn-warm" href="#faggrupper">Faggrupper</a>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-photo">
+              <img src="assets/lege-par.png" alt="Helsepersonell hos Extensor-kunde" />
+            </div>
+
+            <div class="picker-card picker-pulse">
+              <span class="picker-label">
+                Klikk for å velge din faggruppe <span class="nudge-arrow">→</span>
+              </span>
+              <div class="picker-grid" id="hero-picker-grid"></div>
+              <div id="hero-picker-detail"></div>
+            </div>
+
+            <div class="hero-stamp">
+              <svg viewBox="0 0 96 96" width="96" height="96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="48" cy="48" r="46" fill="#F7E596" />
+                <circle cx="48" cy="48" r="33" fill="#f0d84a" fill-opacity=".18" />
+                <path d="M48 30l12 7v14l-12 7-12-7V37L48 30z" stroke="#3a2e00" stroke-width="1.6" fill="none" />
+                <path d="M48 36l7 4v8l-7 4-7-4v-8l7-4z" stroke="#3a2e00" stroke-width="0.9" stroke-opacity=".4" fill="none" />
+                <path id="stampTop" d="M 16 48 A 32 32 0 0 1 80 48" fill="none" />
+                <text font-size="7.2" font-weight="800" letter-spacing="2.8" fill="#3a2e00" font-family="Manrope,sans-serif" text-anchor="middle">
+                  <textPath href="#stampTop" startOffset="50%">NORSK HELSE-IT</textPath>
+                </text>
+                <path id="stampBot" d="M 18 52 A 30 30 0 0 0 78 52" fill="none" />
+                <text font-size="6.8" font-weight="700" letter-spacing="2.2" fill="#3a2e00" font-family="Manrope,sans-serif" text-anchor="middle">
+                  <textPath href="#stampBot" startOffset="50%">SIDEN 2004</textPath>
+                </text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Ticker ───────────────────────────────────────────────────────── -->
+    <div class="ticker">
+      <div class="ticker-track">
+        <!-- repeated 3x for seamless loop with animation translating -50% -->
+        <span class="ticker-item">Norsk selskap<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Ingen outsourcing<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">GDPR-kompatibel<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Norsk Helsenett<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">20+ års erfaring<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Søsterselskap til Aidn<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Norsk datalagring<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Personlig support<span class="ticker-dot">·</span></span>
+
+        <span class="ticker-item">Norsk selskap<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Ingen outsourcing<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">GDPR-kompatibel<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Norsk Helsenett<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">20+ års erfaring<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Søsterselskap til Aidn<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Norsk datalagring<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Personlig support<span class="ticker-dot">·</span></span>
+
+        <span class="ticker-item">Norsk selskap<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Ingen outsourcing<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">GDPR-kompatibel<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Norsk Helsenett<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">20+ års erfaring<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Søsterselskap til Aidn<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Norsk datalagring<span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Personlig support<span class="ticker-dot">·</span></span>
+      </div>
+    </div>
+
+    <!-- ── Faggrupper ───────────────────────────────────────────────────── -->
+    <section id="faggrupper" class="section">
+      <div class="section-card">
+        <div class="rv section-head">
+          <div>
+            <span class="pill" style="margin-bottom:16px; display:block; width:fit-content;">Faggrupper</span>
+            <h2>Vi snakker ditt fagspråk.</h2>
+          </div>
+          <p>Extensor er skreddersydd for ni ulike faggrupper. Journalmaler, skjemaer og arbeidsflyt er tilpasset slik at systemet passer fra dag én.</p>
+        </div>
+
+        <div class="fag-grid">
+          <div class="rvl fag-icons" id="fag-icons"></div>
+          <div class="rvr fag-detail" id="fag-detail"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Features ─────────────────────────────────────────────────────── -->
+    <section id="produkter" class="section">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div class="rv section-head">
+          <div>
+            <span class="pill" style="margin-bottom:16px; display:block; width:fit-content;">Produktet</span>
+            <h2>Alt du trenger.<br>Samlet på ett sted.</h2>
+          </div>
+          <p>Extensor dekker hele driften av helsevirksomheten din — fra første konsultasjon til ferdig oppgjør.</p>
+        </div>
+
+        <div class="features-grid">
+          <div>
+            <div class="rv d1 feature-row">
+              <div class="feature-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h3>Elektronisk pasientjournal</h3>
+                <p>Strukturert og sikker journalføring tilpasset din faggruppe. Alltid i tråd med pasientjournalloven og GDPR.</p>
+              </div>
+            </div>
+            <div class="rv d2 feature-row">
+              <div class="feature-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h3>Timebok og booking</h3>
+                <p>Intuitiv kalender med SMS-påminnelser, venteliste og valgfri online booking for pasienter.</p>
+              </div>
+            </div>
+            <div class="rv d3 feature-row">
+              <div class="feature-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h3>Fakturering og HELFO</h3>
+                <p>Automatisk innsending til HELFO. Privat fakturering med e-faktura og kortbetaling.</p>
+              </div>
+            </div>
+            <div class="rv d4 feature-row">
+              <div class="feature-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h3>Sikkerhet og compliance</h3>
+                <p>Norsk datalagring, to-faktor-autentisering og full sporbarhet. Alltid oppdatert med lovkrav.</p>
+              </div>
+            </div>
+            <div class="rv d1 feature-row">
+              <div class="feature-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h3>Integrasjoner</h3>
+                <p>Kobles til Norsk Helsenett, reseptformidleren, laboratoriesystemer og mer.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rvr features-side">
+            <div class="photo-box" style="height:310px;">
+              <img src="assets/lege-kvinne.png" alt="" />
+            </div>
+            <div class="ki-card">
+              <span class="pill warm">Nyhet</span>
+              <h3>Extensor KI</h3>
+              <p>Kunstig intelligens som hjelper deg skrive journalnotat og støtter klinisk beslutningstaking.</p>
+              <a href="#webinar">Se demo-webinar →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── About ────────────────────────────────────────────────────────── -->
+    <section id="om-oss" class="section">
+      <div class="about-card">
+        <div class="rvl">
+          <span class="pill" style="margin-bottom:20px; display:block; width:fit-content;">Om oss</span>
+          <h2>Et norsk selskap.<br>For norsk helse.</h2>
+          <p>Extensor AS har siden 2004 levert journalsystemer til norske helsevirksomheter. All utvikling, drift og support skjer i Norge. Ingen outsourcing.</p>
+          <p class="small-p">Vi er søsterselskap til <span class="brand">Aidn</span>, begge del av Kernel-konsernet — Norges mest erfarne aktør innen helse-IT. Kontorer i Bodø og Oslo.</p>
+
+          <div class="about-stats">
+            <div class="about-stat"><div class="num">20+</div><div class="lbl">År i norsk helse-IT</div></div>
+            <div class="about-stat"><div class="num">9</div><div class="lbl">Faggrupper</div></div>
+            <div class="about-stat"><div class="num">2</div><div class="lbl">Kontorer</div></div>
+            <div class="about-stat"><div class="num">100%</div><div class="lbl">Norsk selskap</div></div>
+          </div>
+
+          <a class="btn-primary" href="#om-oss">Les mer om oss →</a>
+        </div>
+
+        <div class="rvr about-photos">
+          <div class="photo-box tall"><img src="assets/lege-mann.png" alt="" /></div>
+          <div class="photo-box small"><img src="assets/lege-par.png" alt="" /></div>
+          <div class="photo-box small"><img src="assets/lege-kvinne.png" alt="" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ──────────────────────────────────────────────────────────── -->
+    <section id="kontakt" class="cta-section">
+      <div class="rv cta-card">
+        <div>
+          <span class="pill warm" style="margin-bottom:20px; display:inline-block;">Ta kontakt</span>
+          <h2>Klar for en enklere hverdag?</h2>
+          <p class="lead">Book en gratis demo. Vi viser deg systemet og finner rett oppsett for din virksomhet — uten forpliktelser.</p>
+          <p class="phone">Ring oss: <a href="tel:75533300">75 53 33 00</a></p>
+        </div>
+
+        <form class="cta-form" onsubmit="event.preventDefault();">
+          <div class="cta-form-fields">
+            <input type="text" placeholder="Fullt navn" />
+            <input type="text" placeholder="Virksomhet" />
+            <input type="email" placeholder="E-postadresse" />
+            <select id="cta-faggruppe">
+              <option value="" disabled selected>Velg faggruppe</option>
+            </select>
+          </div>
+          <button type="submit" class="cta-submit">Send forespørsel om demo</button>
+          <p class="cta-disclaimer">Vi deler aldri informasjonen din med tredjepart.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <img class="footer-logo" src="assets/extensor-logo.png" alt="Extensor" />
+          <p class="footer-tag">Helhetlig pasientadministrasjon for norsk helsesektoren siden 2004.</p>
+          <div class="footer-contact">
+            <a href="tel:75533300">75 53 33 00</a>
+            <span>Bodø · Oslo</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Produkt</h4>
+          <a href="#">Faggrupper</a>
+          <a href="#">Funksjoner</a>
+          <a href="#">Extensor KI</a>
+          <a href="#">Nyheter</a>
+          <a href="#">Webinar</a>
+        </div>
+        <div class="footer-col">
+          <h4>Selskapet</h4>
+          <a href="#">Om oss</a>
+          <a href="#">Aidn</a>
+          <a href="#">Karriere</a>
+          <a href="#">Kontakt</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hjelp</h4>
+          <a href="#">Support</a>
+          <a href="#">Dokumentasjon</a>
+          <a href="#">Personvern</a>
+          <a href="#">Vilkår</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Extensor AS · Org.nr: 982 690 800</p>
+        <div class="footer-bottom-links">
+          <a href="#">Personvernerklæring</a>
+          <a href="#">Vilkår</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

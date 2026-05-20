@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extensor — Designsystem</title>
+  <meta name="description" content="Det visuelle språket bak Extensor — farger, typografi, komponenter og prinsipper." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="ds-body">
+
+  <!-- ── Navbar (samme som forsiden, forenklet) ─────────────────────────── -->
+  <nav class="nav scrolled">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="assets/extensor-logo.png" alt="Extensor" />
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Forside</a>
+        <a href="#farger">Farger</a>
+        <a href="#typografi">Typografi</a>
+        <a href="#komponenter">Komponenter</a>
+        <a href="#prinsipper">Prinsipper</a>
+      </div>
+      <a class="nav-cta" href="index.html#kontakt">Kontakt</a>
+    </div>
+  </nav>
+
+  <!-- ── Header ─────────────────────────────────────────────────────────── -->
+  <header class="ds-header">
+    <div class="ds-header-inner">
+      <span class="pill teal" style="margin-bottom:24px;">Designsystem · v1.0</span>
+      <h1>Det visuelle språket bak Extensor.</h1>
+      <p class="ds-lead">
+        Farger, typografi, komponenter og prinsipper som holder Extensor konsistent på tvers av forside, applikasjon og kommunikasjon. Norsk helse-IT siden 2004 — stille, tillitsvekkende, tidløst.
+      </p>
+      <div class="ds-header-meta">
+        <span><strong>24</strong> seksjoner</span>
+        <span><strong>14</strong> fargetokens</span>
+        <span><strong>1</strong> typeface · Manrope</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Layout: sidebar TOC + content ──────────────────────────────────── -->
+  <div class="ds-layout">
+
+    <!-- ── Sidebar TOC ─────────────────────────────────────────────────── -->
+    <aside class="ds-toc">
+      <div class="ds-toc-inner">
+        <h4>Innhold</h4>
+        <ol class="ds-toc-list">
+          <li><a href="#farger">01 · Farger</a></li>
+          <li><a href="#bakgrunn">02 · Bakgrunn</a></li>
+          <li><a href="#typografi">03 · Typografi</a></li>
+          <li><a href="#spacing">04 · Spacing &amp; layout</a></li>
+          <li><a href="#pills">05 · Pills &amp; badges</a></li>
+          <li><a href="#knapper">06 · Knapper</a></li>
+          <li><a href="#skjema">07 · Skjema</a></li>
+          <li><a href="#kort">08 · Kort</a></li>
+          <li><a href="#navigasjon">09 · Navigasjon</a></li>
+          <li><a href="#ticker">10 · Ticker</a></li>
+          <li><a href="#stempel">11 · Hero-stempel</a></li>
+          <li><a href="#feature-row">12 · Feature-rader</a></li>
+          <li><a href="#faggruppe-velger">13 · Faggruppe-velger</a></li>
+          <li><a href="#cta-kort">14 · CTA-kort</a></li>
+          <li><a href="#footer">15 · Footer</a></li>
+          <li><a href="#ikoner">16 · Ikoner</a></li>
+          <li><a href="#logo">17 · Logo</a></li>
+          <li><a href="#animasjoner">18 · Animasjoner</a></li>
+          <li><a href="#prinsipper">19 · Designprinsipper</a></li>
+        </ol>
+      </div>
+    </aside>
+
+    <!-- ── Main content ────────────────────────────────────────────────── -->
+    <main class="ds-main">
+
+      <!-- ── 01 · Farger ───────────────────────────────────────────────── -->
+      <section id="farger" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">01</span>
+          <h2>Farger</h2>
+          <p>Paletten er bygget rundt en dyp teal som primærfarge, varm gul som aksent og en off-white papirfølelse som bakgrunn. Alle tokens er definert som CSS-variabler i <code>:root</code>.</p>
+        </header>
+
+        <h3 class="ds-h3">Primær &amp; aksent</h3>
+        <div class="ds-swatches">
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#00272c"></div><div class="ds-swatch-meta"><strong>Teal</strong><code>--teal · #00272c</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#e0eaeb"></div><div class="ds-swatch-meta"><strong>Teal Light</strong><code>--teal-lt · #e0eaeb</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#f7e596"></div><div class="ds-swatch-meta"><strong>Warm Yellow</strong><code>--warm-yellow · #f7e596</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#f0d84a"></div><div class="ds-swatch-meta"><strong>Warm Yellow Dark</strong><code>--warm-yellow-dk · #f0d84a</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#7a7a50"></div><div class="ds-swatch-meta"><strong>Warm</strong><code>--warm · #7a7a50</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#f5f5e0"></div><div class="ds-swatch-meta"><strong>Warm Light</strong><code>--warm-lt · #f5f5e0</code></div></div>
+        </div>
+
+        <h3 class="ds-h3">Nøytrale</h3>
+        <div class="ds-swatches">
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#ffffff;border:1px solid var(--border)"></div><div class="ds-swatch-meta"><strong>White</strong><code>--white · #ffffff</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#f5f3ef"></div><div class="ds-swatch-meta"><strong>Off-white</strong><code>--off · #f5f3ef</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#eceae5"></div><div class="ds-swatch-meta"><strong>Off-white 2</strong><code>--off2 · #eceae5</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#1a1a18"></div><div class="ds-swatch-meta"><strong>Ink</strong><code>--ink · #1a1a18</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#6e6c66"></div><div class="ds-swatch-meta"><strong>Muted</strong><code>--muted · #6e6c66</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#0f1e1c"></div><div class="ds-swatch-meta"><strong>Footer Dark</strong><code>#0f1e1c</code></div></div>
+        </div>
+
+        <h3 class="ds-h3">Bruk</h3>
+        <ul class="ds-rules">
+          <li><strong>Teal</strong> brukes til primære knapper, navigasjon, lenker og overskrifter i hero. Aldri som flate bakgrunner i tekstrike seksjoner.</li>
+          <li><strong>Warm Yellow</strong> er aksenten — ticker-bånd, sekundærknapp, "Nyhet"-pills, CTA-submit. Brukes sparsomt for å beholde signalverdi.</li>
+          <li><strong>Off-white</strong> erstatter rent hvitt på sidebakgrunn for å skape papirfølelse. Kort ligger på <code>rgba(255,255,255,.82)</code> over off-white.</li>
+        </ul>
+
+        <pre class="ds-code"><code>:root {
+  --white:           #ffffff;
+  --off:             #f5f3ef;
+  --off2:            #eceae5;
+  --teal:            #00272c;
+  --teal-dk:         #00272c;
+  --teal-lt:         #e0eaeb;
+  --warm:            #7a7a50;
+  --warm-lt:         #f5f5e0;
+  --warm-yellow:     #f7e596;
+  --warm-yellow-dk:  #f0d84a;
+  --ink:             #1a1a18;
+  --muted:           #6e6c66;
+  --border:          rgba(26, 26, 24, .09);
+}</code></pre>
+      </section>
+
+      <!-- ── 02 · Bakgrunn ─────────────────────────────────────────────── -->
+      <section id="bakgrunn" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">02</span>
+          <h2>Bakgrunn</h2>
+          <p>Hele sidebakgrunnen er fire myke radial-gradienter i OKLCH lagt over en nesten-hvit base. Effekten er rolig, organisk og forsterker papirfølelsen uten å trekke oppmerksomhet fra innholdet.</p>
+        </header>
+
+        <div class="ds-bg-preview"></div>
+
+        <pre class="ds-code"><code>body {
+  background:
+    radial-gradient(ellipse 80% 50% at 85% 5%,  oklch(96% 0.025 185) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 40% at 15% 28%, oklch(97% 0.018 95)  0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 20% 72%, oklch(96% 0.020 165) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 40% at 80% 88%, oklch(97% 0.015 85)  0%, transparent 50%),
+    oklch(99% 0.003 180);
+  background-attachment: fixed;
+}</code></pre>
+
+        <ul class="ds-rules">
+          <li><strong>background-attachment: fixed</strong> sikrer at gradientene ligger stille mens innholdet ruller.</li>
+          <li>Kort over bakgrunnen bruker <code>rgba(255,255,255,.82)</code> + <code>backdrop-filter: blur(10px)</code> for å skape dybde uten harde kanter.</li>
+        </ul>
+      </section>
+
+      <!-- ── 03 · Typografi ────────────────────────────────────────────── -->
+      <section id="typografi" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">03</span>
+          <h2>Typografi</h2>
+          <p>Manrope er eneste typeface — fra lett (300) til ekstra-bold (800). Variabel vekt og tett bokstavavstand på overskrifter gir et modent, nordisk uttrykk.</p>
+        </header>
+
+        <div class="ds-type-specimen">
+          <div class="ds-type-row">
+            <div class="ds-type-meta"><strong>H1 — Hero</strong><code>800 · 55px · -2px tracking</code></div>
+            <div class="ds-type-sample" style="font-weight:800; font-size:55px; line-height:1.07; letter-spacing:-2px; color:var(--teal);">Mer tid til pasienten.</div>
+          </div>
+          <div class="ds-type-row">
+            <div class="ds-type-meta"><strong>H2 — Seksjon</strong><code>800 · clamp(26px, 3vw, 42px) · -1.2px</code></div>
+            <div class="ds-type-sample" style="font-weight:800; font-size:clamp(26px,3vw,42px); line-height:1.08; letter-spacing:-1.2px;">Vi snakker ditt fagspråk.</div>
+          </div>
+          <div class="ds-type-row">
+            <div class="ds-type-meta"><strong>H3 — Kort</strong><code>800 · 26px · -0.8px</code></div>
+            <div class="ds-type-sample" style="font-weight:800; font-size:26px; line-height:1.15; letter-spacing:-0.8px;">Fysio- og manuellterapeuter</div>
+          </div>
+          <div class="ds-type-row">
+            <div class="ds-type-meta"><strong>H4 — Feature</strong><code>700 · 15px · -0.2px</code></div>
+            <div class="ds-type-sample" style="font-weight:700; font-size:15px; letter-spacing:-0.2px;">Elektronisk pasientjournal</div>
+          </div>
+          <div class="ds-type-row">
+            <div class="ds-type-meta"><strong>Lead</strong><code>400 · 17px · 1.85 lh</code></div>
+            <div class="ds-type-sample" style="font-weight:400; font-size:17px; line-height:1.85; color:var(--muted); max-width:440px;">Journal, timebok og fakturering — samlet i ett system, tilpasset din faggruppe.</div>
+          </div>
+          <div class="ds-type-row">
+            <div class="ds-type-meta"><strong>Body</strong><code>400 · 16px · 1.85 lh</code></div>
+            <div class="ds-type-sample" style="font-weight:400; font-size:16px; line-height:1.85; color:var(--muted);">Extensor dekker hele driften av helsevirksomheten din.</div>
+          </div>
+          <div class="ds-type-row">
+            <div class="ds-type-meta"><strong>Small</strong><code>400 · 13px · 1.8 lh</code></div>
+            <div class="ds-type-sample" style="font-weight:400; font-size:13px; line-height:1.8; color:var(--muted);">Intuitiv kalender med SMS-påminnelser og venteliste.</div>
+          </div>
+          <div class="ds-type-row">
+            <div class="ds-type-meta"><strong>Caption</strong><code>500 · 11px · 1.4 lh</code></div>
+            <div class="ds-type-sample" style="font-weight:500; font-size:11px;">Tilpasset journalmal</div>
+          </div>
+          <div class="ds-type-row">
+            <div class="ds-type-meta"><strong>Label (uppercase)</strong><code>600 · 11px · .07em tracking</code></div>
+            <div class="ds-type-sample" style="font-weight:600; font-size:11px; letter-spacing:.07em; text-transform:uppercase; color:var(--muted);">Helhetlig pasientadministrasjon</div>
+          </div>
+          <div class="ds-type-row">
+            <div class="ds-type-meta"><strong>Big number</strong><code>800 · 38px · -2px</code></div>
+            <div class="ds-type-sample" style="font-weight:800; font-size:38px; line-height:1; letter-spacing:-2px; color:var(--teal);">20+</div>
+          </div>
+        </div>
+
+        <pre class="ds-code"><code>:root { --f: 'Manrope', sans-serif; }
+
+/* Vekter brukt: 300 · 400 · 500 · 600 · 700 · 800 */
+&lt;link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" /&gt;</code></pre>
+      </section>
+
+      <!-- ── 04 · Spacing & layout ─────────────────────────────────────── -->
+      <section id="spacing" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">04</span>
+          <h2>Spacing &amp; layout</h2>
+          <p>Layout bruker ikke en formell spacing-skala — i stedet ligger målene konsekvent på 8-piksel-multipla. Maks containerbredde er 1280px med 40px ytre padding.</p>
+        </header>
+
+        <h3 class="ds-h3">Container</h3>
+        <div class="ds-spacing-demo">
+          <div class="ds-spacing-container">
+            <span>max-width: 1280px · padding: 0 40px</span>
+          </div>
+        </div>
+
+        <h3 class="ds-h3">Vertikal rytme</h3>
+        <table class="ds-table">
+          <thead><tr><th>Bruksområde</th><th>Verdi</th></tr></thead>
+          <tbody>
+            <tr><td>Seksjon (ytre padding)</td><td><code>88px 24px</code></td></tr>
+            <tr><td>Kort innvendig padding</td><td><code>72px 64px</code></td></tr>
+            <tr><td>Seksjonshode → grid</td><td><code>56px</code></td></tr>
+            <tr><td>Hero-grid kolonne-gap</td><td><code>64px</code></td></tr>
+            <tr><td>Feature-rad padding</td><td><code>26px 0</code></td></tr>
+            <tr><td>Knapp padding</td><td><code>13px 28px</code></td></tr>
+            <tr><td>Pill padding</td><td><code>5px 14px</code></td></tr>
+          </tbody>
+        </table>
+
+        <h3 class="ds-h3">Border-radius</h3>
+        <div class="ds-radius-row">
+          <div class="ds-radius-box" style="border-radius:8px;"><span>8</span></div>
+          <div class="ds-radius-box" style="border-radius:9px;"><span>9</span></div>
+          <div class="ds-radius-box" style="border-radius:10px;"><span>10</span></div>
+          <div class="ds-radius-box" style="border-radius:14px;"><span>14</span></div>
+          <div class="ds-radius-box" style="border-radius:18px;"><span>18</span></div>
+          <div class="ds-radius-box" style="border-radius:24px;"><span>24</span></div>
+          <div class="ds-radius-box" style="border-radius:100px;"><span>pill</span></div>
+        </div>
+        <p class="ds-note">Knapper bruker 9–10px. Kort 14–24px. Pills og runde knapper 100px.</p>
+      </section>
+
+      <!-- ── 05 · Pills & badges ───────────────────────────────────────── -->
+      <section id="pills" class="ds-section" data-anchor="komponenter">
+        <header class="ds-section-head">
+          <span class="ds-num">05</span>
+          <h2>Pills &amp; badges</h2>
+          <p>Små runde merker som annonserer seksjonens tema, status eller kategori. Tre faste varianter.</p>
+        </header>
+
+        <div class="ds-demo">
+          <span class="pill">Faggrupper</span>
+          <span class="pill teal">Helhetlig pasientadministrasjon</span>
+          <span class="pill warm">Nyhet</span>
+        </div>
+
+        <pre class="ds-code"><code>&lt;span class="pill"&gt;Faggrupper&lt;/span&gt;
+&lt;span class="pill teal"&gt;Helhetlig pasientadministrasjon&lt;/span&gt;
+&lt;span class="pill warm"&gt;Nyhet&lt;/span&gt;</code></pre>
+      </section>
+
+      <!-- ── 06 · Knapper ──────────────────────────────────────────────── -->
+      <section id="knapper" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">06</span>
+          <h2>Knapper</h2>
+          <p>Primær er teal og brukes til hovedhandling. Warm-gul er sekundær. Hver knapp har én klar rolle — unngå å stable flere primære side om side.</p>
+        </header>
+
+        <h3 class="ds-h3">Standard</h3>
+        <div class="ds-demo">
+          <a class="btn-primary" href="#">Be om demo</a>
+          <a class="btn-warm" href="#">Faggrupper</a>
+          <a class="nav-cta" href="#">Kontakt oss</a>
+        </div>
+
+        <pre class="ds-code"><code>&lt;a class="btn-primary" href="#"&gt;Be om demo&lt;/a&gt;
+&lt;a class="btn-warm"    href="#"&gt;Faggrupper&lt;/a&gt;
+&lt;a class="nav-cta"     href="#"&gt;Kontakt oss&lt;/a&gt;</code></pre>
+
+        <h3 class="ds-h3">Spesielle</h3>
+        <div class="ds-demo">
+          <a class="cta-block" href="#" style="display:inline-block; width:auto;">Ta kontakt om Leger →</a>
+          <a class="float-cta visible" href="#" style="position:static;">Kontakt oss</a>
+        </div>
+
+        <pre class="ds-code"><code>&lt;a class="cta-block" href="#"&gt;Ta kontakt →&lt;/a&gt;
+&lt;a class="float-cta" href="#"&gt;Kontakt oss&lt;/a&gt;  /* floats nederst til høyre etter scroll &gt; 500px */</code></pre>
+
+        <h3 class="ds-h3">På mørk bakgrunn</h3>
+        <div class="ds-demo ds-demo-dark">
+          <button class="cta-submit" type="button" style="width:auto; padding:14px 28px;">Send forespørsel om demo</button>
+          <a href="#" class="ki-card-link-demo">Se demo-webinar →</a>
+        </div>
+      </section>
+
+      <!-- ── 07 · Skjema ───────────────────────────────────────────────── -->
+      <section id="skjema" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">07</span>
+          <h2>Skjema</h2>
+          <p>To kontekster: lyse skjema på off-white bakgrunn og mørke skjema inni teal CTA-kort. Begge bruker samme radius og typografi.</p>
+        </header>
+
+        <div class="ds-form-grid">
+          <div>
+            <h3 class="ds-h3">På lys bakgrunn</h3>
+            <div class="ds-form-light">
+              <input type="text" placeholder="Fullt navn" />
+              <input type="email" placeholder="E-postadresse" />
+              <select>
+                <option disabled selected>Velg faggruppe</option>
+                <option>Fysio- og manuellterapeuter</option>
+              </select>
+              <button class="btn-primary" style="width:100%;" type="button">Send</button>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="ds-h3">På teal bakgrunn (CTA)</h3>
+            <div class="cta-form" style="background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.12);">
+              <div class="cta-form-fields">
+                <input type="text" placeholder="Fullt navn" />
+                <input type="email" placeholder="E-postadresse" />
+              </div>
+              <button type="button" class="cta-submit">Send forespørsel</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 08 · Kort ─────────────────────────────────────────────────── -->
+      <section id="kort" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">08</span>
+          <h2>Kort</h2>
+          <p>Fem grunntyper kort. Alle bruker myk skygge og rolig blur — ingen harde rammer eller tunge skygger.</p>
+        </header>
+
+        <h3 class="ds-h3">Statistikk-kort</h3>
+        <div class="about-stats" style="max-width:540px;">
+          <div class="about-stat"><div class="num">20+</div><div class="lbl">År i norsk helse-IT</div></div>
+          <div class="about-stat"><div class="num">9</div><div class="lbl">Faggrupper</div></div>
+          <div class="about-stat"><div class="num">2</div><div class="lbl">Kontorer</div></div>
+          <div class="about-stat"><div class="num">100%</div><div class="lbl">Norsk selskap</div></div>
+        </div>
+
+        <pre class="ds-code"><code>&lt;div class="about-stat"&gt;
+  &lt;div class="num"&gt;20+&lt;/div&gt;
+  &lt;div class="lbl"&gt;År i norsk helse-IT&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+        <h3 class="ds-h3">Aksent-kort (mørk)</h3>
+        <div class="ki-card" style="max-width:420px;">
+          <span class="pill warm">Nyhet</span>
+          <h3>Extensor KI</h3>
+          <p>Kunstig intelligens som hjelper deg skrive journalnotat og støtter klinisk beslutningstaking.</p>
+          <a href="#">Se demo-webinar →</a>
+        </div>
+
+        <pre class="ds-code"><code>&lt;div class="ki-card"&gt;
+  &lt;span class="pill warm"&gt;Nyhet&lt;/span&gt;
+  &lt;h3&gt;Extensor KI&lt;/h3&gt;
+  &lt;p&gt;Kunstig intelligens som hjelper deg…&lt;/p&gt;
+  &lt;a href="#"&gt;Se demo-webinar →&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+
+        <h3 class="ds-h3">Foto-kort</h3>
+        <div class="photo-box" style="max-width:380px; height:240px;">
+          <img src="assets/lege-kvinne.png" alt="" />
+        </div>
+
+        <h3 class="ds-h3">Glass-kort (seksjonsbakgrunn)</h3>
+        <div class="ds-card-preview">
+          <div class="section-card" style="padding:32px 32px; box-shadow:0 4px 20px rgba(0,39,44,.04);">
+            <h3 style="font-weight:800; font-size:20px; color:var(--ink); margin-bottom:8px;">Glass-kort</h3>
+            <p style="font-size:14px; color:var(--muted); line-height:1.8;">Brukes som ramme for hele seksjoner. Halvgjennomsiktig hvit med blur for å vise gradientbakgrunnen gjennom.</p>
+          </div>
+        </div>
+
+        <pre class="ds-code"><code>.section-card {
+  background: rgba(255, 255, 255, .82);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 72px 64px;
+  border: 1px solid rgba(0, 39, 44, .06);
+  box-shadow: 0 4px 20px rgba(0, 39, 44, .04);
+}</code></pre>
+      </section>
+
+      <!-- ── 09 · Navigasjon ───────────────────────────────────────────── -->
+      <section id="navigasjon" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">09</span>
+          <h2>Navigasjon</h2>
+          <p>Toppnavigasjonen er transparent over hero og blir hvit med blur når du ruller forbi 40px. Det skaper en mykere overgang enn en statisk hvit bar.</p>
+        </header>
+
+        <div class="ds-nav-demo">
+          <div class="ds-nav-state">
+            <div class="ds-nav-label">Transparent (top of page)</div>
+            <div class="ds-nav-frame ds-nav-frame-light">
+              <div class="ds-nav-mock">
+                <div class="ds-nav-mock-logo"><img src="assets/extensor-logo.png" alt="" /></div>
+                <div class="ds-nav-mock-links"><span>Produkter</span><span>Faggrupper</span><span>Om oss</span></div>
+                <div class="ds-nav-mock-cta">Kontakt oss</div>
+              </div>
+            </div>
+          </div>
+          <div class="ds-nav-state">
+            <div class="ds-nav-label">Scrolled (.nav.scrolled)</div>
+            <div class="ds-nav-frame ds-nav-frame-scroll">
+              <div class="ds-nav-mock">
+                <div class="ds-nav-mock-logo"><img src="assets/extensor-logo.png" alt="" /></div>
+                <div class="ds-nav-mock-links"><span>Produkter</span><span>Faggrupper</span><span>Om oss</span></div>
+                <div class="ds-nav-mock-cta">Kontakt oss</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <pre class="ds-code"><code>.nav { background: transparent; border-bottom: 1px solid transparent; }
+.nav.scrolled {
+  background: rgba(255, 255, 255, .97);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}</code></pre>
+      </section>
+
+      <!-- ── 10 · Ticker ──────────────────────────────────────────────── -->
+      <section id="ticker" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">10</span>
+          <h2>Ticker</h2>
+          <p>Bevegelig bånd mellom hero og resten av siden. Yellow-base, uppercase tekst, sømløs loop på 32 sekunder.</p>
+        </header>
+
+        <div class="ticker">
+          <div class="ticker-track">
+            <span class="ticker-item">Norsk selskap<span class="ticker-dot">·</span></span>
+            <span class="ticker-item">Ingen outsourcing<span class="ticker-dot">·</span></span>
+            <span class="ticker-item">GDPR-kompatibel<span class="ticker-dot">·</span></span>
+            <span class="ticker-item">Norsk Helsenett<span class="ticker-dot">·</span></span>
+            <span class="ticker-item">20+ års erfaring<span class="ticker-dot">·</span></span>
+            <span class="ticker-item">Norsk datalagring<span class="ticker-dot">·</span></span>
+            <span class="ticker-item">Norsk selskap<span class="ticker-dot">·</span></span>
+            <span class="ticker-item">Ingen outsourcing<span class="ticker-dot">·</span></span>
+            <span class="ticker-item">GDPR-kompatibel<span class="ticker-dot">·</span></span>
+            <span class="ticker-item">Norsk Helsenett<span class="ticker-dot">·</span></span>
+            <span class="ticker-item">20+ års erfaring<span class="ticker-dot">·</span></span>
+            <span class="ticker-item">Norsk datalagring<span class="ticker-dot">·</span></span>
+          </div>
+        </div>
+
+        <pre class="ds-code"><code>@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track { animation: ticker 32s linear infinite; }
+/* Repeter elementene 2-3x for sømløs loop */</code></pre>
+      </section>
+
+      <!-- ── 11 · Hero-stempel ────────────────────────────────────────── -->
+      <section id="stempel" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">11</span>
+          <h2>Hero-stempel</h2>
+          <p>Sirkelstempel som markerer "Norsk Helse-IT siden 2004". Gjenkjennbart visuelt anker — brukes kun i hero og evt. footer-detalj.</p>
+        </header>
+
+        <div class="ds-demo" style="padding:32px; background:var(--off); border-radius:18px;">
+          <svg viewBox="0 0 96 96" width="120" height="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="48" cy="48" r="46" fill="#F7E596" />
+            <circle cx="48" cy="48" r="33" fill="#f0d84a" fill-opacity=".18" />
+            <path d="M48 30l12 7v14l-12 7-12-7V37L48 30z" stroke="#3a2e00" stroke-width="1.6" fill="none" />
+            <path d="M48 36l7 4v8l-7 4-7-4v-8l7-4z" stroke="#3a2e00" stroke-width="0.9" stroke-opacity=".4" fill="none" />
+            <path id="dsStampTop" d="M 16 48 A 32 32 0 0 1 80 48" fill="none" />
+            <text font-size="7.2" font-weight="800" letter-spacing="2.8" fill="#3a2e00" font-family="Manrope,sans-serif" text-anchor="middle">
+              <textPath href="#dsStampTop" startOffset="50%">NORSK HELSE-IT</textPath>
+            </text>
+            <path id="dsStampBot" d="M 18 52 A 30 30 0 0 0 78 52" fill="none" />
+            <text font-size="6.8" font-weight="700" letter-spacing="2.2" fill="#3a2e00" font-family="Manrope,sans-serif" text-anchor="middle">
+              <textPath href="#dsStampBot" startOffset="50%">SIDEN 2004</textPath>
+            </text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- ── 12 · Feature-rader ───────────────────────────────────────── -->
+      <section id="feature-row" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">12</span>
+          <h2>Feature-rader</h2>
+          <p>Listebasert mønster for produktfunksjoner. Liten teal checkmark-firkant til venstre, tittel + beskrivelse til høyre, tynn underliggende skillelinje.</p>
+        </header>
+
+        <div style="max-width:520px;">
+          <div class="feature-row in" style="opacity:1; transform:none;">
+            <div class="feature-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h3>Elektronisk pasientjournal</h3>
+              <p>Strukturert og sikker journalføring tilpasset din faggruppe.</p>
+            </div>
+          </div>
+          <div class="feature-row in" style="opacity:1; transform:none;">
+            <div class="feature-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h3>Timebok og booking</h3>
+              <p>Intuitiv kalender med SMS-påminnelser og venteliste.</p>
+            </div>
+          </div>
+        </div>
+
+        <pre class="ds-code"><code>&lt;div class="feature-row"&gt;
+  &lt;div class="feature-icon"&gt;&lt;svg&gt;…checkmark…&lt;/svg&gt;&lt;/div&gt;
+  &lt;div&gt;
+    &lt;h3&gt;Elektronisk pasientjournal&lt;/h3&gt;
+    &lt;p&gt;Strukturert og sikker journalføring…&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+
+      <!-- ── 13 · Faggruppe-velger ────────────────────────────────────── -->
+      <section id="faggruppe-velger" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">13</span>
+          <h2>Faggruppe-velger</h2>
+          <p>Signaturkomponent som finnes i to varianter: en kompakt to-kolonne picker i hero, og en stor ikon-grid + detaljpanel i Faggrupper-seksjonen. Begge styrer den samme datakilden i <code>script.js</code>.</p>
+        </header>
+
+        <h3 class="ds-h3">Hero-picker</h3>
+        <div class="picker-card" style="position:static; width:340px;">
+          <span class="picker-label">
+            Klikk for å velge din faggruppe <span class="nudge-arrow">→</span>
+          </span>
+          <div class="picker-grid">
+            <button class="picker-btn">Leger</button>
+            <button class="picker-btn is-active">Psykologer</button>
+            <button class="picker-btn">Kiropraktorer</button>
+            <button class="picker-btn">Fysioterapeut</button>
+          </div>
+          <div class="picker-detail">
+            <p>Sikkert og diskret system tilpasset terapeutiske prosesser. Enkel notattaking og fakturering.</p>
+            <a href="#">Ta kontakt →</a>
+          </div>
+        </div>
+
+        <h3 class="ds-h3">Ikon-grid</h3>
+        <div class="fag-icons" style="max-width:520px;">
+          <button class="fag-icon-btn is-active">
+            <span class="icon"><svg viewBox="0 0 32 32" fill="none" width="28" height="28"><rect x="10" y="4" width="12" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M13 10h6M13 13h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="16" cy="26" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M16 22v-2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+            <span class="label">Leger</span>
+          </button>
+          <button class="fag-icon-btn">
+            <span class="icon"><svg viewBox="0 0 32 32" fill="none" width="28" height="28"><path d="M16 5c-5 0-9 3.6-9 8 0 3 1.6 5.5 4 7v4h10v-4c2.4-1.5 4-4 4-7 0-4.4-4-8-9-8z" stroke="currentColor" stroke-width="1.5"/><path d="M13 24h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+            <span class="label">Psykologer</span>
+          </button>
+          <button class="fag-icon-btn">
+            <span class="icon"><svg viewBox="0 0 32 32" fill="none" width="28" height="28"><path d="M16 4v24M12 8l4-4 4 4M10 14h12M10 19h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="27" r="1.5" fill="currentColor"/></svg></span>
+            <span class="label">Kiropraktorer</span>
+          </button>
+        </div>
+
+        <pre class="ds-code"><code>&lt;button class="picker-btn is-active"&gt;Leger&lt;/button&gt;
+
+&lt;button class="fag-icon-btn is-active"&gt;
+  &lt;span class="icon"&gt;&lt;svg&gt;…&lt;/svg&gt;&lt;/span&gt;
+  &lt;span class="label"&gt;Leger&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+      </section>
+
+      <!-- ── 14 · CTA-kort ────────────────────────────────────────────── -->
+      <section id="cta-kort" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">14</span>
+          <h2>CTA-kort</h2>
+          <p>Det mørke teal kortet som avslutter siden — kontakt-skjema på høyre side, tekst og telefonnummer på venstre. Eneste mørke flate i hovedinnholdet.</p>
+        </header>
+
+        <div class="cta-card in" style="opacity:1; transform:none;">
+          <div>
+            <span class="pill warm" style="margin-bottom:20px; display:inline-block;">Ta kontakt</span>
+            <h2 style="font-size:32px;">Klar for en enklere hverdag?</h2>
+            <p class="lead">Book en gratis demo. Vi viser deg systemet og finner rett oppsett for din virksomhet.</p>
+            <p class="phone">Ring oss: <a href="tel:75533300">75 53 33 00</a></p>
+          </div>
+          <form class="cta-form" onsubmit="event.preventDefault();">
+            <div class="cta-form-fields">
+              <input type="text" placeholder="Fullt navn" />
+              <input type="email" placeholder="E-postadresse" />
+            </div>
+            <button type="submit" class="cta-submit">Send forespørsel om demo</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ── 15 · Footer ──────────────────────────────────────────────── -->
+      <section id="footer" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">15</span>
+          <h2>Footer</h2>
+          <p>Mørk full-bredde footer med fire kolonner: brand + kontakt, produkt, selskap, hjelp. Bruker dypere mørk teal (<code>#0f1e1c</code>) enn CTA-kortet.</p>
+        </header>
+
+        <div class="ds-footer-preview">
+          <footer class="footer" style="border-radius:18px; padding:40px 32px 24px;">
+            <div class="footer-inner">
+              <div class="footer-grid" style="margin-bottom:32px;">
+                <div>
+                  <img class="footer-logo" src="assets/extensor-logo.png" alt="Extensor" />
+                  <p class="footer-tag">Helhetlig pasientadministrasjon siden 2004.</p>
+                  <div class="footer-contact">
+                    <a href="tel:75533300">75 53 33 00</a>
+                    <span>Bodø · Oslo</span>
+                  </div>
+                </div>
+                <div class="footer-col">
+                  <h4>Produkt</h4>
+                  <a href="#">Faggrupper</a>
+                  <a href="#">Funksjoner</a>
+                  <a href="#">Extensor KI</a>
+                </div>
+                <div class="footer-col">
+                  <h4>Selskapet</h4>
+                  <a href="#">Om oss</a>
+                  <a href="#">Karriere</a>
+                </div>
+                <div class="footer-col">
+                  <h4>Hjelp</h4>
+                  <a href="#">Support</a>
+                  <a href="#">Personvern</a>
+                </div>
+              </div>
+              <div class="footer-bottom">
+                <p>© 2026 Extensor AS</p>
+                <div class="footer-bottom-links">
+                  <a href="#">Vilkår</a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </section>
+
+      <!-- ── 16 · Ikoner ──────────────────────────────────────────────── -->
+      <section id="ikoner" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">16</span>
+          <h2>Ikoner</h2>
+          <p>9 faggruppe-ikoner, alle 32×32 viewBox, 1.5px stroke, <code>currentColor</code> som lar dem skifte mellom teal og hvit avhengig av kontekst.</p>
+        </header>
+
+        <div class="ds-icon-grid">
+          <div class="ds-icon-tile"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" style="color:var(--teal)"><path d="M16 4c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M8 28v-8c0-3 1.5-5 4-6h8c2.5 1 4 3 4 6v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 20l2 4 2-3 2 3 2-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Fysio</span></div>
+          <div class="ds-icon-tile"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" style="color:var(--teal)"><rect x="10" y="4" width="12" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M13 10h6M13 13h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="16" cy="26" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M16 22v-2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span>Leger</span></div>
+          <div class="ds-icon-tile"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" style="color:var(--teal)"><path d="M16 5c-5 0-9 3.6-9 8 0 3 1.6 5.5 4 7v4h10v-4c2.4-1.5 4-4 4-7 0-4.4-4-8-9-8z" stroke="currentColor" stroke-width="1.5"/><path d="M13 24h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span>Psykologer</span></div>
+          <div class="ds-icon-tile"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" style="color:var(--teal)"><path d="M16 4v24M12 8l4-4 4 4M10 14h12M10 19h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="27" r="1.5" fill="currentColor"/></svg><span>Kiropraktorer</span></div>
+          <div class="ds-icon-tile"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" style="color:var(--teal)"><rect x="4" y="12" width="24" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M10 12V9a2 2 0 012-2h8a2 2 0 012 2v3" stroke="currentColor" stroke-width="1.5"/><path d="M16 17v6M13 20h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Bedrift</span></div>
+          <div class="ds-icon-tile"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" style="color:var(--teal)"><circle cx="16" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 20c0-4 3.5-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M6 28c2-3 5-5 10-5s8 2 10 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".4"/></svg><span>Rehab</span></div>
+          <div class="ds-icon-tile"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" style="color:var(--teal)"><path d="M16 6c0 0-8 4-8 11a8 8 0 0016 0C24 10 16 6 16 6z" stroke="currentColor" stroke-width="1.5"/><path d="M12 16l2.5 2.5L20 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Barnevern</span></div>
+          <div class="ds-icon-tile"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" style="color:var(--teal)"><rect x="4" y="8" width="24" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M12 8V5h8v3" stroke="currentColor" stroke-width="1.5"/><path d="M16 13v8M12 17h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Sykehus</span></div>
+          <div class="ds-icon-tile"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" style="color:var(--teal)"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M16 11v10M11 16h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Andre</span></div>
+        </div>
+
+        <h3 class="ds-h3">Hjelp-ikoner</h3>
+        <div class="ds-demo">
+          <div class="feature-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span class="nudge-arrow" style="color:var(--teal); font-size:18px; font-weight:700;">→</span>
+        </div>
+
+        <ul class="ds-rules">
+          <li>Alle ikoner bruker <code>stroke="currentColor"</code> så fargen styres av forelder-elementet.</li>
+          <li>Stroke-width 1.5 for hovedform, 1.3 for sekundære detaljer.</li>
+          <li>Ikoner er aldri fylt — kun outline. Det matcher den lette, profesjonelle tonen.</li>
+        </ul>
+      </section>
+
+      <!-- ── 17 · Logo ────────────────────────────────────────────────── -->
+      <section id="logo" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">17</span>
+          <h2>Logo</h2>
+          <p>Extensor-logoen finnes i én farget versjon. På mørk bakgrunn brukes <code>filter: brightness(0) invert(1)</code> for hvit silhuett.</p>
+        </header>
+
+        <div class="ds-logo-grid">
+          <div class="ds-logo-frame" style="background:var(--off);">
+            <img src="assets/extensor-logo.png" alt="Extensor" style="height:48px;" />
+            <span>På lys bakgrunn</span>
+          </div>
+          <div class="ds-logo-frame" style="background:var(--teal);">
+            <img src="assets/extensor-logo.png" alt="Extensor" style="height:48px; filter:brightness(0) invert(1); opacity:.9;" />
+            <span style="color:rgba(255,255,255,.6);">På mørk bakgrunn</span>
+          </div>
+        </div>
+
+        <pre class="ds-code"><code>/* Standardstørrelse i nav */
+.nav-logo img { height: 38px; }
+
+/* Footer / mørk bakgrunn */
+.footer-logo {
+  filter: brightness(0) invert(1);
+  opacity: .7;
+}</code></pre>
+      </section>
+
+      <!-- ── 18 · Animasjoner ─────────────────────────────────────────── -->
+      <section id="animasjoner" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">18</span>
+          <h2>Animasjoner</h2>
+          <p>Bevegelse er rolig og bevisst: scroll-reveal når elementer kommer i view, en mild puls rundt picker-kortet, og en liten pekende pil. Aldri tunge entries eller spinning.</p>
+        </header>
+
+        <div class="ds-anim-grid">
+
+          <div class="ds-anim-card">
+            <h4>Scroll reveal</h4>
+            <p>Elementer fader inn fra under (.rv), venstre (.rvl) eller høyre (.rvr) når de blir synlige. Trigget av en <code>IntersectionObserver</code>.</p>
+            <div class="ds-anim-demo">
+              <button class="btn-primary" type="button" onclick="this.parentNode.querySelector('.demo-rv').classList.toggle('in')">Trigg</button>
+              <div class="demo-rv rv" style="background:var(--off); padding:14px 18px; border-radius:10px; font-size:13px; margin-top:12px;">Hei, jeg fader inn.</div>
+            </div>
+            <pre class="ds-code"><code>.rv  { opacity: 0; transform: translateY(22px); transition: .65s cubic-bezier(.22,1,.36,1); }
+.rv.in { opacity: 1; transform: none; }</code></pre>
+          </div>
+
+          <div class="ds-anim-card">
+            <h4>Picker pulse</h4>
+            <p>Myk pulserende glow rundt picker-kortet i hero som leder blikket.</p>
+            <div class="ds-anim-demo">
+              <div class="picker-card picker-pulse" style="position:static; width:240px;">
+                <span class="picker-label" style="font-size:10px;">Velg din faggruppe <span class="nudge-arrow">→</span></span>
+                <div class="picker-grid">
+                  <button class="picker-btn">Leger</button>
+                  <button class="picker-btn is-active">Fysio</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ds-anim-card">
+            <h4>Nudge arrow</h4>
+            <p>Pil som skyver seg 4px frem og tilbake — subtil oppfordring til handling.</p>
+            <div class="ds-anim-demo">
+              <span class="nudge-arrow" style="color:var(--teal); font-size:22px; font-weight:700;">→</span>
+            </div>
+            <pre class="ds-code"><code>@keyframes nudgeArrow {
+  0%,100% { transform: translateX(0); }
+  50%     { transform: translateX(4px); }
+}
+.nudge-arrow { animation: nudgeArrow 1.4s ease-in-out infinite; }</code></pre>
+          </div>
+
+          <div class="ds-anim-card">
+            <h4>Ticker</h4>
+            <p>Lineær loop, 32 sekunder, translateX 0 → -50%. Tre repetisjoner av innholdet gir sømløst hopp.</p>
+            <div class="ds-anim-demo" style="padding:0; background:none;">
+              <div class="ticker" style="border-radius:10px;">
+                <div class="ticker-track">
+                  <span class="ticker-item">Norsk selskap<span class="ticker-dot">·</span></span>
+                  <span class="ticker-item">Norsk Helsenett<span class="ticker-dot">·</span></span>
+                  <span class="ticker-item">Norsk datalagring<span class="ticker-dot">·</span></span>
+                  <span class="ticker-item">Norsk selskap<span class="ticker-dot">·</span></span>
+                  <span class="ticker-item">Norsk Helsenett<span class="ticker-dot">·</span></span>
+                  <span class="ticker-item">Norsk datalagring<span class="ticker-dot">·</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ds-anim-card">
+            <h4>Hover-løft</h4>
+            <p>Picker-knapper løftes 2px med myk skygge på hover. Eneste hover-effekt i systemet — alt annet er bare fargeskift.</p>
+            <div class="ds-anim-demo">
+              <button class="picker-btn">Hover meg</button>
+            </div>
+            <pre class="ds-code"><code>.picker-btn:hover:not(.is-active) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,39,44,.12);
+  border-color: var(--teal);
+}</code></pre>
+          </div>
+
+          <div class="ds-anim-card">
+            <h4>Easing</h4>
+            <p>Alle bevegelser bruker samme custom-bezier for konsistent rytme.</p>
+            <pre class="ds-code" style="margin-top:14px;"><code>cubic-bezier(.22, 1, .36, 1)</code></pre>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── 19 · Prinsipper ──────────────────────────────────────────── -->
+      <section id="prinsipper" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">19</span>
+          <h2>Designprinsipper</h2>
+          <p>Reglene som holder Extensor visuelt rolig, tillitsvekkende og norsk. Følg dem når du legger til nye komponenter eller maler.</p>
+        </header>
+
+        <ol class="ds-principles">
+          <li>
+            <h3>Ro fremfor effekt</h3>
+            <p>Helsearbeidere skal slappe av i systemet. Bruk myke gradienter, milde skygger og rolig bevegelse. Ingen tunge entries, ingen blinkende elementer.</p>
+          </li>
+          <li>
+            <h3>Yellow er signal, ikke flate</h3>
+            <p>Warm yellow brukes til ticker, sekundærknapp, "Nyhet"-pill og CTA-submit. Aldri som stor bakgrunnsflate — det stjeler oppmerksomhet fra det viktige.</p>
+          </li>
+          <li>
+            <h3>Teal er primær — sparsomt</h3>
+            <p>Teal er reservert for hovedhandling: navigasjons-CTA, primærknapp, hero-overskrift, lenker. To primærknapper ved siden av hverandre er nesten alltid feil.</p>
+          </li>
+          <li>
+            <h3>Off-white, ikke hvitt</h3>
+            <p>Sidebakgrunn er gradient over off-white (<code>#f5f3ef</code>). Det gir papirfølelse. Rene hvite kort ligger over som glasskort med blur.</p>
+          </li>
+          <li>
+            <h3>Ikoner er linje, aldri fylt</h3>
+            <p>Alle ikoner er outline med 1.5px stroke og <code>currentColor</code>. Det matcher Manrope sin lette tone og lar ikonene endre farge i ulik kontekst.</p>
+          </li>
+          <li>
+            <h3>Norsk språk og tone</h3>
+            <p>Mikrocopy er kort, varm og direkte. "Be om demo" — ikke "Request a demo". "Faggruppe" — ikke "Persona". Aldri tomme superlativer.</p>
+          </li>
+          <li>
+            <h3>Rytme på 8</h3>
+            <p>Padding, gap og marginer ligger konsistent på multipla av 8 (8, 16, 24, 32, 40, 56, 64, 72, 88). Det gir visuell rytme uten å føles rigid.</p>
+          </li>
+          <li>
+            <h3>Bevegelse forklarer</h3>
+            <p>Animasjon brukes til å lede blikket (picker pulse, nudge arrow) eller til å markere at noe nytt kommer (scroll reveal). Aldri som dekorasjon.</p>
+          </li>
+          <li>
+            <h3>Tillit gjennom detaljer</h3>
+            <p>Norsk Helse-IT-stempelet, "Siden 2004", "Norsk datalagring" i tickeren — små, rolige signaler på at dette er trygt, modent og hjemlig.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ── Slutt ────────────────────────────────────────────────────── -->
+      <div class="ds-end">
+        <p>Versjon 1.0 · Vedlikeholdes sammen med <a href="index.html">forsiden</a>.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="design-system.js" defer></script>
+</body>
+</html>
