@@ -10,6 +10,7 @@ const faggrupper = [
     id: 'leger',
     label: 'Leger',
     desc: 'Fullverdig EPJ for privatpraktiserende leger. Lab-integrasjon, e-resept og strukturert journalføring.',
+    page: 'leger.html',
     icon: `<svg viewBox="0 0 32 32" fill="none" width="28" height="28"><rect x="10" y="4" width="12" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M13 10h6M13 13h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="16" cy="26" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M16 22v-2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`
   },
   {
@@ -82,6 +83,7 @@ window.addEventListener('scroll', () => {
 function renderHeroPicker() {
   const grid = document.querySelector('#hero-picker-grid');
   const detail = document.querySelector('#hero-picker-detail');
+  if (!grid || !detail) return;
   let active = null;
 
   faggrupper.forEach((f) => {
@@ -118,6 +120,7 @@ function renderHeroPicker() {
 function renderFaggrupperSection() {
   const icons = document.querySelector('#fag-icons');
   const detail = document.querySelector('#fag-detail');
+  if (!icons || !detail) return;
   let active = 'fysio';
 
   faggrupper.forEach((f) => {
@@ -154,7 +157,7 @@ function renderFaggrupperSection() {
           </div>`
         ).join('')}
       </div>
-      <a class="cta-block" href="#kontakt">Ta kontakt om ${fg.label} →</a>
+      <a class="cta-block" href="${fg.page || '#kontakt'}">${fg.page ? `Les mer om Extensor for ${fg.label.toLowerCase()} →` : `Ta kontakt om ${fg.label} →`}</a>
     `;
     // Animate-in
     detail.style.animation = 'none';
@@ -163,19 +166,23 @@ function renderFaggrupperSection() {
   }
 
   renderDetail(active);
+}
 
-  // CTA form select options
+// ── CTA form: fyll faggruppe-select og pre-velg evt. default ────────────────
+function populateCtaSelect() {
   const select = document.querySelector('#cta-faggruppe');
-  if (select) {
-    faggrupper.forEach((f) => {
-      const opt = document.createElement('option');
-      opt.value = f.id;
-      opt.textContent = f.label;
-      select.appendChild(opt);
-    });
-  }
+  if (!select) return;
+  const preselect = select.dataset.default;
+  faggrupper.forEach((f) => {
+    const opt = document.createElement('option');
+    opt.value = f.id;
+    opt.textContent = f.label;
+    if (preselect && preselect === f.id) opt.selected = true;
+    select.appendChild(opt);
+  });
 }
 
 // ── Init ────────────────────────────────────────────────────────────────────
 renderHeroPicker();
 renderFaggrupperSection();
+populateCtaSelect();
