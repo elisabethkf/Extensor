@@ -487,7 +487,7 @@ function renderFaggrupperOverview() {
   `).join('');
 }
 
-// ── Navbar-dropdown for faggrupper ──────────────────────────────────────────
+// ── Navbar-dropdown for faggrupper (kun rendering) ──────────────────────────
 function renderNavDropdown() {
   const menu = document.querySelector('#faggrupper-dropdown');
   if (!menu) return;
@@ -499,29 +499,71 @@ function renderNavDropdown() {
       ${f.page ? '<span class="nav-dropdown-item-tag">Egen side</span>' : ''}
     </a>
   `).join('');
+}
 
-  // Toggle on click (for touch + keyboard) — hover-styling kommer fra CSS
-  const trigger = document.querySelector('.nav-dropdown-trigger');
-  const dropdown = trigger?.closest('.nav-dropdown');
-  if (!trigger || !dropdown) return;
+// ── Toggle for alle nav-dropdowns (Faggrupper, Produktet, Om oss) ───────────
+function initNavDropdowns() {
+  const dropdowns = document.querySelectorAll('.nav-dropdown');
+  if (!dropdowns.length) return;
 
-  trigger.addEventListener('click', (e) => {
-    // La folk klikke selve "Faggrupper" for å gå til samlesiden — men toggle på pil
-    const arrow = e.target.closest('.nav-dropdown-arrow');
-    if (arrow) {
-      e.preventDefault();
-      dropdown.classList.toggle('is-open');
+  dropdowns.forEach((dropdown) => {
+    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', (e) => {
+      // Selve tekstdelen lar deg navigere til hovedsiden — pilen toggler dropdown
+      const arrow = e.target.closest('.nav-dropdown-arrow');
+      if (arrow) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelectorAll('.nav-dropdown.is-open').forEach((d) => {
+          if (d !== dropdown) d.classList.remove('is-open');
+        });
+        dropdown.classList.toggle('is-open');
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.is-open').forEach((d) => {
+        d.classList.remove('is-open');
+      });
     }
   });
 
-  // Lukk ved klikk utenfor
-  document.addEventListener('click', (e) => {
-    if (!dropdown.contains(e.target)) dropdown.classList.remove('is-open');
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.nav-dropdown.is-open').forEach((d) => {
+        d.classList.remove('is-open');
+      });
+    }
+  });
+}
+
+// ── Burger-meny (mobil) ─────────────────────────────────────────────────────
+function initBurger() {
+  const burger = document.querySelector('.nav-burger');
+  if (!burger) return;
+
+  burger.addEventListener('click', () => {
+    const isOpen = document.body.classList.toggle('nav-open');
+    burger.setAttribute('aria-expanded', isOpen);
   });
 
-  // Lukk på Escape
+  // Lukk på klikk på en nav-link
+  document.querySelectorAll('.nav-links a:not(.nav-dropdown-trigger)').forEach((link) => {
+    link.addEventListener('click', () => {
+      document.body.classList.remove('nav-open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') dropdown.classList.remove('is-open');
+    if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
+      document.body.classList.remove('nav-open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
   });
 }
 
@@ -549,3 +591,5 @@ renderTestimonialsMarquee();
 initHelpBubble();
 initNyhetsfilter();
 renderRelatertNyheter();
+initNavDropdowns();
+initBurger();

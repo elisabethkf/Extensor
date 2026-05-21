@@ -19,15 +19,30 @@
       <a class="nav-logo" href="index.html">
         <img src="assets/extensor-logo.png" alt="Extensor — Helhetlig pasientadministrasjon" />
       </a>
+      <button class="nav-burger" type="button" aria-expanded="false" aria-label="Åpne meny"><span></span><span></span><span></span></button>
       <div class="nav-links">
-        <a href="index.html#produktet">Produktet</a>
+        <div class="nav-dropdown">
+          <a href="index.html#produktet" class="nav-dropdown-trigger">Produktet <span class="nav-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="nav-dropdown-menu is-text-menu">
+            <a class="nav-dropdown-item is-text" href="index.html#produktet">Produktet</a>
+            <a class="nav-dropdown-item is-text" href="extensor-ki.html">Extensor KI</a>
+            <a class="nav-dropdown-item is-text" href="leger.html#tilleggsprodukter">Tilleggsprodukter</a>
+          </div>
+        </div>
         <div class="nav-dropdown">
           <a href="faggrupper.html" class="nav-dropdown-trigger">Faggrupper <span class="nav-dropdown-arrow" aria-hidden="true"></span></a>
           <div class="nav-dropdown-menu" id="faggrupper-dropdown"></div>
         </div>
         <a href="webinar.html" class="is-active">Webinar</a>
         <a href="nyheter.html">Nyheter</a>
-        <a href="om-oss.html">Om oss</a>
+        <div class="nav-dropdown">
+          <a href="om-oss.html" class="nav-dropdown-trigger">Om oss <span class="nav-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="nav-dropdown-menu is-text-menu">
+            <a class="nav-dropdown-item is-text" href="om-oss.html">Om oss</a>
+            <a class="nav-dropdown-item is-text" href="karriere.html">Karriere</a>
+            <a class="nav-dropdown-item is-text" href="#">Aidn</a>
+          </div>
+        </div>
         <a href="support.html">Support</a>
       </div>
       <a class="nav-cta" href="#kontakt">Kontakt oss</a>
