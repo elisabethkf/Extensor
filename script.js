@@ -57,6 +57,207 @@ const faggrupper = [
   }
 ];
 
+// ── Nyheter ─────────────────────────────────────────────────────────────────
+// Bilder hentet fra Extensors egen Webflow-CDN slik de er per dags dato.
+// URL-er peker til de faktiske artiklene på extensor.no/blogg/.
+const nyheter = [
+  {
+    id: 'ny-kunde-ostbytunet',
+    title: 'Ny kunde i Extensor-familien!',
+    date: '06.06.2025',
+    category: 'kunder',
+    categoryLabel: 'Kunder',
+    excerpt: 'Vi ønsker Østbytunet hjertelig velkommen som ny kunde hos Extensor.',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/6842d706e06228f8a6c74ab8_%C3%98stbytunet5.jpg',
+    url: 'ny-kunde-i-extensor.html'
+  },
+  {
+    id: 'besok-ant',
+    title: 'Extensor på 20-års besøk hos ANT',
+    date: '01.11.2024',
+    category: 'besok',
+    categoryLabel: 'Besøk',
+    excerpt: 'Vi besøkte ANT i Levanger som del av vår 20-års tur i norsk helsesektor.',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/6784c7e93655068eaa5c80c0_ANT5.jpg',
+    url: 'extensor-pa-20-ars-besok-hos-ant.html'
+  },
+  {
+    id: 'kurs-host-2024',
+    title: 'Extensor kurs høsten 2024',
+    date: '01.08.2024',
+    category: 'produkt',
+    categoryLabel: 'Produkt',
+    excerpt: 'Nye webkurs er satt opp for høsten — meld deg på via kursplanen.',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/63aab027b59544058e6aca3c_man-g7025e4270_1920.jpg',
+    url: 'extensor-kurs-hosten-2024.html'
+  },
+  {
+    id: 'besok-alesund',
+    title: 'Extensor på 20-års besøk i Ålesund',
+    date: '14.06.2024',
+    category: 'besok',
+    categoryLabel: 'Besøk',
+    excerpt: 'Besøk hos Fysioterapi 0-100 i Ålesund — del av jubileumsturen.',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/666c2bdf63828473c549265b_IMG_20240611_1500342.jpg',
+    url: 'extensor-pa-20-ars-besok-i-alesund.html'
+  },
+  {
+    id: 'kundeforum-rehab',
+    title: 'Kundeforum Rehab',
+    date: '18.01.2023',
+    category: 'kunder',
+    categoryLabel: 'Kunder',
+    excerpt: 'Invitasjon til kundeforum i Oslo for rehabiliteringsvirksomheter.',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/63f5c44482608114b0bd6b06_kundeforumbilde2.jpg',
+    url: 'kundeforum-rehab.html'
+  },
+  {
+    id: 'ledig-stilling',
+    title: 'Ledig stilling i Extensor',
+    date: '09.01.2023',
+    category: 'karriere',
+    categoryLabel: 'Karriere',
+    excerpt: 'Vi søker teknisk konsulent til vårt team — interessert?',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/61ee4ebf0364edd3acfb286e_scott-graham-5fNmWej4tAA-unsplash.jpg',
+    url: 'ledig-stilling-i-extensor.html'
+  },
+  {
+    id: 'samarbeid-flow',
+    title: 'Samarbeid med Flow Technologies',
+    date: '08.11.2022',
+    category: 'integrasjon',
+    categoryLabel: 'Integrasjon',
+    excerpt: 'Ny integrasjon mot Flowzone via samarbeid med Flow Technologies.',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/634e9faf4e5dbf775b12ccb1_technology-g08822e627_1920.jpg',
+    url: 'samarbeid-med-flow-technologies.html'
+  },
+  {
+    id: 'nye-takster',
+    title: 'Nye takster',
+    date: '01.07.2021',
+    category: 'produkt',
+    categoryLabel: 'Produkt',
+    excerpt: '1. juli er det nye takster for bl.a. fysioterapeuter, manuellterapeuter og leger.',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/60dd61c7e3cea1773fdc2559_gold-2048295_19202.jpg',
+    url: 'nye-takster.html'
+  },
+  {
+    id: 'velkommen-nye-kunder',
+    title: 'Velkommen til nye kunder!',
+    date: '01.06.2021',
+    category: 'kunder',
+    categoryLabel: 'Kunder',
+    excerpt: 'Extensor fortsetter veksten, og ønsker våre nye kunder velkommen.',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/60b0f11addde8b90f7cd814d_high%20five.jpg',
+    url: 'velkommen-til-nye-kunder.html'
+  },
+  {
+    id: 'hurtigtest-covid',
+    title: 'Hurtigtest av Covid-19',
+    date: '07.01.2021',
+    category: 'produkt',
+    categoryLabel: 'Produkt',
+    excerpt: 'Extensor har i samarbeid med Helsedirektoratet utviklet funksjonalitet for hurtigtest av Covid-19, samt innsending av prøvesvar direkte via Norsk Helsenett.',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/6038b1cf4a6e02030c1659d7_corona-5401250_1920.jpg',
+    url: 'hurtigest-av-covid-19.html'
+  },
+  {
+    id: 'extensor-ny-versjon',
+    title: 'Ny versjon av Extensor-systemet',
+    date: '07.01.2021',
+    category: 'produkt',
+    categoryLabel: 'Produkt',
+    excerpt: 'Ny versjon av Extensor-systemet. Extensor lanserer nå ny oppdatering; versjon 1.34.',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e26f61346f90ce05844dad7_update.jpg',
+    url: 'extensor-ny-versjon.html'
+  },
+  {
+    id: 'sms-innkalling',
+    title: 'SMS-innkalling',
+    date: '23.01.2020',
+    category: 'produkt',
+    categoryLabel: 'Produkt',
+    excerpt: 'Innkalling til timer via SMS er en svært vanlig måte å kommunisere med pasienter på.',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e2960554f620b867c9d4599_sms.jpg',
+    url: 'nye-takster-fra-1-juli-2019.html'
+  },
+  {
+    id: 'e-resept',
+    title: 'Vi tilbyr e-resept',
+    date: '23.01.2020',
+    category: 'integrasjon',
+    categoryLabel: 'Integrasjon',
+    excerpt: 'Extensor er nå godkjent leverandør for e-resept til alle våre kunder.',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/6038b78d2754ebb9b8996e87_about-3887433_1920.jpg',
+    url: 'e-resept-ny-modul.html'
+  }
+];
+
+function newsCardHTML(n, headingTag = 'h2') {
+  const external = n.url && n.url.startsWith('http');
+  const linkAttrs = external ? ' target="_blank" rel="noopener"' : '';
+  return `
+    <a href="${n.url || '#'}"${linkAttrs} class="news-card" data-cat="${n.category}">
+      <div class="news-card-img">
+        <img src="${n.image}" alt="" />
+      </div>
+      <div class="news-card-body">
+        <div class="news-card-meta">
+          <span class="news-card-tag news-tag-${n.category}">${n.categoryLabel}</span>
+          <span class="news-card-date">${n.date}</span>
+        </div>
+        <${headingTag} class="news-card-title">${n.title}</${headingTag}>
+        <p class="news-card-excerpt">${n.excerpt}</p>
+        <span class="news-card-cta">Les mer <span aria-hidden="true">→</span></span>
+      </div>
+    </a>`;
+}
+
+function renderNyheter(filter = 'all') {
+  const grid = document.querySelector('#news-grid');
+  const empty = document.querySelector('#news-empty');
+  if (!grid) return;
+
+  const filtered = filter === 'all'
+    ? nyheter
+    : nyheter.filter((n) => n.category === filter);
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    if (empty) empty.hidden = false;
+    return;
+  }
+  if (empty) empty.hidden = true;
+
+  grid.innerHTML = filtered.map((n) => newsCardHTML(n, 'h2')).join('');
+}
+
+function renderRelatertNyheter() {
+  const grid = document.querySelector('#related-news-grid');
+  if (!grid) return;
+  const currentId = grid.dataset.current;
+  const limit = parseInt(grid.dataset.limit, 10) || 3;
+
+  const others = nyheter.filter((n) => n.id !== currentId).slice(0, limit);
+  grid.innerHTML = others.map((n) => newsCardHTML(n, 'h3')).join('');
+}
+
+function initNyhetsfilter() {
+  const filterContainer = document.querySelector('.news-filter');
+  if (!filterContainer) return;
+
+  filterContainer.addEventListener('click', (e) => {
+    const btn = e.target.closest('.news-filter-btn');
+    if (!btn) return;
+    filterContainer.querySelectorAll('.news-filter-btn').forEach((b) => {
+      b.classList.toggle('is-active', b === btn);
+    });
+    renderNyheter(btn.dataset.cat);
+  });
+
+  renderNyheter('all');
+}
+
 // ── Testimonials ────────────────────────────────────────────────────────────
 const testimonials = [
   {
@@ -142,11 +343,37 @@ document.querySelectorAll('.rv, .rvl, .rvr').forEach((el) => revealObserver.obse
 
 // ── Navbar scroll state ─────────────────────────────────────────────────────
 const nav = document.querySelector('.nav');
-const floatCta = document.querySelector('.float-cta');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
-  floatCta.classList.toggle('visible', window.scrollY > 500);
+  if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
 });
+
+// ── Help-bubble (floating support-knapp) ────────────────────────────────────
+function initHelpBubble() {
+  const bubble = document.querySelector('.help-bubble');
+  if (!bubble) return;
+  const trigger = bubble.querySelector('.help-bubble-trigger');
+  if (!trigger) return;
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = bubble.classList.toggle('is-open');
+    trigger.setAttribute('aria-expanded', open);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!bubble.contains(e.target)) {
+      bubble.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      bubble.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
 
 // ── Hero picker ─────────────────────────────────────────────────────────────
 function renderHeroPicker() {
@@ -237,6 +464,67 @@ function renderFaggrupperSection() {
   renderDetail(active);
 }
 
+// ── Faggrupper-samleside (overview-grid) ────────────────────────────────────
+function faggruppeHref(f) {
+  return f.page || `faggrupper.html#${f.id}`;
+}
+
+function renderFaggrupperOverview() {
+  const grid = document.querySelector('#faggruppe-overview-grid');
+  if (!grid) return;
+
+  grid.innerHTML = faggrupper.map((f) => `
+    <article class="faggruppe-overview-card" id="${f.id}">
+      <div class="faggruppe-overview-icon">${f.icon}</div>
+      <h2 class="faggruppe-overview-name">${f.label}</h2>
+      <p class="faggruppe-overview-desc">${f.desc}</p>
+      <a class="faggruppe-overview-link" href="${faggruppeHref(f)}">
+        ${f.page ? 'Les mer' : 'Ta kontakt'}
+        <span aria-hidden="true">→</span>
+      </a>
+      ${f.page ? '<span class="faggruppe-overview-tag">Egen side</span>' : ''}
+    </article>
+  `).join('');
+}
+
+// ── Navbar-dropdown for faggrupper ──────────────────────────────────────────
+function renderNavDropdown() {
+  const menu = document.querySelector('#faggrupper-dropdown');
+  if (!menu) return;
+
+  menu.innerHTML = faggrupper.map((f) => `
+    <a href="${faggruppeHref(f)}" class="nav-dropdown-item">
+      <span class="nav-dropdown-item-icon">${f.icon}</span>
+      <span class="nav-dropdown-item-label">${f.label}</span>
+      ${f.page ? '<span class="nav-dropdown-item-tag">Egen side</span>' : ''}
+    </a>
+  `).join('');
+
+  // Toggle on click (for touch + keyboard) — hover-styling kommer fra CSS
+  const trigger = document.querySelector('.nav-dropdown-trigger');
+  const dropdown = trigger?.closest('.nav-dropdown');
+  if (!trigger || !dropdown) return;
+
+  trigger.addEventListener('click', (e) => {
+    // La folk klikke selve "Faggrupper" for å gå til samlesiden — men toggle på pil
+    const arrow = e.target.closest('.nav-dropdown-arrow');
+    if (arrow) {
+      e.preventDefault();
+      dropdown.classList.toggle('is-open');
+    }
+  });
+
+  // Lukk ved klikk utenfor
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) dropdown.classList.remove('is-open');
+  });
+
+  // Lukk på Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') dropdown.classList.remove('is-open');
+  });
+}
+
 // ── CTA form: fyll faggruppe-select og pre-velg evt. default ────────────────
 function populateCtaSelect() {
   const select = document.querySelector('#cta-faggruppe');
@@ -254,5 +542,10 @@ function populateCtaSelect() {
 // ── Init ────────────────────────────────────────────────────────────────────
 renderHeroPicker();
 renderFaggrupperSection();
+renderFaggrupperOverview();
+renderNavDropdown();
 populateCtaSelect();
 renderTestimonialsMarquee();
+initHelpBubble();
+initNyhetsfilter();
+renderRelatertNyheter();

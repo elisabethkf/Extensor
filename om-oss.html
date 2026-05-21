@@ -20,17 +20,59 @@
         <img src="assets/extensor-logo.png" alt="Extensor — Helhetlig pasientadministrasjon" />
       </a>
       <div class="nav-links">
-        <a href="index.html#produkter">Produkter</a>
-        <a href="index.html#faggrupper">Faggrupper</a>
-        <a href="index.html#webinar">Webinar</a>
+        <a href="index.html#produktet">Produktet</a>
+        <div class="nav-dropdown">
+          <a href="faggrupper.html" class="nav-dropdown-trigger">Faggrupper <span class="nav-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="nav-dropdown-menu" id="faggrupper-dropdown"></div>
+        </div>
+        <a href="webinar.html">Webinar</a>
+        <a href="nyheter.html">Nyheter</a>
         <a href="om-oss.html" class="is-active">Om oss</a>
-        <a href="index.html#support">Support</a>
+        <a href="support.html">Support</a>
       </div>
       <a class="nav-cta" href="#kontakt">Kontakt oss</a>
     </div>
   </nav>
 
-  <a class="float-cta" href="#kontakt">Kontakt oss</a>
+  <div class="help-bubble">
+    <button class="help-bubble-trigger" type="button" aria-expanded="false" aria-label="Trenger du hjelp?">
+      <span class="help-bubble-trigger-icon" aria-hidden="true">?</span>
+      Trenger du hjelp?
+    </button>
+    <div class="help-bubble-panel" role="dialog" aria-label="Support">
+      <div class="help-bubble-panel-header">
+        <h4>Hvordan kan vi hjelpe?</h4>
+        <p>Norsk support — ingen outsourcing. Vi svarer raskt.</p>
+      </div>
+      <a href="tel:75533300" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Ring support</span>
+          <span class="help-bubble-item-sub">75 53 33 00 · tast 1</span>
+        </span>
+      </a>
+      <a href="mailto:support@extensor.no" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Send e-post</span>
+          <span class="help-bubble-item-sub">support@extensor.no</span>
+        </span>
+      </a>
+      <a href="support.html" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9 9a3 3 0 016 0c0 2-3 2-3 4M12 17.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Gå til Support-siden</span>
+          <span class="help-bubble-item-sub">Driftsmeldinger, opplæring og nedlastninger</span>
+        </span>
+      </a>
+    </div>
+  </div>
 
   <main>
 
@@ -215,7 +257,7 @@
         <!-- TODO: bekreft at teamlisten er oppdatert med HR før publisering -->
         <div class="team-grid">
           <div class="rv team-card">
-            <div class="team-avatar" data-initials="BJ" style="--avatar-bg: #00272c;">BJ</div>
+            <div class="team-avatar" data-initials="BJ" style="--avatar-bg: #14363B;">BJ</div>
             <div class="team-name">Børge Johansen</div>
             <div class="team-role">Daglig leder</div>
           </div>
@@ -250,7 +292,7 @@
             <div class="team-role">Produkt- og testansvarlig</div>
           </div>
           <div class="rv team-card">
-            <div class="team-avatar" data-initials="FL" style="--avatar-bg: #00272c;">FL</div>
+            <div class="team-avatar" data-initials="FL" style="--avatar-bg: #14363B;">FL</div>
             <div class="team-name">Frode Ludviksen</div>
             <div class="team-role">Senior IT-konsulent</div>
           </div>
@@ -275,7 +317,7 @@
             <div class="team-role">Utvikler</div>
           </div>
           <div class="rv team-card">
-            <div class="team-avatar" data-initials="SH" style="--avatar-bg: #00272c;">SH</div>
+            <div class="team-avatar" data-initials="SH" style="--avatar-bg: #14363B;">SH</div>
             <div class="team-name">Stig Halden</div>
             <div class="team-role">Utvikler</div>
           </div>
@@ -489,11 +531,12 @@
         </div>
         <div class="footer-col">
           <h4>Produkt</h4>
-          <a href="index.html#faggrupper">Faggrupper</a>
-          <a href="index.html#produkter">Funksjoner</a>
+          <a href="faggrupper.html">Faggrupper</a>
+          <a href="index.html#produktet">Produktet</a>
           <a href="leger.html#tilleggsprodukter">Tilleggsprodukter</a>
-          <a href="#">Nyheter</a>
-          <a href="#">Webinar</a>
+          <a href="extensor-ki.html">Extensor KI</a>
+          <a href="nyheter.html">Nyheter</a>
+          <a href="webinar.html">Webinar</a>
         </div>
         <div class="footer-col">
           <h4>Selskapet</h4>
@@ -504,7 +547,7 @@
         </div>
         <div class="footer-col">
           <h4>Hjelp</h4>
-          <a href="#">Support</a>
+          <a href="support.html">Support</a>
           <a href="#">Dokumentasjon</a>
           <a href="#">Personvern</a>
           <a href="#">Vilkår</a>

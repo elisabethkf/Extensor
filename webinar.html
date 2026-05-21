@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webinar — Extensor</title>
+  <meta name="description" content="Gratis faglige webinarer fra Extensor — om journalføring, HELFO-oppgjør, KI, integrasjoner og praksisdrift." />
+  <link rel="canonical" href="https://www.extensor.no/webinar" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ─────────────────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="assets/extensor-logo.png" alt="Extensor — Helhetlig pasientadministrasjon" />
+      </a>
+      <div class="nav-links">
+        <a href="index.html#produktet">Produktet</a>
+        <div class="nav-dropdown">
+          <a href="faggrupper.html" class="nav-dropdown-trigger">Faggrupper <span class="nav-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="nav-dropdown-menu" id="faggrupper-dropdown"></div>
+        </div>
+        <a href="webinar.html" class="is-active">Webinar</a>
+        <a href="nyheter.html">Nyheter</a>
+        <a href="om-oss.html">Om oss</a>
+        <a href="support.html">Support</a>
+      </div>
+      <a class="nav-cta" href="#kontakt">Kontakt oss</a>
+    </div>
+  </nav>
+
+  <div class="help-bubble">
+    <button class="help-bubble-trigger" type="button" aria-expanded="false" aria-label="Trenger du hjelp?">
+      <span class="help-bubble-trigger-icon" aria-hidden="true">?</span>
+      Trenger du hjelp?
+    </button>
+    <div class="help-bubble-panel" role="dialog" aria-label="Support">
+      <div class="help-bubble-panel-header">
+        <h4>Hvordan kan vi hjelpe?</h4>
+        <p>Norsk support — ingen outsourcing. Vi svarer raskt.</p>
+      </div>
+      <a href="tel:75533300" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Ring support</span>
+          <span class="help-bubble-item-sub">75 53 33 00 · tast 1</span>
+        </span>
+      </a>
+      <a href="mailto:support@extensor.no" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Send e-post</span>
+          <span class="help-bubble-item-sub">support@extensor.no</span>
+        </span>
+      </a>
+      <a href="support.html" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9 9a3 3 0 016 0c0 2-3 2-3 4M12 17.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Gå til Support-siden</span>
+          <span class="help-bubble-item-sub">Driftsmeldinger, opplæring og nedlastninger</span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+    <section class="hero hero-sub">
+      <div class="hero-inner">
+        <div class="hero-grid">
+          <span class="hero-eyebrow">Webinar</span>
+          <h1>Gratis faglige <em>webinarer</em>.</h1>
+          <p class="hero-lead">
+            Lær mer om hvordan Extensor brukes i praksis — fra HELFO-oppgjør og KI til migrering og integrasjoner. Korte, fokuserte opptak du kan se når det passer.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Siste opptak (featured) ──────────────────────────────────────── -->
+    <!-- TODO: erstatt med faktisk siste webinar fra Extensor -->
+    <section class="section webinar-section">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div class="rv webinar-section-head">
+          <span class="pill teal">Siste opptak</span>
+        </div>
+
+        <a href="#" class="rv webinar-featured">
+          <div class="webinar-featured-img">
+            <img src="assets/lege-kvinne.png" alt="Webinar: Slik bruker du Extensor KI i journalføring" />
+            <span class="webinar-play" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5l12 7-12 7V5z" fill="currentColor"/></svg>
+            </span>
+          </div>
+          <div class="webinar-featured-text">
+            <div class="webinar-meta">
+              <span class="webinar-meta-pill"><span class="webinar-meta-dot"></span>Opptak</span>
+              <span class="webinar-meta-item">12. mai 2026</span>
+              <span class="webinar-meta-item">45 min</span>
+              <span class="webinar-meta-item">Online</span>
+            </div>
+            <h2 class="webinar-featured-title">Slik bruker du Extensor KI i journalføring.</h2>
+            <p class="webinar-featured-desc">
+              Praktisk gjennomgang av hvordan KI-assistenten effektiviserer notatskriving, foreslår diagnosekoder og henvisningstekst. Vi viser ekte eksempler fra allmennpraksis og spesialistpraksis.
+            </p>
+            <span class="webinar-cta">
+              Se opptak
+              <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── Tidligere webinarer (arkiv) ──────────────────────────────────── -->
+    <!-- TODO: erstatt med faktiske arkiverte webinarer fra Extensor -->
+    <section class="section">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div class="rv webinar-section-head">
+          <h2>Tidligere webinarer.</h2>
+        </div>
+
+        <div class="webinar-grid">
+          <a href="#" class="rv d1 webinar-card">
+            <div class="webinar-card-img">
+              <img src="assets/lege-mann.png" alt="" />
+              <span class="webinar-play" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5l12 7-12 7V5z" fill="currentColor"/></svg>
+              </span>
+            </div>
+            <div class="webinar-card-body">
+              <div class="webinar-meta">
+                <span class="webinar-meta-item">8. april 2026</span>
+                <span class="webinar-meta-item">40 min</span>
+              </div>
+              <h3 class="webinar-card-title">Nytt i Extensor 2026 — funksjoner og forbedringer.</h3>
+              <p class="webinar-card-desc">Gjennomgang av alt som er nytt i årets versjon — KI-assistent, oppdatert HELFO-flyt og bedre lab-integrasjon.</p>
+              <span class="webinar-cta">Se opptak <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
+          <a href="#" class="rv d2 webinar-card">
+            <div class="webinar-card-img">
+              <img src="assets/lege-par.png" alt="" />
+              <span class="webinar-play" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5l12 7-12 7V5z" fill="currentColor"/></svg>
+              </span>
+            </div>
+            <div class="webinar-card-body">
+              <div class="webinar-meta">
+                <span class="webinar-meta-item">4. mars 2026</span>
+                <span class="webinar-meta-item">35 min</span>
+              </div>
+              <h3 class="webinar-card-title">Automatisk HELFO-oppgjør — best practices.</h3>
+              <p class="webinar-card-desc">Hvordan sette opp automatisk innsending, avstemme utbetalinger og unngå de vanligste feilene.</p>
+              <span class="webinar-cta">Se opptak <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
+          <a href="#" class="rv d3 webinar-card">
+            <div class="webinar-card-img">
+              <img src="assets/lege-kvinne.png" alt="" />
+              <span class="webinar-play" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5l12 7-12 7V5z" fill="currentColor"/></svg>
+              </span>
+            </div>
+            <div class="webinar-card-body">
+              <div class="webinar-meta">
+                <span class="webinar-meta-item">18. februar 2026</span>
+                <span class="webinar-meta-item">50 min</span>
+              </div>
+              <h3 class="webinar-card-title">Migrering til Extensor — slik gjør vi det sammen.</h3>
+              <p class="webinar-card-desc">Trinn-for-trinn gjennomgang av migreringsprosessen — datakonvertering, opplæring og go-live.</p>
+              <span class="webinar-cta">Se opptak <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
+          <a href="#" class="rv d1 webinar-card">
+            <div class="webinar-card-img">
+              <img src="assets/lege-mann.png" alt="" />
+              <span class="webinar-play" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5l12 7-12 7V5z" fill="currentColor"/></svg>
+              </span>
+            </div>
+            <div class="webinar-card-body">
+              <div class="webinar-meta">
+                <span class="webinar-meta-item">21. januar 2026</span>
+                <span class="webinar-meta-item">30 min</span>
+              </div>
+              <h3 class="webinar-card-title">Norsk Helsenett: integrasjon i praksis.</h3>
+              <p class="webinar-card-desc">Slik kobler du Extensor mot Norsk Helsenett og setter opp meldingsutveksling med samarbeidspartnere.</p>
+              <span class="webinar-cta">Se opptak <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
+          <a href="#" class="rv d2 webinar-card">
+            <div class="webinar-card-img">
+              <img src="assets/lege-par.png" alt="" />
+              <span class="webinar-play" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5l12 7-12 7V5z" fill="currentColor"/></svg>
+              </span>
+            </div>
+            <div class="webinar-card-body">
+              <div class="webinar-meta">
+                <span class="webinar-meta-item">10. desember 2025</span>
+                <span class="webinar-meta-item">45 min</span>
+              </div>
+              <h3 class="webinar-card-title">E-resept og medikasjonshåndtering.</h3>
+              <p class="webinar-card-desc">Komplett gjennomgang av e-resept via Reseptformidleren, Kjernejournal og oppslag mot pasientens medikasjon.</p>
+              <span class="webinar-cta">Se opptak <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
+          <a href="#" class="rv d3 webinar-card">
+            <div class="webinar-card-img">
+              <img src="assets/lege-kvinne.png" alt="" />
+              <span class="webinar-play" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5l12 7-12 7V5z" fill="currentColor"/></svg>
+              </span>
+            </div>
+            <div class="webinar-card-body">
+              <div class="webinar-meta">
+                <span class="webinar-meta-item">15. november 2025</span>
+                <span class="webinar-meta-item">30 min</span>
+              </div>
+              <h3 class="webinar-card-title">Online booking — kom i gang.</h3>
+              <p class="webinar-card-desc">Slik aktiverer og tilpasser du online booking for pasientene dine — fra timetyper til SMS-påminnelser.</p>
+              <span class="webinar-cta">Se opptak <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Newsletter-signup ────────────────────────────────────────────── -->
+    <section class="section newsletter-section">
+      <div class="rv newsletter-card">
+        <div class="newsletter-text">
+          <span class="pill warm" style="margin-bottom:18px; display:inline-block;">Få beskjed</span>
+          <h2>Vil du bli varslet om nye webinarer?</h2>
+          <p>Meld deg på nyhetsbrevet, så får du invitasjon til kommende sendinger og varsel når nye opptak legges ut.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="E-postadresse" required />
+          <button type="submit" class="btn-primary">Meld på</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ── CTA ──────────────────────────────────────────────────────────── -->
+    <section id="kontakt" class="cta-section">
+      <div class="rv cta-card">
+        <div>
+          <span class="pill warm" style="margin-bottom:20px; display:inline-block;">Ta kontakt</span>
+          <h2>Vil du ha en personlig demo?</h2>
+          <p class="lead">Webinarene er åpne for alle, men noen ganger trenger du noe mer skreddersydd. Book en demo, så går vi gjennom akkurat det du lurer på.</p>
+          <p class="phone">Ring oss: <a href="tel:75533300">75 53 33 00</a> (tast 3)</p>
+        </div>
+
+        <form class="cta-form" onsubmit="event.preventDefault();">
+          <div class="cta-form-fields">
+            <input type="text" placeholder="Fullt navn" />
+            <input type="text" placeholder="Virksomhet" />
+            <input type="email" placeholder="E-postadresse" />
+            <select id="cta-faggruppe">
+              <option value="" disabled selected>Velg faggruppe</option>
+            </select>
+          </div>
+          <button type="submit" class="cta-submit">Send forespørsel om demo</button>
+          <p class="cta-disclaimer">Vi deler aldri informasjonen din med tredjepart.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <img class="footer-logo" src="assets/extensor-logo.png" alt="Extensor" />
+          <p class="footer-tag">Helhetlig pasientadministrasjon for norsk helsesektor siden 2004.</p>
+          <div class="footer-contact">
+            <a href="tel:75533300">75 53 33 00</a>
+            <span>Bodø · Oslo</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Produkt</h4>
+          <a href="faggrupper.html">Faggrupper</a>
+          <a href="index.html#produktet">Produktet</a>
+          <a href="leger.html#tilleggsprodukter">Tilleggsprodukter</a>
+          <a href="extensor-ki.html">Extensor KI</a>
+          <a href="nyheter.html">Nyheter</a>
+          <a href="webinar.html">Webinar</a>
+        </div>
+        <div class="footer-col">
+          <h4>Selskapet</h4>
+          <a href="om-oss.html">Om oss</a>
+          <a href="#">Aidn</a>
+          <a href="#">Karriere</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hjelp</h4>
+          <a href="support.html">Support</a>
+          <a href="#">Dokumentasjon</a>
+          <a href="#">Personvern</a>
+          <a href="#">Vilkår</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Extensor AS · Org.nr: 982 690 800</p>
+        <div class="footer-bottom-links">
+          <a href="#">Personvernerklæring</a>
+          <a href="#">Vilkår</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "extensor-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Extensor — Helhetlig pasientadministrasjon. Statisk nettsted servert via `serve`.",
+  "scripts": {
+    "start": "serve . -l ${PORT:-3000} --no-clipboard"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
