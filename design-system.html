@@ -859,6 +859,61 @@
         </ol>
       </section>
 
+      <!-- ── 20 · Testimonial-marquee ─────────────────────────────────── -->
+      <section id="testimonials" class="ds-section">
+        <header class="ds-section-head">
+          <span class="ds-num">20</span>
+          <h2>Testimonial-marquee</h2>
+          <p>Rullerende rail med kundekort. Auto-skroller horisontalt, pauser på hover. Brukes for sosial bevis — typisk mellom produkt- og om-oss-seksjoner, eller før en CTA. Kortbredde tilpasses sitatlengde (sm/md/lg/xl).</p>
+        </header>
+
+        <h3 class="ds-h3">Enkeltkort</h3>
+        <div class="ds-demo" style="background:var(--off); padding:32px; display:block;">
+          <article class="testimonial-card size-md" style="margin:0 auto;">
+            <div>
+              <div class="testimonial-card-faggruppe">Leger</div>
+              <p class="testimonial-card-quote">«Vi har vært meget fornøyd med Extensor. Spesielt er vi veldig glad for meget god kundeservice av kompetente medarbeidere!»</p>
+            </div>
+            <div class="testimonial-card-meta">
+              <div class="testimonial-card-avatar" style="background:#d4b896"></div>
+              <div>
+                <div class="testimonial-card-name">Mohammad Rizvi</div>
+                <div class="testimonial-card-role">Daglig leder, Askin Hudleger</div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="ds-h3">Rullerende rail (live)</h3>
+        <p class="ds-note">Identisk komponent som på forsiden. Hover for å pause.</p>
+        <div style="margin-top:16px; margin-left:-24px; margin-right:-24px;">
+          <div class="testimonials-section" style="padding:24px 0; border:1px solid var(--border); border-radius:14px;">
+            <div class="marquee" style="margin:0;">
+              <div class="marquee-track" id="testimonials-track"></div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="ds-h3">Bruksregler</h3>
+        <ul class="ds-rules">
+          <li><strong>Plassering:</strong> mellom funksjons- og om-oss-seksjoner, eller før hoved-CTA. Gir sosial bevis rett før konvertering.</li>
+          <li><strong>Kortbredde:</strong> velges automatisk fra sitatlengde — <code>size-sm</code> (under 120 tegn), <code>size-md</code> (under 220), <code>size-lg</code> (under 320), <code>size-xl</code> (lengre).</li>
+          <li><strong>Tempo:</strong> 60s per loop. Pauser på hover. Gi 3x duplisering for sømløs CSS-loop.</li>
+          <li><strong>Fade:</strong> 80px gradient på hver side gjør at kortene "smelter" inn — fungerer kun mot ensfarget bakgrunn (<code>--off</code>).</li>
+        </ul>
+
+        <pre class="ds-code"><code>&lt;section class="testimonials-section"&gt;
+  &lt;div class="testimonials-head"&gt;
+    &lt;div class="testimonials-eyebrow"&gt;Hva kundene sier&lt;/div&gt;
+    &lt;h2&gt;Tilbakemeldinger fra norsk helsesektor.&lt;/h2&gt;
+    &lt;p&gt;Lead-tekst...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="marquee"&gt;
+    &lt;div class="marquee-track" id="testimonials-track"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+      </section>
+
       <!-- ── Slutt ────────────────────────────────────────────────────── -->
       <div class="ds-end">
         <p>Versjon 1.0 · Vedlikeholdes sammen med <a href="index.html">forsiden</a>.</p>
@@ -867,6 +922,7 @@
     </main>
   </div>
 
+  <script src="script.js" defer></script>
   <script src="design-system.js" defer></script>
 </body>
 </html>

@@ -57,6 +57,75 @@ const faggrupper = [
   }
 ];
 
+// ── Testimonials ────────────────────────────────────────────────────────────
+const testimonials = [
+  {
+    name: 'Mohammad Rizvi',
+    role: 'Daglig leder, Askin Hudleger',
+    faggruppe: 'Leger',
+    avatar: '#d4b896',
+    quote: 'Vi har vært meget fornøyd med Extensor. Spesielt er vi veldig glad for meget god kundeservice av kompetente medarbeidere!'
+  },
+  {
+    name: 'Lysaker Kiropraktorklinikk',
+    role: 'Kiropraktor',
+    faggruppe: 'Kiropraktor',
+    avatar: '#b8c8d4',
+    quote: 'I en ellers hektisk hverdag er det utrolig deilig å ha et journalprogram vi kan stole 100% på. Extensor oppleves oversiktlig og brukervennlig, og nye kollegaer lærer fort å bruke det. Helfo-oppgjør og helsenett har fungert knirkefritt de siste 8 årene.'
+  },
+  {
+    name: 'Ståle Evenshaug',
+    role: 'IT-sjef, Unicare Norge AS',
+    faggruppe: 'Rehabilitering',
+    avatar: '#c8d4b8',
+    quote: 'Extensor støtter opp om alle forretningskritiske funksjoner som vi trenger som et konsern innenfor rehabilitering.'
+  },
+  {
+    name: 'Elin Røkke',
+    role: 'Fysioterapeut MNFF, Vestby Fysikalske Institutt',
+    faggruppe: 'Fysio- og manuellterapeuter',
+    avatar: '#d4c8b8',
+    quote: 'Vi har benyttet Extensor siden 2009, og systemet støtter opp om alle gjøremål og funksjoner vi har i hverdagen. Programmet er funksjonelt og brukervennlig. Supportteamet er serviceminded og gir oss raskt tilbakemelding på spørsmål.'
+  },
+  {
+    name: 'Christina S. Holmen',
+    role: 'Fotterapeut',
+    faggruppe: 'Andre behandlere',
+    avatar: '#c8b8d4',
+    quote: 'Siden 2006 har jeg ført elektronisk journal og brukt Extensor som leverandør. Det føles trygt at både journalføring, regnskap og reskontro kunder blir ivaretatt på en forskriftsmessig måte. Jeg anbefaler gjerne å bruke Extensor.'
+  }
+];
+
+function testimonialCardSize(quoteLength) {
+  if (quoteLength < 120) return 'size-sm';
+  if (quoteLength < 220) return 'size-md';
+  if (quoteLength < 320) return 'size-lg';
+  return 'size-xl';
+}
+
+function renderTestimonialsMarquee() {
+  const track = document.querySelector('#testimonials-track');
+  if (!track) return;
+
+  // Dupliser 3x for sømløs loop (CSS animasjonen flytter -33.333%)
+  const loop = [...testimonials, ...testimonials, ...testimonials];
+  track.innerHTML = loop.map((t) => `
+    <article class="testimonial-card ${testimonialCardSize(t.quote.length)}">
+      <div>
+        <div class="testimonial-card-faggruppe">${t.faggruppe}</div>
+        <p class="testimonial-card-quote">«${t.quote}»</p>
+      </div>
+      <div class="testimonial-card-meta">
+        <div class="testimonial-card-avatar" style="background:${t.avatar}"></div>
+        <div>
+          <div class="testimonial-card-name">${t.name}</div>
+          <div class="testimonial-card-role">${t.role}</div>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
 // ── Reveal observer ─────────────────────────────────────────────────────────
 const revealObserver = new IntersectionObserver(
   (entries) => {
@@ -186,3 +255,4 @@ function populateCtaSelect() {
 renderHeroPicker();
 renderFaggrupperSection();
 populateCtaSelect();
+renderTestimonialsMarquee();
