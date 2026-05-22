@@ -511,9 +511,9 @@ function initNavDropdowns() {
     if (!trigger) return;
 
     trigger.addEventListener('click', (e) => {
-      // Selve tekstdelen lar deg navigere til hovedsiden — pilen toggler dropdown
+      const isMobile = window.matchMedia('(max-width: 960px)').matches;
       const arrow = e.target.closest('.nav-dropdown-arrow');
-      if (arrow) {
+      if (arrow || isMobile) {
         e.preventDefault();
         e.stopPropagation();
         document.querySelectorAll('.nav-dropdown.is-open').forEach((d) => {
