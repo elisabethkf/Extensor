@@ -264,21 +264,21 @@ const testimonials = [
     name: 'Mohammad Rizvi',
     role: 'Daglig leder, Askin Hudleger',
     faggruppe: 'Leger',
-    avatar: '#d4b896',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e3976949e7b610f376da056_askin.jpg',
     quote: 'Vi har vært meget fornøyd med Extensor. Spesielt er vi veldig glad for meget god kundeservice av kompetente medarbeidere!'
   },
   {
     name: 'Lysaker Kiropraktorklinikk',
     role: 'Kiropraktor',
     faggruppe: 'Kiropraktor',
-    avatar: '#b8c8d4',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e29a245f100de45273c00ad_lysaker.jpg',
     quote: 'I en ellers hektisk hverdag er det utrolig deilig å ha et journalprogram vi kan stole 100% på. Extensor oppleves oversiktlig og brukervennlig, og nye kollegaer lærer fort å bruke det. Helfo-oppgjør og helsenett har fungert knirkefritt de siste 8 årene.'
   },
   {
     name: 'Ståle Evenshaug',
     role: 'IT-sjef, Unicare Norge AS',
     faggruppe: 'Rehabilitering',
-    avatar: '#c8d4b8',
+    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e3d5d0b357436a0157fdb1b_unicare.jpg',
     quote: 'Extensor støtter opp om alle forretningskritiske funksjoner som vi trenger som et konsern innenfor rehabilitering.'
   },
   {
@@ -317,7 +317,9 @@ function renderTestimonialsMarquee() {
         <p class="testimonial-card-quote">«${t.quote}»</p>
       </div>
       <div class="testimonial-card-meta">
-        <div class="testimonial-card-avatar" style="background:${t.avatar}"></div>
+        ${t.image
+          ? `<img class="testimonial-card-avatar" src="${t.image}" alt="${t.name}" loading="lazy" />`
+          : `<div class="testimonial-card-avatar" style="background:${t.avatar}"></div>`}
         <div>
           <div class="testimonial-card-name">${t.name}</div>
           <div class="testimonial-card-role">${t.role}</div>
@@ -378,90 +380,32 @@ function initHelpBubble() {
 // ── Hero picker ─────────────────────────────────────────────────────────────
 function renderHeroPicker() {
   const grid = document.querySelector('#hero-picker-grid');
-  const detail = document.querySelector('#hero-picker-detail');
-  if (!grid || !detail) return;
-  let active = null;
+  if (!grid) return;
 
   faggrupper.forEach((f) => {
-    const btn = document.createElement('button');
-    btn.className = 'picker-btn';
-    btn.dataset.id = f.id;
-    btn.textContent = f.label;
-    btn.addEventListener('click', () => {
-      active = active === f.id ? null : f.id;
-      grid.querySelectorAll('.picker-btn').forEach((b) => {
-        b.classList.toggle('is-active', b.dataset.id === active);
-      });
-      renderHeroDetail(active);
-    });
-    grid.appendChild(btn);
+    const link = document.createElement('a');
+    link.className = 'picker-btn';
+    link.href = faggruppeHref(f);
+    link.textContent = f.label;
+    grid.appendChild(link);
   });
-
-  function renderHeroDetail(id) {
-    if (!id) {
-      detail.innerHTML = '';
-      return;
-    }
-    const fg = faggrupper.find((f) => f.id === id);
-    detail.innerHTML = `
-      <div class="picker-detail">
-        <p>${fg.desc}</p>
-        <a href="#kontakt">Ta kontakt →</a>
-      </div>
-    `;
-  }
 }
 
 // ── Faggrupper section (icon grid + detail) ─────────────────────────────────
 function renderFaggrupperSection() {
   const icons = document.querySelector('#fag-icons');
-  const detail = document.querySelector('#fag-detail');
-  if (!icons || !detail) return;
-  let active = 'fysio';
+  if (!icons) return;
 
   faggrupper.forEach((f) => {
-    const btn = document.createElement('button');
-    btn.className = 'fag-icon-btn' + (f.id === active ? ' is-active' : '');
-    btn.dataset.id = f.id;
-    btn.innerHTML = `
+    const link = document.createElement('a');
+    link.className = 'fag-icon-btn';
+    link.href = faggruppeHref(f);
+    link.innerHTML = `
       <span class="icon">${f.icon}</span>
       <span class="label">${f.label}</span>
     `;
-    btn.addEventListener('click', () => {
-      active = f.id;
-      icons.querySelectorAll('.fag-icon-btn').forEach((b) => {
-        b.classList.toggle('is-active', b.dataset.id === active);
-      });
-      renderDetail(active);
-    });
-    icons.appendChild(btn);
+    icons.appendChild(link);
   });
-
-  function renderDetail(id) {
-    const fg = faggrupper.find((f) => f.id === id);
-    const iconLg = fg.icon.replace('width="28" height="28"', 'width="40" height="40"');
-    detail.innerHTML = `
-      <span class="icon-lg">${iconLg}</span>
-      <h3>${fg.label}</h3>
-      <p class="desc">${fg.desc}</p>
-      <div class="fag-features">
-        ${['Tilpasset journalmal','Automatisk HELFO-oppgjør','SMS-påminnelser','Norsk Helsenett'].map(
-          (item) => `
-          <div class="fag-feature">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>${item}</span>
-          </div>`
-        ).join('')}
-      </div>
-      <a class="cta-block" href="${fg.page || '#kontakt'}">${fg.page ? `Les mer om Extensor for ${fg.label.toLowerCase()} →` : `Ta kontakt om ${fg.label} →`}</a>
-    `;
-    // Animate-in
-    detail.style.animation = 'none';
-    void detail.offsetWidth;
-    detail.style.animation = 'fadeUp .22s ease';
-  }
-
-  renderDetail(active);
 }
 
 // ── Faggrupper-samleside (overview-grid) ────────────────────────────────────
