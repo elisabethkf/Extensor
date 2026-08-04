@@ -378,13 +378,19 @@ function initHelpBubble() {
 }
 
 // ── Hero picker ─────────────────────────────────────────────────────────────
+// Egen rekkefølge i hero: Leger først, «Fysio- og manuellterapeuter» nederst
+// på full bredde (én linje) fordi labelen ellers brekker over to linjer.
+const heroPickerOrder = ['leger', 'psyk', 'kiro', 'bedrift', 'rehab', 'barnevern', 'sykehus', 'andre', 'fysio'];
+
 function renderHeroPicker() {
   const grid = document.querySelector('#hero-picker-grid');
   if (!grid) return;
 
-  faggrupper.forEach((f) => {
+  heroPickerOrder.forEach((id) => {
+    const f = faggrupper.find((fg) => fg.id === id);
+    if (!f) return;
     const link = document.createElement('a');
-    link.className = 'picker-btn';
+    link.className = 'picker-btn' + (id === 'fysio' ? ' picker-btn-wide' : '');
     link.href = faggruppeHref(f);
     link.textContent = f.label;
     grid.appendChild(link);
