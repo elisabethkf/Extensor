@@ -125,7 +125,22 @@
             </div>
 
             <div class="hero-stamp">
-              <img src="assets/hero-stamp.svg" alt="Norsk Helse-IT siden 2004" width="96" height="96" />
+              <svg viewBox="0 0 200 200" width="96" height="96" role="img" aria-label="Norsk helse-IT siden 2004">
+                <defs>
+                  <path id="stamp-arc-topp" d="M 33,100 A 67,67 0 0 1 167,100" fill="none"/>
+                  <path id="stamp-arc-bunn" d="M 29.5,100 A 70.5,70.5 0 0 0 170.5,100" fill="none"/>
+                </defs>
+                <circle cx="100" cy="100" r="96.5" fill="var(--warm-yellow-dk)" stroke="rgba(0,0,0,.14)" stroke-width="3"/>
+                <circle cx="100" cy="100" r="86" fill="none" stroke="var(--accent-text, #24454B)" stroke-width="1.7" stroke-dasharray="0.5 5.2" stroke-linecap="round"/>
+                <g style="font-family:var(--f); font-weight:800; font-size:16.5px; letter-spacing:2.6px;" fill="var(--accent-text, #24454B)">
+                  <text><textPath href="#stamp-arc-topp" startOffset="50%" text-anchor="middle">NORSK HELSE-IT</textPath></text>
+                  <text><textPath href="#stamp-arc-bunn" startOffset="50%" text-anchor="middle">SIDEN 2004</textPath></text>
+                </g>
+                <rect x="-3" y="-3" width="6" height="6" fill="var(--accent-text, #24454B)" transform="translate(26,100) rotate(45)"/>
+                <rect x="-3" y="-3" width="6" height="6" fill="var(--accent-text, #24454B)" transform="translate(174,100) rotate(45)"/>
+                <path d="M100.00,70.00 L74.02,85.00 L74.02,115.00 L100.00,130.00 L125.98,115.00 L125.98,85.00 Z" fill="none" stroke="var(--accent-text, #24454B)" stroke-width="4.5" stroke-linejoin="round"/>
+                <path d="M100.00,80.50 L83.11,90.25 L83.11,109.75 L100.00,119.50 L116.89,109.75 L116.89,90.25 Z" fill="none" stroke="var(--accent-text, #24454B)" stroke-width="2.4" stroke-linejoin="round" opacity="0.85"/>
+              </svg>
             </div>
           </div>
         </div>

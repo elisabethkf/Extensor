@@ -50,6 +50,7 @@ img { display: block; max-width: 100%; }
 .d4 { transition-delay: .27s; }
 
 /* ── Pills ───────────────────────────────────────────────────────────────── */
+/* Én gjennomgående pill-farge på lys bakgrunn (teal-lt); gul kun på mørke flater */
 .pill {
   display: inline-flex;
   align-items: center;
@@ -59,9 +60,9 @@ img { display: block; max-width: 100%; }
   text-transform: uppercase;
   padding: 5px 14px;
   border-radius: 100px;
-  background: var(--off2);
-  color: var(--muted);
-  border: 1px solid var(--border);
+  background: var(--teal-lt);
+  color: var(--teal-dk);
+  border: 1px solid transparent;
 }
 .pill.teal { background: var(--teal-lt); color: var(--teal-dk); border-color: transparent; }
 .pill.warm { background: var(--warm-yellow); color: #3a3510; border-color: transparent; }
