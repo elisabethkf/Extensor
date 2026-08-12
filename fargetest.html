@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Extensor — Helhetlig pasientadministrasjon</title>
+  <title>Fargetest — Extensor forside</title>
+  <meta name="robots" content="noindex" />
   <meta name="description" content="Extensor forenkler hverdagen for norske helsevirksomheter. Elektronisk pasientjournal, timebok og fakturering — tilpasset din faggruppe." />
-  <link rel="canonical" href="https://www.extensor.no/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -369,5 +369,129 @@
   </footer>
 
   <script src="script.js" defer></script>
+
+  <!-- ── Fargevelger (kun denne testsiden) ─────────────────────────────── -->
+  <style>
+    /* Tekstfarge på gule elementer må følge aksentfargen */
+    .pill.warm { color: var(--accent-text, #3a3510); }
+
+    .fargevelger {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 400;
+      background: #fff;
+      border: 1px solid rgba(0,39,44,.14);
+      border-radius: 18px;
+      box-shadow: 0 18px 44px rgba(0,39,44,.22);
+      padding: 18px 20px 16px;
+      max-width: 360px;
+      font-family: var(--f);
+    }
+    .fargevelger-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .fargevelger h5 {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .fargevelger-toggle {
+      border: 1px solid rgba(0,39,44,.18);
+      background: none;
+      border-radius: 8px;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 1;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .fargevelger.is-collapsed .fargevelger-btns,
+    .fargevelger.is-collapsed .fargevelger-note { display: none; }
+    .fargevelger.is-collapsed .fargevelger-head { margin-bottom: 0; }
+    .fargevelger-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .fargevelger-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      background: none;
+      font-family: var(--f);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+    }
+    .fargevelger-btn:hover { background: rgba(0,39,44,.05); }
+    .fargevelger-btn.is-active {
+      border-color: rgba(0,39,44,.2);
+      background: rgba(0,39,44,.04);
+    }
+    .fargevelger-swatch {
+      flex: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+    .fargevelger-note {
+      margin-top: 12px;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+  </style>
+  <div class="fargevelger" role="group" aria-label="Velg aksentfarge">
+    <div class="fargevelger-head">
+      <h5>Test aksentfarge</h5>
+      <button class="fargevelger-toggle" type="button" aria-label="Vis eller skjul fargevelgeren" onclick="this.closest('.fargevelger').classList.toggle('is-collapsed')">–</button>
+    </div>
+    <div class="fargevelger-btns" id="fargevelger-btns"></div>
+    <p class="fargevelger-note">Det runde «siden 2004»-stempelet er en bildefil og beholder gulfargen i denne testen.</p>
+  </div>
+  <script>
+    (function () {
+      var varianter = [
+        { navn: 'Gul (dagens)',        accent: '#f7e596', dk: '#f0d84a', text: '#3a3510' },
+        { navn: 'Solgul',              accent: '#ffd23f', dk: '#f0b400', text: '#4a3505' },
+        { navn: 'Rav / honning',       accent: '#f8ce6b', dk: '#f0ad2d', text: '#4a3505' },
+        { navn: 'Oransje',             accent: '#fbaa5c', dk: '#f5821f', text: '#5c2c05' },
+        { navn: 'Korall (anbefalt)',   accent: '#f6bda6', dk: '#ef8f63', text: '#5a2510' },
+        { navn: 'Limegrønn',           accent: '#d3e854', dk: '#b3d117', text: '#35400a' },
+        { navn: 'Mintgrønn',           accent: '#93e2c0', dk: '#55cb96', text: '#0e4029' },
+        { navn: 'Turkis lys (kunden)', accent: '#e0eaeb', dk: '#b8d0d3', text: '#0f3d42' },
+        { navn: 'Turkis sprek',        accent: '#8fd6dc', dk: '#4db6c0', text: '#0f3d42' },
+        { navn: 'Blå',                 accent: '#b5d1f5', dk: '#7fabec', text: '#14304f' }
+      ];
+      var rot = document.documentElement;
+      var holder = document.getElementById('fargevelger-btns');
+      varianter.forEach(function (v, i) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'fargevelger-btn' + (i === 0 ? ' is-active' : '');
+        btn.innerHTML = '<span class="fargevelger-swatch" style="background:' + v.accent + '"></span>' + v.navn;
+        btn.addEventListener('click', function () {
+          rot.style.setProperty('--warm-yellow', v.accent);
+          rot.style.setProperty('--warm-yellow-dk', v.dk);
+          rot.style.setProperty('--accent-text', v.text);
+          holder.querySelectorAll('.fargevelger-btn').forEach(function (b) {
+            b.classList.toggle('is-active', b === btn);
+          });
+        });
+        holder.appendChild(btn);
+      });
+    })();
+  </script>
 </body>
 </html>

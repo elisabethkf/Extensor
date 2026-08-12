@@ -3638,8 +3638,90 @@ img { display: block; max-width: 100%; }
 /* Kontaktkanaler (3 store kort) */
 .support-channels {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+}
+
+/* ── QuickSupport-seksjon (fjernhjelp) ───────────────────────────────────── */
+.quicksupport-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.quicksupport-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.quicksupport-steps li {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px 26px;
+}
+.quicksupport-step-num {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--teal-lt);
+  color: var(--teal);
+  font-size: 15px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.quicksupport-steps h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.quicksupport-steps p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.quicksupport-steps p a {
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.quicksupport-download {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+.quicksupport-download h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.quicksupport-download p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.quicksupport-alt-link {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 960px) {
+  .quicksupport-grid { grid-template-columns: 1fr; }
+  .support-channels { grid-template-columns: 1fr; }
 }
 .support-channel {
   background: var(--white);
@@ -4278,6 +4360,21 @@ img { display: block; max-width: 100%; }
   padding: 0 16px;
 }
 
+.article-video {
+  max-width: 1080px;
+  margin: 0 auto 48px;
+  padding: 0 24px;
+}
+.article-video iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 24px;
+  display: block;
+  box-shadow: 0 14px 50px rgba(0,39,44,.10);
+  background: #000;
+}
+
 /* ── Legal-dokument (personvern, vilkår) ─────────────────────────────────── */
 .legal-section { padding-top: 40px; }
 .legal-doc {
@@ -4557,4 +4654,187 @@ body.nav-open .nav-burger span:nth-child(3) {
 }
 @media (max-width: 560px) {
   .faggruppe-overview-card { padding: 26px 24px 22px; }
+}
+
+/* ── Support-hero: bilde + snarvei-knapper (kundefeedback aug 2026) ──────── */
+.hero-support .hero-support-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero-support .hero-lead { margin-bottom: 32px; }
+.hero-support-photo {
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(0,39,44,.08);
+  box-shadow: 0 18px 44px rgba(0,39,44,.14);
+  aspect-ratio: 5 / 4;
+}
+.hero-support-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero-anchor-nav { display: flex; flex-direction: column; gap: 14px; }
+.hero-anchor-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-anchor-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.hero-anchor-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px 11px 20px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1.5px solid rgba(0,39,44,.22);
+  box-shadow: 0 2px 10px rgba(0,39,44,.08);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--teal);
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s, transform .2s, box-shadow .2s;
+}
+.hero-anchor-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--teal-lt);
+  color: var(--teal);
+  font-size: 13px;
+  font-weight: 800;
+  transition: background .2s, color .2s, transform .2s;
+}
+.hero-anchor-btn:hover {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,39,44,.2);
+}
+.hero-anchor-btn:hover .hero-anchor-arrow {
+  background: rgba(255,255,255,.22);
+  color: #fff;
+  transform: translateY(2px);
+}
+.hero-anchor-btn.is-drift {
+  background: var(--warm-yellow);
+  border-color: var(--warm-yellow-dk);
+  color: var(--ink);
+}
+.hero-anchor-btn.is-drift .hero-anchor-arrow {
+  background: rgba(26,26,24,.1);
+  color: var(--ink);
+}
+.hero-anchor-btn.is-drift:hover {
+  background: var(--warm-yellow-dk);
+  border-color: var(--warm-yellow-dk);
+  color: var(--ink);
+  box-shadow: 0 10px 22px rgba(240,216,74,.45);
+}
+.hero-anchor-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+  animation: driftpulse 1.8s ease-in-out infinite;
+}
+@keyframes driftpulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .35; transform: scale(.72); }
+}
+#kontakt-support, #quicksupport, #opplaering, #nedlastninger, #driftsmeldinger {
+  scroll-margin-top: 96px;
+}
+@media (max-width: 960px) {
+  .hero-support .hero-support-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-support-photo { aspect-ratio: 16 / 10; }
+}
+
+/* ── Kundelogo-stripe (rullerende) ───────────────────────────────────────── */
+.client-logos {
+  padding: 38px 0 34px;
+  overflow: hidden;
+  position: relative;
+}
+.client-logos-label {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.client-logos-viewport {
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.client-logos-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: clientlogos 38s linear infinite;
+}
+.client-logo {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(26,26,24,.36);
+  margin-right: 84px;
+  transition: color .3s;
+}
+.client-logo:hover { color: var(--teal); }
+.client-logo-img {
+  height: 40px;
+  width: auto;
+  margin-right: 84px;
+  filter: grayscale(1);
+  opacity: .6;
+  transition: filter .3s, opacity .3s;
+}
+.client-logo-img:hover { filter: none; opacity: 1; }
+.client-logo-img[src*="ostbytunet"] { height: 50px; }
+@keyframes clientlogos {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (max-width: 560px) {
+  .client-logo { margin-right: 48px; font-size: 14px; }
+  .client-logo-img { height: 30px; margin-right: 48px; }
+}
+
+/* ── Hero-KPI-er (nøkkeltall under hero-lead) ────────────────────────────── */
+.hero-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px 28px;
+  max-width: 440px;
+  margin: 0 0 34px;
+}
+@media (max-width: 560px) {
+  .hero-kpis { gap: 12px 20px; }
+}
+.hero-kpi-value {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -.2px;
+  line-height: 1.15;
+  color: var(--teal);
+}
+.hero-kpi-label {
+  display: block;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--muted);
+  margin-top: 2px;
 }

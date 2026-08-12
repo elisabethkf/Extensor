@@ -35,14 +35,7 @@
         </div>
         <a href="webinar.html">Webinar</a>
         <a href="nyheter.html">Nyheter</a>
-        <div class="nav-dropdown">
-          <a href="om-oss.html" class="nav-dropdown-trigger">Om oss <span class="nav-dropdown-arrow" aria-hidden="true"></span></a>
-          <div class="nav-dropdown-menu is-text-menu">
-            <a class="nav-dropdown-item is-text" href="om-oss.html">Om oss</a>
-            <a class="nav-dropdown-item is-text" href="karriere.html">Karriere</a>
-            <a class="nav-dropdown-item is-text" href="https://www.aidn.no" target="_blank" rel="noopener">Aidn</a>
-          </div>
-        </div>
+        <a href="om-oss.html">Om oss</a>
         <a href="support.html" class="is-active">Support</a>
       </div>
       <a class="nav-cta" href="#kontakt-support">Kontakt support</a>
@@ -92,14 +85,29 @@
   <main>
 
     <!-- ── Hero ─────────────────────────────────────────────────────────── -->
-    <section class="hero hero-sub">
+    <section class="hero hero-sub hero-support">
       <div class="hero-inner">
-        <div class="hero-grid">
-          <span class="hero-eyebrow">Support</span>
-          <h1>Extensor kundesenter.</h1>
-          <p class="hero-lead">
-            Har du spørsmål om Extensor 05? Vi gir personlig support av kompetente medarbeidere — på telefon eller via e-post, ingen outsourcing. Finn også opplæring, nedlastninger og siste driftsmeldinger.
-          </p>
+        <div class="hero-grid hero-support-grid">
+          <div>
+            <span class="hero-eyebrow">Support</span>
+            <h1>Extensor kundesenter.</h1>
+            <p class="hero-lead">
+              Har du spørsmål om Extensor 05? Vi gir personlig support av kompetente medarbeidere — på telefon eller via e-post, ingen outsourcing. Finn også opplæring, nedlastninger og siste driftsmeldinger.
+            </p>
+            <nav class="hero-anchor-nav" aria-label="Snarveier på siden">
+              <span class="hero-anchor-label">Hva trenger du hjelp med? Hopp rett til:</span>
+              <div class="hero-anchor-btns">
+                <a class="hero-anchor-btn" href="#kontakt-support">Kontakt <span class="hero-anchor-arrow" aria-hidden="true">↓</span></a>
+                <a class="hero-anchor-btn" href="#quicksupport">QuickSupport <span class="hero-anchor-arrow" aria-hidden="true">↓</span></a>
+                <a class="hero-anchor-btn" href="#opplaering">Opplæring <span class="hero-anchor-arrow" aria-hidden="true">↓</span></a>
+                <a class="hero-anchor-btn" href="#nedlastninger">Nedlastninger <span class="hero-anchor-arrow" aria-hidden="true">↓</span></a>
+                <a class="hero-anchor-btn is-drift" href="#driftsmeldinger"><span class="hero-anchor-dot" aria-hidden="true"></span>Driftsmeldinger <span class="hero-anchor-arrow" aria-hidden="true">↓</span></a>
+              </div>
+            </nav>
+          </div>
+          <div class="hero-support-photo">
+            <img src="assets/support-hero.jpg" alt="Blid supportmedarbeider med headset, klar til å hjelpe" />
+          </div>
         </div>
       </div>
     </section>
@@ -110,9 +118,9 @@
         <div class="rv section-head">
           <div>
             <span class="pill teal" style="margin-bottom:16px; display:block; width:fit-content;">Kontakt support</span>
-            <h2>Tre måter å nå oss på.</h2>
+            <h2>Slik når du oss.</h2>
           </div>
-          <p>Norsk support av kompetente medarbeidere — telefon, e-post eller via fjernstyring. Ingen outsourcing, ingen ventekø som tar timer.</p>
+          <p>Norsk support av kompetente medarbeidere — på telefon eller e-post. Ingen outsourcing, ingen ventekø som tar timer.</p>
         </div>
 
         <div class="support-channels">
@@ -141,7 +149,47 @@
             <span class="support-channel-cta">Send e-post <span aria-hidden="true">→</span></span>
           </a>
 
-          <a href="https://get.teamviewer.com/62ujkvk" target="_blank" rel="noopener" class="rv d3 support-channel">
+        </div>
+      </div>
+    </section>
+
+    <!-- ── QuickSupport (fjernhjelp — egen seksjon) ─────────────────────── -->
+    <section id="quicksupport" class="section">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div class="rv section-head">
+          <div>
+            <span class="pill" style="margin-bottom:16px; display:block; width:fit-content;">Fjernhjelp</span>
+            <h2>QuickSupport.</h2>
+          </div>
+          <p>Når du allerede er i kontakt med support, kan vi se skjermen din og hjelpe deg direkte på maskinen. Du laster ned QuickSupport og oppgir ID-en du får — vi gjør resten.</p>
+        </div>
+
+        <div class="quicksupport-grid">
+          <ol class="rv d1 quicksupport-steps">
+            <li>
+              <span class="quicksupport-step-num">1</span>
+              <div>
+                <h3>Ring eller send e-post</h3>
+                <p>Kontakt support som vanlig — <a href="tel:75533300">75 53 33 00</a> (tast 1) eller <a href="mailto:support@extensor.no">support@extensor.no</a>.</p>
+              </div>
+            </li>
+            <li>
+              <span class="quicksupport-step-num">2</span>
+              <div>
+                <h3>Last ned QuickSupport</h3>
+                <p>Programmet krever ingen installasjon — bare åpne filen og les opp ID-en du får på skjermen.</p>
+              </div>
+            </li>
+            <li>
+              <span class="quicksupport-step-num">3</span>
+              <div>
+                <h3>Vi kobler oss på</h3>
+                <p>Supportmedarbeideren ser skjermen din via TeamViewer eller hjelp.nhn.no, og løser saken sammen med deg.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="rv d2 quicksupport-download">
             <div class="support-channel-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <rect x="2" y="4" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/>
@@ -149,17 +197,17 @@
                 <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/>
               </svg>
             </div>
-            <div class="support-channel-tag">Fjernhjelp</div>
-            <div class="support-channel-value">QuickSupport</div>
-            <div class="support-channel-desc">Vi logger på maskinen din via TeamViewer eller hjelp.nhn.no.</div>
-            <span class="support-channel-cta">Last ned <span aria-hidden="true">→</span></span>
-          </a>
+            <h3>Klar til å laste ned?</h3>
+            <p>Bruk QuickSupport bare når support ber deg om det — vi kobler oss aldri på uten avtale med deg.</p>
+            <a class="btn-primary" href="https://get.teamviewer.com/62ujkvk" target="_blank" rel="noopener">Last ned QuickSupport</a>
+            <a class="quicksupport-alt-link" href="https://hjelp.nhn.no" target="_blank" rel="noopener">Alternativt: hjelp.nhn.no →</a>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ── Opplæring ────────────────────────────────────────────────────── -->
-    <section class="section">
+    <section id="opplaering" class="section">
       <div style="max-width:1280px; margin:0 auto;">
         <div class="rv section-head">
           <div>
@@ -224,7 +272,7 @@
     </section>
 
     <!-- ── Nedlastninger ────────────────────────────────────────────────── -->
-    <section class="section">
+    <section id="nedlastninger" class="section">
       <div style="max-width:1280px; margin:0 auto;">
         <div class="rv section-head">
           <div>
@@ -276,7 +324,7 @@
 
     <!-- ── Driftsmeldinger ──────────────────────────────────────────────── -->
     <!-- TODO: koble til faktiske driftsmeldinger fra Extensor's CMS -->
-    <section class="section">
+    <section id="driftsmeldinger" class="section">
       <div style="max-width:1280px; margin:0 auto;">
         <div class="rv section-head">
           <div>
@@ -343,9 +391,8 @@
         <div class="footer-col">
           <h4>Selskapet</h4>
           <a href="om-oss.html">Om oss</a>
-          <a href="https://www.aidn.no" target="_blank" rel="noopener">Aidn</a>
-          <a href="#">Karriere</a>
-          <a href="#kontakt-support">Kontakt</a>
+          <a href="karriere.html">Karriere</a>
+          <a href="kontakt.html">Kontakt</a>
         </div>
         <div class="footer-col">
           <h4>Hjelp</h4>
