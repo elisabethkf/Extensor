@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ofte stilte spørsmål — Extensor</title>
+  <meta name="description" content="Svar på de vanligste spørsmålene om Extensor — installasjon, oppdatering, HELFO og mer." />
+  <link rel="canonical" href="https://www.extensor.no/faq" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ─────────────────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="assets/extensor-logo.png" alt="Extensor — Helhetlig pasientadministrasjon" />
+      </a>
+      <button class="nav-burger" type="button" aria-expanded="false" aria-label="Åpne meny"><span></span><span></span><span></span></button>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="index.html#produktet" class="nav-dropdown-trigger">Produktet <span class="nav-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="nav-dropdown-menu is-text-menu">
+            <a class="nav-dropdown-item is-text" href="index.html#produktet">Produktet</a>
+            <a class="nav-dropdown-item is-text" href="extensor-ki.html">Extensor KI</a>
+            <a class="nav-dropdown-item is-text" href="tilleggsprodukter.html">Tilleggsprodukter</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="faggrupper.html" class="nav-dropdown-trigger">Faggrupper <span class="nav-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="nav-dropdown-menu" id="faggrupper-dropdown"></div>
+        </div>
+        <a href="webinar.html">Webinar</a>
+        <a href="nyheter.html">Nyheter</a>
+        <a href="om-oss.html">Om oss</a>
+        <a href="support.html" class="is-active">Support</a>
+      </div>
+      <a class="nav-cta" href="kontakt.html">Kontakt oss</a>
+    </div>
+  </nav>
+
+  <div class="help-bubble">
+    <button class="help-bubble-trigger" type="button" aria-expanded="false" aria-label="Trenger du hjelp?">
+      <span class="help-bubble-trigger-icon" aria-hidden="true">?</span>
+      Trenger du hjelp?
+    </button>
+    <div class="help-bubble-panel" role="dialog" aria-label="Support">
+      <div class="help-bubble-panel-header">
+        <h4>Hvordan kan vi hjelpe?</h4>
+        <p>Norsk support — ingen outsourcing. Vi svarer raskt.</p>
+      </div>
+      <a href="tel:75533300" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Ring support</span>
+          <span class="help-bubble-item-sub">75 53 33 00 · tast 1</span>
+        </span>
+      </a>
+      <a href="mailto:support@extensor.no" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Send e-post</span>
+          <span class="help-bubble-item-sub">support@extensor.no</span>
+        </span>
+      </a>
+      <a href="support.html" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9 9a3 3 0 016 0c0 2-3 2-3 4M12 17.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Gå til Support-siden</span>
+          <span class="help-bubble-item-sub">Driftsmeldinger, opplæring og nedlastninger</span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+    <section class="hero hero-sub">
+      <div class="hero-inner">
+        <div class="hero-grid">
+          <a class="article-back" href="support.html">← Tilbake til Support</a>
+          <span class="hero-eyebrow">Support</span>
+          <h1>Ofte stilte spørsmål.</h1>
+          <p class="hero-lead">Svar på det brukerne våre lurer mest på — om installasjon, oppdateringer, sikkerhet og HELFO-oppgjør.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+    <section class="section">
+      <div style="max-width:1080px; margin:0 auto;">
+        <div class="rv section-head">
+          <div>
+            <span class="pill" style="margin-bottom:16px; display:block; width:fit-content;">FAQ</span>
+            <h2>Ofte stilte spørsmål.</h2>
+          </div>
+          <p>Svar på de vanligste spørsmålene fra brukerne våre. Finner du ikke svaret? <a href="support.html#kontakt-support">Kontakt support</a>.</p>
+        </div>
+
+        <div class="rv faq-kategori">
+          <h2>Installasjon og oppdatering</h2>
+          <div class="partner-grid">
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Kan jeg benytte Extensor på Mac?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Extensor 05 er et windowsprogram, men man kan kjøre det på Mac såfremt man bruker nødvendig tilleggsprogramvare. Vi anbefaler (i prioritert rekkefølge):</p><p>1. Apple Boot Camp. Dette er et program som følger med Mac`en. Bruker man dette kan man installere Windows på en egen partisjon, og starte opp Mac`en i Windows istedet for OSX. Maskinen vil da oppføre seg helt likt som en PC med Windows. Man kan også velge å starte Mac`en opp i OSX, men da vil man ikke kunne bruke Extensor.</p><p>Link til Boot Camp:</p><p>http://www.apple.com/no/support/bootcamp/</p><p>2. Parallels Desktop. Bruker man dette så kjører man Windows operativsystem virtuelt i OSX. Parallels er et program man kjøper og installerer på Mac`en, og det gjør at man kan kjøre både OSX og Windows samtidig. Maskinen vil da virke noe tregere enn ved Apple Boot Camp.</p><p>Link til Parallels:</p><p>http://www.parallels.com/landingpage/pd/general/?utm_nooverride=1&amp;gclid=CKfZmJznkbsCFchY3godb0oALg</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Hvordan legger jeg inn logo i Extensor?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Man kan legge sin egen logo inn i systemet, både på fakturaer man sender ut og på brev og dokumenter.</p><p>For å legge inn logo på fakturaer:</p><p>1. Gå inn på Hjelp -&gt; Vis Lisensinformasjon -&gt; Logo.
+2. Hent opp ønsket logo. Gyldige filtyper er jpg, bmp og gif.
+3. Når filen er hentet frem går du til «Informasjon om virksomheten», markerer «Send inn endret informasjon» og klikker «Utfør». Vent noen sekunder til vinduet lukkes.
+4. Avslutt Extensor, og start på nytt. Den nye logoen er nå aktivert.</p><p>For å legge inn logo på Notater eller Dokumenter (Brev):</p><p>Gå inn i Extensor 05, finn Journal -&gt; Brev/Dok./Blanketter. Åpne ønsket brevmal. Benytt funksjonen “sett inn bilde” fra verktøylinjen. Hent logoen derfra, og hak på i boksen “sett inn som fiksert objekt”. Når logoen er satt inn kan man trykke Alt-knappen og dra bildet til ønsket plassering i dokumentet. Det er mulig å legge inn ulike logoer på de ulike malene.</p><p>PS. I notater og dokumenter finnes det et flettefelt som heter “Virksomhetens logo”. Denne funksjonen har en del begrensinger; logoen settes ikke inn som fiksert objekt, noe som medfører at det ikke er mulig å tilpasse tekst rundt logoen eller å flytte logoen. For de aller fleste vil derfor ovennevnte løsning fungere best.</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Hvordan oppdaterer jeg takster og koder i Extensor?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Det er 2 måter å oppdatere takster og koder på:</p><p>1. Oppdater fra nett, via Extensor</p><p>2. Oppdater fra fil. Dette er alternativet for de som er i sikker sone, uten direkte tilkobling til internett</p><p>Her beskrives begge måtene, med fysioterapi-takstplakaten som eksempel.</p><p>Oppdater fra nett, via Extensor:</p><p>1. Åpne Extensor
+2. Gå til Fil -&gt; søk etter oppdateringer
+3. Velg takstplakat/kodefil, hak av på begge sjekkboksene, og trykk &quot;Oppdater koder&quot;</p><p>4. Lukk vinduet. Takstene er nå oppdaterte. Dette kan man bekrefte ved å åpne takstplakaten fra takstknappen i regningskortet, og se at det står riktig dato øverst:</p><p>Oppdater fra fil</p><p>1. Last ned takster/koder via denne linken (<a href="https://support.extensor.no/download/codes.zip" target="_blank" rel="noopener">https://support.extensor.no/download/codes.zip</a>). I denne filen ligger det mange txt-filer, bl.a. takstplakatene til ulike faggrupper og diverse kodefiler. Pakk ut filene og lagre dem i Extensor/Koder-mappen. Denne ligger normalt sett på følgende plassering: C:\Program Files (x86)\Extensor\Koder:</p><p>Gå i Extensor, gå til Fil -&gt; Søk etter oppdateringer.</p><p>1. Velg ønsket takst/kode i nedtrekkslisten, f.eks Fysioterapitakster
+2. Ta bort haken i boksen «Oppdater fra internet»
+3. Klikk på knappen til høyre for feltet «Oppdater fra mappe», bla deg frem til den mappen der takstplakaten ble lagret, og trykk OK. Da ser bildet slik ut:</p><p>1. Trykk «Oppdater koder»
+2. Når oppdateringen er gjort står det «Ferdig» i statusfeltet:</p><p>1. Nye takster og koder kan tas i bruk umiddelbart, det er ikke nødvendig å logge ut og inn av programmet for å aktivere disse.</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Hvordan oppdaterer jeg Extensor til nyeste versjon?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Se link til nedlasting av siste versjon og vår oppdateringsveiledning her (<a href="https://extensor-final.webflow.io/nedlastninger" target="_blank" rel="noopener">https://extensor-final.webflow.io/nedlastninger</a>)</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Hvilken versjon av Extensor har jeg?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>For å se hvilken versjon av Extensor du har, velg «Hjelp» og «Om Extensor». Du ser da versjonsnummer nede til høyre på bildet som kommer opp.</p><p>Du kan også se versjonsnummer nede til høyre i påloggingsvinduet når du starter Extensor.</p>
+            </div>
+          </details>
+          </div>
+        </div>
+        <div class="rv faq-kategori">
+          <h2>Diverse</h2>
+          <div class="partner-grid">
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Hvilke moduler finner jeg i Extensor-systemene?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Følgende moduler finnes i Extensor:</p><p>Administrator</p><p>Administrator er en funksjon som gir brukeren tilgang til å sette administrative innstillinger ift egenandelsetak, eksport/import av filer, elektroniske meldinger, generelle innstillinger, innstillinger ift oppdateringer av programvare, planleggeren, regnskapet, sikkerhets og tillatelser og utseende på systemet.</p><p>Aktuelt</p><p>Aktuelt gir en oversikt over dagsaktuelle hendelser, avtaler og gjøremål. Man kan i tillegg håndtere EDI-meldinger til/fra Extensor. Aktuelt er inndelt slik at man finner elementer som gjelder behandleren spesielt, og virksomheten generelt.</p><p>Extensor benytter Dips Communicator i forhold til elektronisk overføring (EDI) av pasient-sensitiv informasjon. Innhenting og sending av informasjon er automatisert, og nærmest usynlig for den enkelte bruker.</p><p>Ansattes personalia</p><p>I ansattes personalia kan man registrere alle ansatte og knytte de opp til avdeling. Modulen danner grunnlaget for oppsett av brukertilgang via brukerkontoer og tilgangsstyingen i systemet.</p><p>Arbeidstidsregistrering</p><p>Arbeidstidsregistrering gir muligheten til å registrere antallet timer som den enkelte ansatte er på arbeid. Funksjonen summerer opp antallet timer og utregner hvor mye den ansatte har jobbet ift standard arbeidstid.</p><p>Bedriftsjournal</p><p>En samling av all dokumentasjon av aktiviteter i en bedrift. Bedriftsjournalen består bl.a. av: Sammendrag over bedriftsjournalens innhold, konsultasjonsregistrering, oppfølging med timehåndtering, aktivitetsregistrering, notater, multimedia, brev, dokumenter, blanketter, tilgang til kontrakter og organisasjonskart. Konsultasjoner kan knyttet opp mot virksomhetsregnskapet.</p><p>Bedriftsopplysninger</p><p>Lar bedriftshelsetjenesten registrere all kontaktinformasjon på sine kundevirksomheter, enten manuelt eller ved direkte uttrekk fra Enhetsregisteret. Det kan i tillegg legges inn avdelinger, kontaktpersoner, verneombud og kort beskrivelse av virksomheten. Ønsker man å kategorisere bedriften, samt sette egen status f.eks «Kunde», «Mulig kunde», «Samarbeidspartner» osv, gjøres dette ved ett tastetrykk.</p><p>Bedriftsoversikt</p><p>Oversikt over alle bedrifter innskrevet i systemet. Oversikten kan sorteres ut fra gitte kriterier.</p><p>Blanketter og skjemaer</p><p>Extensor 05 har en egen generator for skjema / blanketter, og lager fortløpende nye skjemaer til benyttelse for våre kunder. Mange av skjemaene ligger klare for nedlastning fra extensor.no.</p><p>Bluenote og Bluenote arkiv</p><p>Virksomheten kan kommunisere via digitale lapper som sendes mellom de ansatte. Lappene kan sendes til enkelt helsefaggrupper eller den enkelte fagperson. Forsendelse og mottakelsen er sikret via bluefish kryptering- Bluenote arkiv viser alle digitale lapper som er sendt mellom brukere i systemet. Her kan du selv velge å fjerne de som ikke lenger er relevante for deg.</p><p>Brukerkontoer</p><p>Funksjonen brukerkontoer sørger for at administrator kan tildele tilgangen til moduler og funksjoner i Extensor 05. Videre settes også brukerkontoer med brukernavn og passord for den enkelte bruker. Selve tilgangsstyringen til journalressurser defineres med definerte rollefordelinger iht den elektroniske pasient journal standarden. Det er også mulig å sette hvem som skal ha tilgang til planleggeren for den behandleren(e).</p><p>Fagstoff</p><p>Gir mulighet til å ta vare på ulikt fagstoff man måtte komme over, og som man ønsker å samle på en plass (slik at det er tilgjengelig for alle).</p><p>Felleskatalogen</p><p>Tilgang til felleskatalogen med de nye felleskatalogtekstene fås ved å benytte denne funksjonen.</p><p>Grupper</p><p>Extensor 05 inneholder egen modul for håndtering av grupper. Gruppene kan registreres med relevante deltakere og opplysninger. Brukeren kan gi en kort besrivelse av gruppens hensikt, samt sette egne gruppemaler.</p><p>Behandleren kan registrere regnskapsdata for samling av pasienter i grupper. Dette sørger for å forenkle registrering av gruppebetaling og HELFO oppgjør. Gruppen registreres på time ved enkel «dra-og-slipp» metodikk. På denne måten registreres også avtalen direkte inn på den enkelt pasient sin avtalebok.</p><p>Henvisning til røntgen</p><p>Behandleren kan via eget skjema sende henvisning til røntgeninstitutt. Her kan man legge inn egne maler, eller benytte standard oppsett fra Extensor 05 sitt dokumentforslag. Man kan også skreddersy egne skjema via skjemautformeren.</p><p>Henvisning til spesialist</p><p>I Extensor 05 finner du eget skjema for å henvise til andre spesialister. Her kan man legge inn egne maler, eller benytte standard oppsett fra Extensor 05 sitt dokumentforslag. Man kan også skreddersy egne skjema via skjemautformeren.</p><p>Helfo-oppgjør</p><p>Extensor 05 har egen modul for trygdeoppgjør mot HELFO. Oppgjørsmodulen er en tidsriktig løsning som inneholder muligheter for å opprette nye samleregninger, og foreta kontroll over innholdet i samleregningen. På denne måten får du enkelt svar på hva som må gjøres av endringer i enkeltregningen(e) før forsendelsen gjøres til HELFO. Systemet kommuniserer ved hjelp av kontrollikon som forteller om en regning er godkjent eller ikke. Du vil raskt kunne se hva som må endres for at regningen skal kunne godkjennes av HELFO. Endringen på den enkelte regning gjøres i samme skjermbilde som oversikten ellers.</p><p>Hjelpemiddellager</p><p>I Extensor finnes også en modul for administrering av det kommunale hjelpemiddellageret. Denne gir mulighet til enkelt å få oversikt over «varelager» og lån utover avtalt tid.</p><p>Innkalling</p><p>Egen modul for innkalling av pasienter via SMS, e-post eller brev. Brukeren kan benytte egne maler for innkallingen, kommunisere til utvalg av mottakere ved å dra respektive mottaker inn i mottakslisten. Det kan benyttes flettefelt for flere mottakere, og utarbeides maler for forsendelsen.</p><p>Journal</p><p>Det er mulig å sammenligne denne med den tradisjonelle papirmappen. I Journal gis brukeren muligheten til å legge inn både bilder, tekst, video, lyd osv. Dette gjør at brukeren får samlet alle helseopplysninger for den enkelte pasient på ett sted. Journal består bl.a. av: Sammendrag over journalens innhold, basisinformasjon, konsultasjonsregistrering, definerte diagnoser, notater, multimedia (bilder, filmklipp, lyd), brev, blanketter, dokumenter, sykmeldinger, resepter/medisiner, CAVE, påminnelser, laboratoriedata, rekvirere/skrive resultat over tester, vaksiner, EKG-undersøkelser, spirometri og audiometri.</p><p>Journal kan presenteres kronologisk eller problemorientert. Det betyr at brukeren vil kunne sortere innholdet i journalen, slik at den presenterer den mest relevante informasjonen i forhold til pasientens plager ved konsultasjonstidspunktet.</p><p>I journalen finnes også mulighet til å legge inn bilder direkte i dokumenter. Anatomimodulen gir tilgang til kroppens muskel og skjelett apparat. Dette muliggjør en tettere dialog med pasienten. Behandleren kan velge spesifikke muskler, skravere på disse og deretter legge det inn i journalnotatet.</p><p>Kommunikasjon</p><p>Modulen for kommunikasjon samler all korrepondanse mellom virksomheten og dets omgivelser. All form for e-post, EDI eller intern kommunikasjon ligger loggført, og koblet mot relevante personer internt eller eksternt.</p><p>Kontakter</p><p>Brukeren og virksomheten kan opprette egne kontaktregister som virksomheten er i kontakt med. Det er enkelt å finne kontaktpersoner etter behov. Kontaktregistrene sorteres alfabetisk.</p><p>Laboratorie</p><p>I tillegg til laboratoriedata som registreres og administreres i journalen (for den enkelte pasient), finnes mulighet til administrasjon av alle laboratoriedata i ett vindu. Rekvirering og registrering av prøver vil kunne foregå her. Det gis mulighet til å filtrere informasjon slik at legen raskt får oversikt over patologiske svar, og svar kan også vises med trend (grafisk framstilling av utvikling).</p><p>Maler</p><p>I Extensor finnes også en funksjon for opprettelse av maler, både for notater, brev, dokumenter og blanketter. Disse malene kan eksporteres og importeres. I tillegg til å utforme vanlige standard maler i systemets journal, kan man benytte seg av en rekke funksjoner som effektiviserer den daglige flyten og dokumentasjonen i forhold til pasienthåndteringen. Vi nevner følgende:</p><p>– Man kan benytte opp mot 100 standardiserte flettefelt som kan legges som standard i en definert mal. Informasjonen vil automatisk flettes inn fra registrerte data som ligger lagret ellers i systemet.</p><p>– Man kan flette maler inn i overordnede maler. Ønsker man for eksempel en epikrise som automatisk legger inn alle notater for anamnese, kan dette genereres ved et tastetrykk.</p><p>– Ønsker virksomheten tverrfaglige sluttrapporter kan man utforme sluttrapporter som automatisk fletter alle notater skrevet av ulike helsefagpersoner inn i en og samme rapport. Rapporten genereres ved et tastetrykk.</p><p>– Man kan legge inn data som det skal være mulig å kjøre statistikk på, via egen funksjon for strukturert input. Ved å benytte dialogboks for inndata, vil data legges inn i tabeller, og på denne måten være kjørbare som statistikk.</p><p>– Man kan flette inn avanserte resultater fra tester via grafer og statistikk i tabeller.</p><p>NPR rapportering</p><p>NPR-melding rehab/spesialist/poliklinikk</p><p>Rehabiliteringssentre, spesialistsentre og virksomheter med status som private poliklinikker med refusjon fra helseforetakene skal rapportere aktivitets- og ventelistedata til Helsedirektoratet (Norsk Pasientregister, avd for helseregistre). Rapporteringen for disse gjelder for hver pasientkontakt, og genererer en fyldig xml-melding. Denne typen rapportering krever mye av brukeren/helsevirksomheten, da det er mye data som skal registreres. Extensor 05 letter denne jobben betraktelig med sine løsninger for å forenkle registreringen. Før innsending benytter man egen kontrollmekanisme, som går gjennom oppføringene, og varsler ved eventuelle uregelmessigheter.</p><p>NPR-venteliste</p><p>Virksomheter innen psykiatrien som får midler fra helseforetakene skal rapportere sine ventelistedata til Norsk Pasientregister. Meldingen er basert på &quot;vanlig&quot; NPR-melding og er også i xml-format. I motsetning til aktivitets-meldingen fokuserer denne rapporten på behandlingsserien, og (naturlig nok) ikke på enkeltkontaktene.</p><p>NPR-BKM</p><p>Poliklinikker sendte tidligere inn sitt offentlige oppgjør i et meldingsformat kalt POLK. Dette var et enkelt flatfilformat. Denne er nå erstattet av den langt fyldigere NPR-BKM (behandlerkravmelding). Meldingen er ikke så ulik vanlig NPR-melding, men inneholder oppgjørsinformasjon og refusjonskrav.</p><p>NPR-BKM Rehab</p><p>Rehabiliteringssentre bruker dette rehabiliteringsformatet for å rapportere betalte egenandeler og kreve refusjon for frikort2-regninger.</p><p>NPR-TSB (rus)</p><p>Rusmiddelsektoren har sitt eget «spørreskjema» hvor data skal innrapporteres til Norsk Pasientregister. Spørreskjemaet ligger inne i vår journal, og rapporteres på lik linje med de øvrige npr-rapporter fra Extensor 05. Meldingen er i xml-format.</p><p>NPR-ident-melding (xml)</p><p>NPR-ident-melding skal sendes inn sammen med de andre NPR meldingene som er listet opp her. Denne gir person-identifiserbar informasjon til Norsk Pasientregister, ved at den kobler lokale id-nummer til personnummer. Meldingen er i xml-format, og genereres automatisk sammen med selve NPR-meldingen.</p><p>Oppfølging (mot bedrifter)</p><p>Her finner man en total oversikt over alle påminnelser med frister, hvilken bedrift som aktiviteten gjelder og hva som skal gjennomføres. Det er enkelt å se hvilken ansatte som er ansvarlig for påminnelsen eller aktiviteten.</p><p>Ønsker virksomheten flere detaljer på sine aktiviteter kan man se dato, klokkeslett, bedrift, type aktivitet, planlagt varighet for aktiviteten, tid benyttet på utført aktivitet, status for om aktiviteten er påbegynt, venter, ferdig, utsatt, utgått eller om aktiviteten er knyttet opp mot en nedtelling etter salg av ferdig bedriftspakke.</p><p>Det er mulig å skrive ut periodevis plan eller en fullstendig aktivitetsoversikt.</p><p>Oppsett</p><p>Det er mulig å definere ulike oppsett for bruken av systemet. I funksjonen oppsett er det diverse innstillinger som hver enkelt bruker kan definere. Her kan man sette innstillinger for automatiske oppdateringer, elektroniske meldinger, mer generelle innstillinger, innstillinger på integrasjoner, oppstart og avslutning av systemet, mot betalingsterminaler, regnskapet, sikkerhet og tillatelser for brukeren, tekstbehandlingen, utseende for snarveier og utskriften av dokumenter.</p><p>Personalia</p><p>Dette er selve &quot;kontaktkortet&quot; på pasienten, men har også en del andre funksjoner. Utover mulighet til å registrere basis personalia kan man også registrere kontaktinformasjon, pårørendes kontaktinformasjon, informasjon om ansettelsesforhold og bedrift, fastlege, gruppetilknytning, korte notater, innkallingslogg, informasjon om behandlingsserie, informasjon om eventuell ventelisteoppføring og historisk oversikt over behandlingsserier. Dersom ønskelig kan det legges inn bilde av pasienten i personalia.</p><p>Planlegger</p><p>Extensors 05 sin planlegger er ikke ulik den mange er vant til å benytte i MS Outlook i dag:</p><p>- Planleggeren støtter «dra-og-slipp» metodikk for oppsett av pasientavtaler.
+- Avtaler kan registreres som private, dersom ikke andre skal kunne lese emnet for avtalen.
+- For private avtaler knyttes all betalingsinformasjon til den respektive timen.
+- Alle takster, eller koder som medfølger timen tilknyttes timekortet. I tilfeller hvor dette er gjeldende finner man direkte linker til henvisningen og regningen.
+- For oppsatte avtaler kan man videre sette gjentakende mønster, invitere andre deltakere til timen, og samtidig knytte avtalen til et rom eller en ressurs.
+- Planleggeren viser avtaler for ansatte, grupper eller rom/ressurser, og alle ansatte kan legge inn elementer hos hverandre.
+- I planleggeren finnes også en virksomhetsplanlegger, som gir et flytdiagram over for eksempel ferier, kurs, reiser osv.
+- Ønsker virksomheten å opprette oppsett for faste timer, kan dette gjøres ved å benytte fargekoder, låsing av timer med påfølgende kommentarer.
+- Virksomheten kan enkelt gruppere de ulike faggruppene for visning av timer og kalendere.
+- Du kan se 1, 5 eller 7 dagers visning for alle avtaler.
+- Det er enkelt å finne første ledige time ved å benytte egen søkefunksjon for dette.
+- Ved et tastetrykk vil planleggeren også vise alle avtaler som den valgte pasienten har, og dags eller ukesplan kan skrives ut etter behov.
+- Planleggeren inneholder egen fellesinformasjon mot de ansatte og den enkelte ansatte kan selv legge inn gjøremål om ønskelig.
+- Du finner videre en samlefunksjon for utskrift av alle relevante kvitteringer samt oppgjørsbilde for relevant dato. Betalingsmåten kobles mot kontant, betalingsterminal eller fakturert tjeneste. Det er mulig å knytte betaling av enkelt konsultasjoner mot salg av egne produkter eller tjenester. En konsultasjon kan knyttes mot egne definerte takster.</p><p>Prosedyrer</p><p>Dersom det er ønskelig, kan det legges inn prosedyrer i Extensor. Prosedyrer kategoriseres og organiseres, slik at virksomheten kan bygge sin egen prosedyrehåndbok i systemet.</p><p>Rapportering</p><p>I Extensor 05 finner du en egen rapporteringsmodul som baserer seg på SQL -scripting. Virksomheten kan drive skreddersøm av alle rapporter som skal benyttes internt, eller ekstern. Det er enkelt å laste ned tilgjengelige rapporter fra internett og legge dette i ønsket kategori «Mine», «Våre», «Fra nett» eller «Spes».</p><p>Rapporter kan vises basert på periode, valgt gruppering, og kan eksporteres ut i PDF format om nødvendig. I realiteten er det mulig å lage rapporter på alle registrerte data i systemet. Extensor kan også lage skreddersydde rapporter til virksomheten, og virksomheten eier da rapportene videre.</p><p>Regnskap</p><p>Extensor gir muligheten til å opprette egne regnskap for så mange forretningsmessige enheter man måtte ønske. Virksomhetsregnskapet er bygget opp med faktureringssystem, reskontro, omsetningsoversikt og hovedbok. I virksomhetsregnskapet finnes også funksjon for innlesing av ocr-filer. Det er også mulig å gjøre notater både i forhold til den enkelte kunde/pasient, og det enkelte bilag i regnskapet. Regnskapet har muligheter for fakturering til person eller virksomhet, med muligheter for forenklet søk og filtrering av aktuelle fakturaer. Betalingsstatus og kobling mot purring og inkasso foreligger. Avstemming av kasse og oppgjør mot HELFO, forsikringsselskap, bedrifter eller offentlig rapportering er en viktig del av regnskapet. Dersom det er ønskelig, kan informasjonen eksporteres til aktuelle regnskapssystemer.</p><p>Extensors regnskap er tett knyttet opp mot planlegger/timebok, og behandleren gjør alle betalingsregistreringer i denne.</p><p>Reise</p><p>Funksjonen reise gir muligheten til å kalkulere distansen for reisen over kart. Distansen tegnes inn via penn, og antall kilometer kalkuleres deretter. Denne kan bl.a. brukes til å levere reiseregning/oversikt til kommunen, hvis man forestår hjemmebehandlinger.</p><p>Reseptkø</p><p>Reseptkø gir oversikten over kø for resepter knyttet mot utskriftskø, telefonkø og telefakskø. Du kan enkelt skrive ut utskriftskø, telefonkø eller telefakskøen. Ønsker du å administrere tilknyttede apotek finnes eget valg for dette.</p><p>Modulen er i 2020 i ferd med å bli erstattet av en egen E-resept modul.</p><p>Rombooking</p><p>Virksomheten har til enhver tid oversikt over alle rom og pasienter tilknyttet rom. Du kan på en enkel måte skrive ut oversikten og planlegge hvilke pasienter som skal være tilknyttet ulike rom. Romhåndtering har et brukervennlig og grafisk grensesnitt, med mulighet til rask organisering av romfordeling, reservering av rom for ikke navngitte personer, dobbeltbooking dersom det ønskes, fargekoding for ulik status, «dra og slipp» mellom rom og for å endre varighet. Det er også mulig til sette angivelse av alle ledige rom i en ønsket periode m.m.</p><p>Rom og ressurser</p><p>Rom og ressurser gir virksomheten muligheten til å administrere alle rom eller ressurser etter behov. Disse kan videre knyttes opp mot booking av rom, eller planleggeren.</p><p>Scanning</p><p>I Extensor 05 finnes en innebygget funksjon for innscanning av dokumenter. Flersidige dokumenter kan også scannes, og vil kunne legges inn i journalen som ett dokument. Dokumenter og brev som scannes kan kobles opp mot den enkelte pasient, og man kan velge hvem som skal behandle informasjonen. Innscannede dokumenter dukker opp i journalen på lik linje med andre elementer. Det er ikke nødvendig med ocr-programvare (tekstgjenkjenning).</p><p>Spørreundersøkelser (MHU)</p><p>Formålet med spørreundersøkelsesmodulen er å gi BHT-ene et godt verktøy for å opprette egne spørreundersøkelser med en tilhørende sluttrapport. Dette kan f.eks. brukes til målrettede helseundersøkelse av de ansatte hos sine kunder.</p><p>Statistikk</p><p>I teorien er alle registrerte data i Extensor tilgjengelig for statistikk. Statistikk er scriptbasert, noe som gjør det svært enkelt å opprette nye «spørringer» dersom disse ikke allerede er opprettet.Det er mulig å bake inn statistikk i utvalgte rapporter, og representere data i grafisk format.</p><p>Venteliste</p><p>Ventelisten gir deg muligheten til å se alle pasienter som er satt på venteliste for behandling. Du kan enkelt sette pasienten til behandling, samt gi pasienten en prioritet 1, 2 eller 3 ut fra eget ønske. Listen over pasienter kan vises basert på kategorier definert inne i personalia opplysninger.</p><p>Sykmelding</p><p>I Extensor 05 finner du egen blankett for sykmelding. Sykmeldingsblanketten er utviklet i tråd med NAVs standard for sykmeldingsblanketter. Alle relevante data registrert ellers i systemet, legges inn i sykmeldingblankettens tilsvarende felter. Elektronisk innsending er utviklet ihht. spesifikasjoner fra helsedirektoratet.</p><p>Tester</p><p>Extensor Testregistrering er en modul som muliggjør avansert registrering av tester og parametre. Den kan benyttes både til registrering av eksponeringer i arbeidslivet, samt generell helseprofil. Testmodulen finnes i pasientjournalen.</p><p>Virksomheten kan ved å benytte Extensor Testregistrering bygge opp sin egen testbank, og på denne måten se statistikk og rapporter som genereres automatisk som et resultat av testmålinger. Resultatene kan sees både for enkeltpersonen, for en avdeling eller for bedriften som helhet.</p><p>Øvelser</p><p>Extensor 05 inneholder over 500 øvelser, med bilder og beskrivelse. Disse kan settes inn i notater og dokumenter, og behandleren kan enkelt sette opp maler for ulike problemstillinger.</p><p>Det er også mulig å knytte journalen mot eksterne øvelsesprogrammer om ønskelig, f.eks Exor Live.</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Er Extensor sitt journalsystem et sikkert system? Følger det norsk lov?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Utviklingen av EPJ systemer krever inngående kunnskap om normer, standarder og retningslinjer for håndteringen av pasientsensitiv informasjon. Her kan du lese nærmere om hvilke instanser vi forholder oss til når vi utvikler våre løsninger:</p><p>Norm for informasjonssikkerhet i helsesektoren
+Extensor har utviklet sine EPJ system iht. ”Norm for informasjonssikkerhet i helsesektoren”. Norm for informasjonssikkerhet i helse-, omsorgs- og sosialsektoren (Normen) er et omforent sett av krav til informasjonssikkerhet, basert på lovverket. Normen er utarbeidet av representanter for helsesektoren. Normen omfatter alle krav som må tilfredsstilles for å oppfylle lov- og forskriftskrav til informasjonssikkerhet i helse-, omsorgs- og sosialsektoren.
+Les mer om Normen her (<a href="https://ehelse.no/normen" target="_blank" rel="noopener">https://ehelse.no/normen</a>)</p><p>Standarden for elektroniske pasientjournalsystemer
+Extensor 05 er utviklet i henhold til de retningslinjer og standarder som er satt av direktoratet for E-helse.
+De er etablert for å bidra til en koordinert IT-utvikling innen helse- og sosialsektoren. De utfører dels langsiktige oppgaver finansiert av sentral helse- og sosialforvaltning innen standardisering og samordning (kodeverk og terminologi, standarder for informasjonsutveksling, informasjonssikkerhet og elektroniske pasientjournalsystemer m.v.), dels oppdrag for helse- og sosialsektorens ulike aktører (sentrale myndigheter og forvaltning, helseforetak, kommuner m.v.). De deltar i internasjonalt standardiseringsarbeid og internasjonale fagnettverk.
+Les mer om her (<a href="https://ehelse.no/" target="_blank" rel="noopener">https://ehelse.no/</a>)</p><p>Pasientjournalforskriften
+I utviklingen av våre journalsystemer har vi tatt utgangspunkt i ”Forskrift om pasientjournal”.
+Forskriften gir nærmere regler om:
+a) helsepersonells dokumentasjonsplikt, herunder om innhold i pasientjournaler, føring, retting, sletting, oppbevaring, overføring, tilgang til og tilintetgjøring av journal, jf. helsepersonelloven kapittel 8,
+b) virksomheters ansvar i forhold til opprettelse og organisering av journalsystem, jf. spesialisthelsetjenesteloven § 3-2, tannhelsetjenesteloven § 1-3a og kommunehelsetjenesteloven § 1-3a og
+c) rett til innsyn i journal, jf. pasientrettighetsloven § 5-1.
+Les mer om forskrift om pasientjournal her (<a href="https://lovdata.no/dokument/SF/forskrift/2019-03-01-168" target="_blank" rel="noopener">https://lovdata.no/dokument/SF/forskrift/2019-03-01-168</a>)</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Kan man sende meldinger via Norsk Helsenett i Extensor 05?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Ja. Extensors løsning «Extensor Link» er en integrert løsning med meldingssystemet DIPS Communicator. Dette er en komplett og moderne EDI-programvare for alle aktører i helsesektoren som ønsker å kommunisere pasientsensitiv informasjon på en sikker og effektiv måte.
+Meldingstyper
+DIPS Communicator håndterer alle viktige meldingstyper:</p><p>Extensor kan sende følgende EDI meldinger:</p><p>Sykemelding V1.2
+NPR Melding
+NPR (TSB)
+NPR/BKM Melding
+Oppgjør Helfo
+E-resept
+SYSvak (Vaksinemodul)
+Dialogmelding V1.1 Helsefaglig dialog
+Dialogmelding V1.1 Helsefaglig dialog med vedlegg
+Dialogmelding V1.1 Notat
+Dialogmelding V1.1 Forespørsel
+Dialogmelding V1.1 Svar på forespørsel
+Dialogmelding V1.1 Overføring av Journalopplysninger
+Epikrise V1.2 NY
+Epikrise V1.2 Endring
+Henvisning V1.1 NY
+Henvisning V1.1 Endring
+Henvisning V2.0 (Kommer Vår 2025)
+Rekvisisjon V1 .5 Radiologi Enkel Ny
+Rekvisisjon V1 .5 Radiologi-MR Ny</p><p>Extensor kan motta følgende EDI meldinger:</p><p>Dialogmelding V1.0 Avvik
+Dialogmelding V1.0 Forespørsel
+Dialogmelding V1.0 Svar
+Dialogmelding V1.1 Helsefaglig dialog
+Dialogmelding V1.1 Helsefaglig dialog med vedlegg
+Dialogmelding V1.1 Forespørsel
+Dialogmelding V1.1 Svar på forespørsel
+Dialogmelding 1.1 Status på henvisning
+Dialogmelding v1.0 Tilbakemelding om feil i mottatt melding
+Dialogmelding V1.1 Overføring av journaløopplysninger
+Epikrise V1.1 Endring
+Epikrise V1.1 Kansellering
+Epikrise V1.1 NY
+Epikrise V1.2 Endring
+Epikrise V1.2 Kansellering
+Epikrise V1.2 NY
+Henvisning V1.1 Endring
+Henvisning V1.1 Kansellering
+Henvisning V1.1 NY
+Henvisning V1.1 NY Strukturert
+Henvisning V1.0 Endring
+Henvisning V1.0 Kansellering
+Henvisning V1.0 NY
+Henvisning V1.0 NY Strukturert
+Henvisning V2.0 Henvisning NY tilstand
+Henvisning 2.0 Viderehenvisning
+Utskrivingsrapport V1.6
+Pasientlogistikkmeldinger V1.6
+Pasientlogistikkmeldinger V1.6 Orientering om dødsfall
+Medisinske Opplysninger V1.6
+Orientering om tjenestetilbud V1.6
+Helseopplysninger V1.6
+Helseopplysninger til lege V1.6
+Svarrapport V1 .3 Biokjemi Endring
+Svarrapport V1 .3 Biokjemi Kansellering
+Svarrapport V1 .3 Biokjemi Ny
+Svarrapport V1 .3 Immunologi Endring
+Svarrapport V1 .3 Immunologi Kansellering
+Svarrapport V1 .3 Immunologi Ny
+Svarrapport V1 .3 Mikrobiologi Dyrking Ny
+Svarrapport V1 .3 Mikrobiologi Gruppert Endring
+Svarrapport V1 .3 Mikrobiologi Gruppert Kansellering
+Svarrapport V1 .3 Mikrobiologi Gruppert Ny
+Svarrapport V1 .3 Mikrobiologi Virologi Ny
+Svarrapport V1 .3 Patologi Cytologi Endring
+Svarrapport V1 .3 Patologi Cytologi Kansellering
+Svarrapport V1 .3 Patologi Cytologi Ny
+Svarrapport V1 .3 Patologi Histologi Endring
+Svarrapport V1 .3 Patologi Histologi Ny
+Svarrapport V1 .3 Patologi Histologi Tillegg
+Svarrapport V1 .3 Radiologi Endring
+Svarrapport V1 .3 Radiologi Kansellering
+Svarrapport V1 .3 Radiologi Ny
+Svarrapport v1 .4 Biokjemi Endring
+Svarrapport v1 .4 Biokjemi Kansellering
+Svarrapport v1 .4 Biokjemi Ny
+Svarrapport v1 .4 Immunologi Endring
+Svarrapport v1 .4 Immunologi Kansellering
+Svarrapport v1 .4 Immunologi Ny
+Svarrapport v1 .4 Mikrobiologi Dyrking Ny
+Svarrapport v1 .4 Mikrobiologi Gruppert Endring
+Svarrapport v1 .4 Mikrobiologi Gruppert Kansellering
+Svarrapport v1 .4 Mikrobiologi Gruppert Ny
+Svarrapport v1 .4 Mikrobiologi Virologi Ny
+Svarrapport v1 .4 Patologi Cytologi Endring
+Svarrapport v1 .4 Patologi Cytologi Kansellering
+Svarrapport v1 .4 Patologi Cytologi Ny
+Svarrapport v1 .4 Patologi Histologi Endring
+Svarrapport v1 .4 Patologi Histologi Ny
+Svarrapport v1 .4 Patologi Histologi Tillegg
+Svarrapport v1 .4 Radiologi Endring
+Svarrapport v1 .4 Radiologi Kansellering
+Svarrapport v1 .4 Radiologi NY</p><p>Meldingsformater
+DIPS Communicator støtter alle standard meldingsformater; XML, EDIFACT og HL7.</p><p>Sikkerhet
+Det er i DIPS Communicator satt stor fokus på alle aspekter vedrørende sikkerhet:</p><p>Støtter det nye rammeverket for kommunikasjon i helsesektoren basert på ebXML med bruk av XML Signature og PKCS7 kryptering med konvoluttering, ensartet kvitteringsmekanismer, samt meldingsvedlegg.</p><p>Støtter offentlig nøkkel kryptering (PKI) med bruk av X.509 sertifikater og S/MIME som utvekslingsformat (RSA/3DES/SHA-1), samt LDAP katalogoppslag (f.eks. mot HER og sertifikatkataloger).</p><p>All lagring og sporing av meldinger skjer med bruk av SQL-basert relasjonsdatabase. Tilgangskontroll og blålysfunksjon.</p><p>Transportmekanismer
+DIPS Communicator kan bruke alle aktuelle transportmekanismer:</p><p>– Internet Mail (helsenett)
+– Ubegrenset antall kommunikasjonspartnere over ulike kommunikasjonskanaler
+(f.eks. både Internet Mail og X.400) samtidig fra én og samme installasjon</p><p>Ta kontakt (mailto:salg@extensor.no)med oss for nærmere informasjon eller priser.</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Hvilke systemkrav foreligger for å kjøre Extensor 05 på en maskin?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Extensor 05 anbefaler at man kjører en Windows-versjon som er innenfor Microsoft sin støtte livssyklus som angitt på http://windows.microsoft.com/nb-no/windows/lifecycle. Hovedregelen er dermed: dersom maskinen kan kjøre Windows 10 eller nyere, kan den også kjøre Extensor 05. Extensor 05 krever minimum 10 GB ledig plass ved installasjon på server/hovedmaskin, 500 MB ledig på klient/arbeidsstasjon.</p><p>Extensor 05 benytter Microsoft SQL Server som database. Vedlagt leveransen følger Microsoft SQL Server 2019 Express, som er en gratis databasemotor. Denne er en light-versjon av Microsoft SQL Server med noen ekstra begrensninger.</p><p>Begrensinger i Express-utgaven av Microsoft SQL Server er:</p><p>– Maks filstørrelse database: 10 GB
+– Begrenset antall CPU/prosessorer som kan brukes av databasen: 1 socket eller 4 kjerner
+– Begrenset mengde RAM/minne som kan brukes av databasen: 1 GB</p><p>Dersom virksomheten når Express-utgaven sin øvre grense for lagring av data (10 GB), må virksomheten selv stå for oppgradering til fullversjon av Microsoft SQL Server. Extensor kan være behjelpelig med anskaffelse og installasjon av denne. Det er også fullt mulig å oppgradere fra Express til fullversjon ved en senere anledning.</p><p>1-5 brukere/datamaskiner</p><p>Hovedmaskin (server) inkl. database installasjon</p><p>Prosessor: Intel Core i7 med minst 4 kjerner eller bedre (Xeon)Internminne:8 GB eller mer</p><p>Harddisk: SSD</p><p>Skjerm:24 tommer eller større 1980 x 1080</p><p>Operativsystem: Windows server 2012/2016/2019 , 64-bit</p><p>Arbeidsstasjoner (klienter)</p><p>Prosessor: Intel i5 eller bedreInternminne:4GB eller mer</p><p>Harddisk:SSDSkjerm:24 tommer eller større 1980 x 1020</p><p>Operativsystem: Windows 10, 64-bit</p><p>6-10+ brukere/datamaskiner</p><p>Hovedmaskin (server) inkl. database installasjon</p><p>Prosessor: Intel XEON eller tilsvarende</p><p>Internminne:16 GB RAM</p><p>Harddisk: SAS/SSD, evt. andre raske, interne server-grade harddisker</p><p>Skjerm: Ingen krav ettersom den bare brukes til administrasjon</p><p>Operativsystem: Windows Server 2012/2016/2019/2022 64-bit: SQL Server 2012/2014/2016/2017/2019/2022 64-bit</p><p>Arbeidsstasjoner (klienter)</p><p>Prosessor: Intel i7 eller tilsvarende. Internminne: 4 GBHarddisk:SSD. Skjerm: 24 tommer eller større 1980 x 1080. Operativsystem: Windows 10, 64-bit</p><p>Anbefaling ang. nettverk</p><p>Vi anbefaler at en bruker kablet nettverk mellom arbeidsstasjoner og hovedmaskin/server. Dette grunnet at kablet nettverk har en helt annen responstid mot databasen og programmet vil derfor oppleves som mye mer smidig og responsivt i bruk. Ved bruk av trådløst nett kan det oppstå signal forstyrringer ol. og programmet kan derfor virke uresponsivt og ikke like smidig å jobbe med. Sikkerhetsspørsmålene rundt trådløse nettverk i forhold til behandling av helseopplysninger medfører også at vi anbefaler kablet nettverk i forbindelse med bruk av Extensor 05. I forbindelse med større nettverksinstallasjoner anbefaler vi oppdatert utstyr i henhold til dagens standard.</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Jeg benytter Windows 10 og får feil i formatet i Planleggeren i Extensor 05. Hvorfor?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Grunnet endringer av klokkeformatet når man oppdaterer til Windows 10, kan det hende man får en rekke feilmeldinger i Planlegger. Dette skjer fordi klokkeinnstillingene endrer seg til å bruke punktum (14.32) isteden for kolon (14:32) og dette liker ikke Planleggeren i Extensor.</p><p>For å rette dette må du gå inn i Kontrollpanelet i Windows og velge «Område». Der trykker du knappen for «Flere innstillinger…» og deretter fliken «Klokkeslett». Under «Tidsformater» (ikke boksen for «Eksempler» øverst) bytter du ut punktum med kolon slik at det står «HH:mm» og «HH:mm:ss». Deretter klikk «Bruk» og så «OK» på alle boksene for å lukke dem. Når du så åpner planleggeren inne i Extensor igjen skal den da komme som normalt.</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Hvordan registrerer jeg D-nummer på en pasient?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Hvis man skal registrere en pasient som ikke har et norsk personnummer, kan man registrere pasienten inn med et D-nummer. Dette er et 11-sifret nummer som pasienten får tildelt av en offentlig godkjent rekvirent, for eksempel Skatteetaten.</p><p>For å registrere pasientens D-nummer setter man i stedet for
+fødselsdato inn [fødselsdato + 40] inn i “Født”-feltet. Hvis pasienten
+f.eks er født 12.03.51 setter man inn 52.03.51.</p><p>Man får da opp dette vinduet:</p><p>Dette svarer man JA på. Da korrigeres fødselsdatoen til riktig dato, og de 6 første sifrene i D-nummeret føres over til det feltet som normalt sett brukes til personnummer, men som nå omdøpes til D-nummer.</p><p>Til slutt setter man inn de 5 siste sifrene i D-nummeret, og lagrer pasientens personalia.</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Hvordan legger jeg inn logo i Extensor?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Man kan legge sin egen logo inn i systemet, både på fakturaer man sender ut og på brev og dokumenter.</p><p>For å legge inn logo på fakturaer:</p><p>1. Gå inn på Hjelp -&gt; Vis Lisensinformasjon -&gt; Logo.
+2. Hent opp ønsket logo. Gyldige filtyper er jpg, bmp og gif.
+3. Når filen er hentet frem går du til «Informasjon om virksomheten», markerer «Send inn endret informasjon» og klikker «Utfør». Vent noen sekunder til vinduet lukkes.
+4. Avslutt Extensor, og start på nytt. Den nye logoen er nå aktivert.</p><p>For å legge inn logo på Notater eller Dokumenter (Brev):</p><p>Gå inn i Extensor 05, finn Journal -&gt; Brev/Dok./Blanketter. Åpne ønsket brevmal. Benytt funksjonen “sett inn bilde” fra verktøylinjen. Hent logoen derfra, og hak på i boksen “sett inn som fiksert objekt”. Når logoen er satt inn kan man trykke Alt-knappen og dra bildet til ønsket plassering i dokumentet. Det er mulig å legge inn ulike logoer på de ulike malene.</p><p>PS. I notater og dokumenter finnes det et flettefelt som heter “Virksomhetens logo”. Denne funksjonen har en del begrensinger; logoen settes ikke inn som fiksert objekt, noe som medfører at det ikke er mulig å tilpasse tekst rundt logoen eller å flytte logoen. For de aller fleste vil derfor ovennevnte løsning fungere best.</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Hva gjør jeg hvis betalingsterminalen ikke reagerer?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Betalingsterminal problemhåndtering (<a href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5dc02f804ca21b9f4a214456_2.pdf" target="_blank" rel="noopener">https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5dc02f804ca21b9f4a214456_2.pdf</a>)</p>
+            </div>
+          </details>
+          </div>
+        </div>
+        <div class="rv faq-kategori">
+          <h2>Helfo</h2>
+          <div class="partner-grid">
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Må jeg være tilkoblet Norsk Helsenett for å sende inn oppgjørene mine til HELFO?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Ja. Alle som skal sende oppgjør til HELFO må ha en egen linje mot Norsk Helsenett. Extensor benytter Dips Communicator til formålet via integrasjon mot egen modul Extensor Link.</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Hvorfor avviker summene i HELFO-oppgjør i forhold til omsetning?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>De aller fleste sender inn HELFO-oppgjør hver uke eller annenhver uke. I den forbindelse er det noen som lurer på hvorfor summen på oppgjøret kan avvike fra summen av refusjoner i samme periode. Da sammenlikner man gjerne summen på HELFO-oppgjøret med omsetningssummen i Regnskap -&gt; Omsetning/Innbetaling.</p><p>Det er i praksis ingen selvfølge at refusjonskravet til HELFO er identisk med (trygde)omsetningen for samme periode. Oppgjøret kan være større eller mindre enn omsetningen. Da gjelder følgende:</p><p>– Er oppgjøret større enn omsetningen så er det konsultasjoner utenfor tidsperioden som blir med på oppgjøret. Dette kan skyldes:</p><p>- Oppgjøret inneholder konsultasjoner som ble avvist på f.eks forrige månedsoppgjør (man har korrigert dette og sender inn konsultasjoner på nytt). Da blir neste oppgjør større enn trygdeomsetningen for samme periode.</p><p>– Er oppgjøret mindre enn omsetningen så er det noen konsultasjoner som står i planleggeren MED refusjon, men som likevel ikke blir med på oppgjøret. Dette kan ha ulike årsaker, bl.a. disse:</p><p>- Konsultasjoner står feilaktig knyttet til en annen samleregning. Hvis f.eks en september-konsultasjon står koblet på juni-samleregningen, så vil den naturlig ikke bli med på september-oppgjøret. Dette har vi sett noen eksempler på, og skyldes som regel at man feilaktig har gjort denne koblingen i sammenheng med korrigering av avviste regninger. Løsningen her blir å lokalisere hvilken samleregning konsultasjonen er koblet på, for så å låse denne opp slik at man får koblet av den konsultasjonen man ønsker å sende inn.</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Hvordan dobbeltsjekke HELFO-oppgjøret?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Etter at HELFO-oppgjøret er ferdigstilt og markert som innsendt, kan man gjøre en dobbeltsjekk for å se at man har fått med seg alt på oppgjøret.</p><p>For å gjøre en slik dobbeltsjekk gjør man følgende:</p><p>1. Gå til Regnskap -&gt;Omsetning/Innbetaling (velg Omsetning, ikke innbetaling) og sett samme tidsperiode som HELFO-oppgjøret.
+2. Klikk på «Type» slik at alle refusjonskonsultasjoner ligger for seg selv, under «Total Trygderefusjon».
+3. Klikk på pluss-tegnet helt til venstre (rød sirkel) på linjen for Trygderefusjon, slik at alle refusjonsbeløpene vises.
+4. I kolonnen «Betalt dato» vil du se en mengde konsultasjoner med samme dato som HELFO-oppgjøret. Disse konsultasjonene ER med på HELFO-oppgjøret. Alle konsultasjoner som ikke har denne datoen – evt mangler dato – er ikke med på oppgjøret. For å lettere se hvilke konsultasjoner som evt ikke er med kan man klikke på kolonne-tittelen (Bet.dato), slik at visningen sorteres etter betalingsdato, da vil alle konsultasjoner som ikke er med ligge etter hverandre, se bildet under. Åpner man konsultasjonen eller regningen de er knyttet til vil man som regel finne årsaken til at de ikke er med.</p>
+            </div>
+          </details>
+          <details class="partner-item">
+            <summary>
+              <span class="partner-name">Hvordan korrigere avviste regninger?</span>
+              <span class="partner-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="partner-body">
+              <p>Hvis HELFO sender konsultasjon i retur som følge av feil, må man korrigere disse og sende de inn på nytt. Da gjelder følgende prosedyre:</p><p>1. Under «Innsendt» -&gt; Høyreklikk på samleregningen og marker den som IKKE innsendt. Oppgjøret flyttes da til «Til behandling»-fanen.
+2. Klikk på oppgjøret under «Til behandling» slik at de tilhørende konsultasjonene vises. Høyreklikk på den avviste konsultasjonen (bruk «dok.nr» for å lokalisere denne), og registrer konsultasjon som ikke innsendt. Konsultasjonen er nå låst opp, og klar til å redigeres.
+3. Årsaken til avvisningen må så korrigeres. Dette kan være takstkombinasjoner, refusjonstype eller andre forhold. Ugyldig personnummer må korrigeres inn i pasientens Personalia.
+4. Så må man koble konsultasjonen av samleoppgjøret, slik at den kan bli med på neste oppgjør i stedet. Dette gjør man ved å klikke bort haken i boksen til venstre i oversiktsbildet:</p><p>1. Gjenta pkt 2-4 på alle avviste konsultasjoner.
+2. Lagre samleregningen. Nå skal beløpet Samlet krav stemme med det man har fått utbetalt, og man kan markere samleregningen som innsendt: Trykk på Send inn-knappen. Dette oppgjøret er nå ferdig og done deal.
+3. Man kan nå selv velge om man vil sende inn avviste konsultasjoner separat i et eget oppgjør eller om man bare tar de med på neste oppgjør.</p>
+            </div>
+          </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <img class="footer-logo" src="assets/extensor-logo.png" alt="Extensor" />
+          <p class="footer-tag">Helhetlig pasientadministrasjon for norsk helsesektor siden 2004.</p>
+          <div class="footer-contact">
+            <a href="tel:75533300">75 53 33 00</a>
+            <span>Bodø · Oslo</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Produkt</h4>
+          <a href="faggrupper.html">Faggrupper</a>
+          <a href="index.html#produktet">Produktet</a>
+          <a href="tilleggsprodukter.html">Tilleggsprodukter</a>
+          <a href="extensor-ki.html">Extensor KI</a>
+          <a href="nyheter.html">Nyheter</a>
+          <a href="webinar.html">Webinar</a>
+        </div>
+        <div class="footer-col">
+          <h4>Selskapet</h4>
+          <a href="om-oss.html">Om oss</a>
+          <a href="karriere.html">Karriere</a>
+          <a href="kontakt.html">Kontakt</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hjelp</h4>
+          <a href="support.html">Support</a>
+          <a href="brukermanualer.html">Dokumentasjon</a>
+          <a href="personvern.html">Personvern</a>
+          <a href="vilkar.html">Vilkår</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Extensor AS · Org.nr: 982 690 800</p>
+        <div class="footer-bottom-links">
+          <a href="personvern.html">Personvernerklæring</a>
+          <a href="vilkar.html">Vilkår</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

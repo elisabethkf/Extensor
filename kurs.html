@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nyheter — Extensor</title>
-  <meta name="description" content="Siste nytt fra Extensor — produktoppdateringer, webinarer, kundecaser og bransjenyheter fra norsk helse-IT." />
-  <link rel="canonical" href="https://www.extensor.no/nyheter" />
+  <title>Kurs — Extensor</title>
+  <meta name="description" content="Webkurs i Extensor — superbrukerkurs, journalmaler, SMS og EDI. Meld deg på via support@extensor.no." />
+  <link rel="canonical" href="https://www.extensor.no/kurs" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -34,9 +34,9 @@
           <div class="nav-dropdown-menu" id="faggrupper-dropdown"></div>
         </div>
         <a href="webinar.html">Webinar</a>
-        <a href="nyheter.html" class="is-active">Nyheter</a>
+        <a href="nyheter.html">Nyheter</a>
         <a href="om-oss.html">Om oss</a>
-        <a href="support.html">Support</a>
+        <a href="support.html" class="is-active">Support</a>
       </div>
       <a class="nav-cta" href="kontakt.html">Kontakt oss</a>
     </div>
@@ -88,32 +88,69 @@
     <section class="hero hero-sub">
       <div class="hero-inner">
         <div class="hero-grid">
-          <span class="hero-eyebrow">Nyheter</span>
-          <h1>Siste nytt fra <em>Extensor</em>.</h1>
-          <p class="hero-lead">
-            Produktoppdateringer, webinarer, kundecaser og bransjenyheter. Hold deg oppdatert på det som rører seg i norsk helse-IT.
-          </p>
+          <a class="article-back" href="support.html">← Tilbake til Support</a>
+          <span class="hero-eyebrow">Support</span>
+          <h1>Kurs i Extensor.</h1>
+          <p class="hero-lead">Korte, fokuserte webkurs som gjør deg trygg i systemet. Påmelding via e-post til support@extensor.no — husk navn og virksomhet.</p>
         </div>
       </div>
     </section>
 
-    <!-- ── Kategorifilter ───────────────────────────────────────────────── -->
-    <section class="news-filter-section">
-      <div class="news-filter">
-        <button class="news-filter-btn is-active" data-cat="all">Alle</button>
-        <button class="news-filter-btn" data-cat="produkt">Produkt</button>
-        <button class="news-filter-btn" data-cat="kunder">Kunder</button>
-        <button class="news-filter-btn" data-cat="besok">Besøk</button>
-        <button class="news-filter-btn" data-cat="karriere">Karriere</button>
-        <button class="news-filter-btn" data-cat="integrasjon">Integrasjon</button>
-      </div>
-    </section>
-
-    <!-- ── Nyhets-grid ─────────────────────────────────────────────────── -->
-    <section class="section news-section">
+    <!-- ── Kursplan ─────────────────────────────────────────────────────── -->
+    <section class="section">
       <div style="max-width:1280px; margin:0 auto;">
-        <div class="news-grid" id="news-grid"></div>
-        <p class="news-empty" id="news-empty" hidden>Ingen nyheter i denne kategorien ennå.</p>
+        <div class="rv section-head">
+          <div>
+            <span class="pill" style="margin-bottom:16px; display:block; width:fit-content;">Kursplan</span>
+            <h2>Kommende webkurs.</h2>
+          </div>
+          <p>Kursplan for senhøst/vinter 2025 er nå lagt ut, se oversikt lengre ned på siden. For å melde seg på kurs sender man en e-post til support@extensor.no med info om hvilket kurs man ønsker å delta på. Husk å oppgi navn og hvilken virksomhet du jobber på. Pris pr webkurs er kr 299,- eks mva.</p>
+        </div>
+
+        <div class="kurs-list">
+          <article class="rv d1 kurs-item">
+            <div class="kurs-item-meta">
+              <span class="kurs-item-tid">16.april kl.0900</span>
+              <span class="kurs-item-varighet">60 min</span>
+            </div>
+            <h2>Superbruker i Extensor</h2>
+            <p>Gjennomgang av basis superbruker-funksjonalitet i Extensor. Hovedsakelig administrering av egne ansatte og brukerkontoer, passord-håndtering, modultilganger, lesetilgangsstyring i journal. Relevante admin-tilganger ellers i systemet blir også gjennomgått.</p>
+            <p class="kurs-item-malgruppe"><strong>Målgruppe:</strong> Alle som har utvidete rettigheter i Extensor, normalt sett superbrukere i virksomheter med 3 eller flere brukere.</p>
+            <a class="kurs-item-cta" href="mailto:support@extensor.no?subject=Kurspåmelding: Superbruker i Extensor">Meld deg på <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="rv d2 kurs-item">
+            <div class="kurs-item-meta">
+              <span class="kurs-item-tid">23.april kl.0900</span>
+              <span class="kurs-item-varighet">60 min</span>
+            </div>
+            <h2>Journalmaler</h2>
+            <p>Hvordan lage maler i Extensor. Bruk av flettefelt og tabeller for å lage f.eks blanketter og skjema.</p>
+            <p class="kurs-item-malgruppe"><strong>Målgruppe:</strong> Alle</p>
+            <a class="kurs-item-cta" href="mailto:support@extensor.no?subject=Kurspåmelding: Journalmaler">Meld deg på <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="rv d3 kurs-item">
+            <div class="kurs-item-meta">
+              <span class="kurs-item-tid">21.mai kl.0900</span>
+              <span class="kurs-item-varighet">30 min</span>
+            </div>
+            <h2>SMS</h2>
+            <p>Demo av oppsett og bruk av sms-funksjon i Extensor, f.eks automatisk timepåminnelser via sms.</p>
+            <p class="kurs-item-malgruppe"><strong>Målgruppe:</strong> Alle</p>
+            <a class="kurs-item-cta" href="mailto:support@extensor.no?subject=Kurspåmelding: SMS">Meld deg på <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="rv d4 kurs-item">
+            <div class="kurs-item-meta">
+              <span class="kurs-item-tid">28.mai kl.0900</span>
+              <span class="kurs-item-varighet">60 min</span>
+            </div>
+            <h2>EDI - Elektronisk samhandling</h2>
+            <p>Hvordan sende elektroniske meldinger, f.eks epikrise, dialogmelding, henvisning m.m. Samt hvordan holde oversikt på innkommende meldinger og håndtere disse riktig.</p>
+            <p class="kurs-item-malgruppe"><strong>Målgruppe:</strong> Alle</p>
+            <a class="kurs-item-cta" href="mailto:support@extensor.no?subject=Kurspåmelding: EDI - Elektronisk samhandling">Meld deg på <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+
+        <p class="kurs-skreddersydd rv">Ønsker dere skreddersydde kurs for din virksomhet? <a href="kontakt.html">Ta kontakt med oss i Extensor</a>.</p>
       </div>
     </section>
 

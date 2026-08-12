@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brukermanualer — Extensor</title>
+  <meta name="description" content="Brukermanualer og PDF-veiledninger for Extensor 05 — hovedmanualer og enkelttema." />
+  <link rel="canonical" href="https://www.extensor.no/brukermanualer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ─────────────────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="assets/extensor-logo.png" alt="Extensor — Helhetlig pasientadministrasjon" />
+      </a>
+      <button class="nav-burger" type="button" aria-expanded="false" aria-label="Åpne meny"><span></span><span></span><span></span></button>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="index.html#produktet" class="nav-dropdown-trigger">Produktet <span class="nav-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="nav-dropdown-menu is-text-menu">
+            <a class="nav-dropdown-item is-text" href="index.html#produktet">Produktet</a>
+            <a class="nav-dropdown-item is-text" href="extensor-ki.html">Extensor KI</a>
+            <a class="nav-dropdown-item is-text" href="tilleggsprodukter.html">Tilleggsprodukter</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="faggrupper.html" class="nav-dropdown-trigger">Faggrupper <span class="nav-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="nav-dropdown-menu" id="faggrupper-dropdown"></div>
+        </div>
+        <a href="webinar.html">Webinar</a>
+        <a href="nyheter.html">Nyheter</a>
+        <a href="om-oss.html">Om oss</a>
+        <a href="support.html" class="is-active">Support</a>
+      </div>
+      <a class="nav-cta" href="kontakt.html">Kontakt oss</a>
+    </div>
+  </nav>
+
+  <div class="help-bubble">
+    <button class="help-bubble-trigger" type="button" aria-expanded="false" aria-label="Trenger du hjelp?">
+      <span class="help-bubble-trigger-icon" aria-hidden="true">?</span>
+      Trenger du hjelp?
+    </button>
+    <div class="help-bubble-panel" role="dialog" aria-label="Support">
+      <div class="help-bubble-panel-header">
+        <h4>Hvordan kan vi hjelpe?</h4>
+        <p>Norsk support — ingen outsourcing. Vi svarer raskt.</p>
+      </div>
+      <a href="tel:75533300" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Ring support</span>
+          <span class="help-bubble-item-sub">75 53 33 00 · tast 1</span>
+        </span>
+      </a>
+      <a href="mailto:support@extensor.no" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Send e-post</span>
+          <span class="help-bubble-item-sub">support@extensor.no</span>
+        </span>
+      </a>
+      <a href="support.html" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9 9a3 3 0 016 0c0 2-3 2-3 4M12 17.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Gå til Support-siden</span>
+          <span class="help-bubble-item-sub">Driftsmeldinger, opplæring og nedlastninger</span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+    <section class="hero hero-sub">
+      <div class="hero-inner">
+        <div class="hero-grid">
+          <a class="article-back" href="support.html">← Tilbake til Support</a>
+          <span class="hero-eyebrow">Support</span>
+          <h1>Brukermanualer.</h1>
+          <p class="hero-lead">Komplett dokumentasjon av funksjoner og moduler i Extensor 05 — fra hovedmanualer til korte enkelttema-veiledninger.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Brukermanualer ───────────────────────────────────────────────── -->
+    <section class="section">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div class="rv section-head">
+          <div>
+            <span class="pill" style="margin-bottom:16px; display:block; width:fit-content;">Brukermanualer</span>
+            <h2>Dokumentasjon i PDF.</h2>
+          </div>
+          <p>Komplette manualer og enkelttema-veiledninger for Extensor 05. Alle åpnes som PDF i ny fane.</p>
+        </div>
+
+        <div class="rv manual-gruppe">
+          <h2>Enkelttema</h2>
+          <div class="manual-grid">
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e32bf6c4165167b63a91c19_Aktivitetsregistrering.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Aktivitetsregistrering
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e32dbb6567561075c540b1d_Arbeidstidsregistrering.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Arbeidstidsregistrering
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e32dbd370a91c1f590cc002_Avstemming.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Avstemming
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e32dbf45675611e2b5451c1_Avstemming-PayEx-betalingsterminal.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Avstemming kortterminal
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e32dc1c8a4dd896ae06f07b_Avtalegiro-og-OCR.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Avtalegiro og OCR
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/67e3ba2ad07a1fbf48eb1eea_Dialogmelding.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Dialogmelding
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/6757ff3ab08c7c2009524338_Rutiner%20ved%20feilsendt%20EDI%20melding.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              EDI: Rutiner ved feilsendt EDI-melding
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/61652f1020920d162032b6d5_EHF%20faktura%20fra%20Extensor%2005.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              EHF-faktura
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/65092477a8b748e71716b72e_E-resept%20i%20Klinikk.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              E-resept (klinikk)
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/6641d5e3a449540ae82fa514_E-resept%20Rehabilitering.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              E-resept (rehab)
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e33d6291321223521fe1916_Integrasjon-mot-ExorLive.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Exor Live - integrasjon
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e33d5246af76dcb37894153_Extensor-CompanyUtils.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Extensor CompanyUtils
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/687f8b2bc00db9143e95a4b5_Flowzone%20integrasjonen.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Flowzone-integrasjon
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e33d57c3d931ebcbd13fe54_Forsikringspasienter-i-Extensor-05.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Forsikringspasienter
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e33d5abcd75269ace1d6bf1_F%C3%B8rstegangsoppsett-av-DIPS-Communicator-og-konfigurasjon-mot-Extensor-som-fagsystem-for-sending-av-elektroniske-meldinger.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Førstegangsoppsett av DIPS Communicator
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/669a5976c5c0e3d4c7ce26fe_Gruppeadm.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Grupper
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e33d6116af76d2e818a5e48_Rapporteringsveileder-HN-2020.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              HN-rapportering for rehab (2020)
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e33d5f3dd090a48e56c9a82_Rapporteringsveileder-HS%C3%98-2020.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              HSØ-rapportering for rehab (2020)
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/67b58ce3cbef46b41e2d9d8d_Journalnotat%20-%20Bytte%20ansvarlig.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Journalnotat - bytte ansvarlig
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e33d686ac3ee93d70c3f29a_Koding-av-NCMP-til-NPR-melding.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Koding av NCMP til NPR-melding
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e33d6a2b8d45de8b706ca64_Kontrakter.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Kontraktsmodul (BHT)
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/67db0eee6caf8dd0e3170f58_Maler%20-%20hvordan%20opprette%20og%20redigere.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Maler - opprette og redigere
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/62022850cb8c0b28c6f90f2d_NPR%20BKM%20oppgj%C3%B8r.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              NPR-BKM (Rehab) oppgjør
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/60910431bdbe47ae5db37c0d_NPR%20-%20Pakkeforl%C3%B8p%20Psykisk%20Helsevern%20og%20TSB%20-%20nov%202019.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              NPR – Pakkeforløp Psykisk helsevern og TSB
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/616d4fc8b28e394aa049d904_NPR%20rapportering%20for%20Rehabilitering.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              NPR rapportering for rehabilitering
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/654b7f160cf888e44e5bd445_Veileder%20for%20NPR%20Innholdsvalideringsrapport.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              NPR - veileder Innholdsvalideringsrapport
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/64e5dfab9e677dc02fbaef18_Oppdatering%20av%20Extensor%2005.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Oppdatering av Extensor 05
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/67e3b71f16164f290fc63ccb_Pasientreiser%20-%20oppsett%20og%20bruk.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Pasientreiser - oppsett og bruk
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e33d9e026ae7180e08920dc_Extensor-Personalia-og-s%C3%B8k-i-NHN-Personregister.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Personalia – oppslag i Personregisteret i NHN
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/66a1ecbe94f16b4ff74496c5_Polikliniske%20takster%20(POLK)%20-%20inkl%20HELFO-oppgj%C3%B8r.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Poliklinisk (POLK) Helfo-oppgjør
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/60d47e41c6a4eb2f4ed0607d_Produktregister%20og%20kontantsalg.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Produktregister og kontantsalg
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e33d9fb446288559f6d69e1_Prosjektmodulen.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Prosjektmodulen
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e33da19ac3ee97108c5e335_Rapportmodulen-i-Extensor-05.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Rapportering
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/66c8892fe67245179adc585d_Signering%20av%20notater%20og%20dokumenter.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Signering av notater og dokumenter
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/6017b268c2833ab47fd1fd22_Brukermanual%20SMS.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              SMS-modul
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e33da47b694406779da448c_Spesielle-Utvalg.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Spesielle utvalg
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/68dd0c2468d7546aa68554b6_Sp%C3%B8rreunders%C3%B8kelser.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Spørreundersøkelser
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5db80bd8fce786373b9c14b4_Testmodulen-med-resultater.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Testmodulen med resultater
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/65af74e2249fe86d7a78afc4_Utskrift%20av%20komplett%20journalsammendrag.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Utskrift av journal
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/669a59aa612372847d1daa89_Vaksinemodul.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Vaksinemodul
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/675bfb56ed9f3ea69afa5fca_Ytelsesavtaler.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Ytelsesavtaler
+            </a>
+          </div>
+        </div>
+        <div class="rv manual-gruppe">
+          <h2>Hovedmanualer</h2>
+          <div class="manual-grid">
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e31b33ee9eac41d5366e649_5db80fdc24ac071eb36627e9_Informasjon-til-Superbrukerne-Rehab.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Informasjon til superbruker Rehab – før oppstart
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e31b359e9eac49dad66e699_5db80fdc3233bcd2d80cbf5d_Informasjon-til-Superbrukerne-BHT.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Informasjon til superbruker BHT – før oppstart
+            </a>
+          </div>
+        </div>
+        <div class="rv manual-gruppe">
+          <h2>HELSE: Helse-virksomheter, tverrfaglige klinikker</h2>
+          <div class="manual-grid">
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/63999403302d24a3288d451b_Extensor%20Helse%20Hovedmanual%201.36.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Hovedmanual
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/6698ed72652633fd453026fa_HELFO-regnskap.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Helfo-oppgjør
+            </a>
+          </div>
+        </div>
+        <div class="rv manual-gruppe">
+          <h2>REHAB: Rehabiliteringssentre</h2>
+          <div class="manual-grid">
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/66bcb24d3aa92a4b2a0d8109_Extensor%20Rehabilitering%20-%20Superbrukermanual%20-%201.39.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Superbruker
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/66bcb23c438b9104aab926e1_Extensor%20Rehabilitering%20-%20Basisbrukermanual%20-1.39.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Basisbruker
+            </a>
+          </div>
+        </div>
+        <div class="rv manual-gruppe">
+          <h2>BHT: Bedriftshelsetjenester</h2>
+          <div class="manual-grid">
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/63d66b653f76ba1d52832d9a_Extensor%20BHT%20-%20Superbrukermanual%20-%201.36.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Superbruker
+            </a>
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/6530e45edc88898fd89a9a85_Extensor%20BHT%20-%20Basisbrukermanual.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Basisbruker
+            </a>
+          </div>
+        </div>
+        <div class="rv manual-gruppe">
+          <h2>FRISKLIV: Frisklivssentraler</h2>
+          <div class="manual-grid">
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e32bb929272ee649ea676e4_Extensor-Friskliv.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Basiskurshefte
+            </a>
+          </div>
+        </div>
+        <div class="rv manual-gruppe">
+          <h2>TRENING: Treningssentre</h2>
+          <div class="manual-grid">
+            <a class="manual-link" href="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/5e32bbd575c1850a58bffd80_Extensor-Treningsadministrasjon-Brukermanual.pdf" target="_blank" rel="noopener">
+              <span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              Basiskurshefte
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <img class="footer-logo" src="assets/extensor-logo.png" alt="Extensor" />
+          <p class="footer-tag">Helhetlig pasientadministrasjon for norsk helsesektor siden 2004.</p>
+          <div class="footer-contact">
+            <a href="tel:75533300">75 53 33 00</a>
+            <span>Bodø · Oslo</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Produkt</h4>
+          <a href="faggrupper.html">Faggrupper</a>
+          <a href="index.html#produktet">Produktet</a>
+          <a href="tilleggsprodukter.html">Tilleggsprodukter</a>
+          <a href="extensor-ki.html">Extensor KI</a>
+          <a href="nyheter.html">Nyheter</a>
+          <a href="webinar.html">Webinar</a>
+        </div>
+        <div class="footer-col">
+          <h4>Selskapet</h4>
+          <a href="om-oss.html">Om oss</a>
+          <a href="karriere.html">Karriere</a>
+          <a href="kontakt.html">Kontakt</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hjelp</h4>
+          <a href="support.html">Support</a>
+          <a href="brukermanualer.html">Dokumentasjon</a>
+          <a href="personvern.html">Personvern</a>
+          <a href="vilkar.html">Vilkår</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Extensor AS · Org.nr: 982 690 800</p>
+        <div class="footer-bottom-links">
+          <a href="personvern.html">Personvernerklæring</a>
+          <a href="vilkar.html">Vilkår</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
