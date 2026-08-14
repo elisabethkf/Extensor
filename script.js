@@ -823,7 +823,10 @@ async function cmsNedlastninger() {
 
 // ── Side-dokumenter: redigerbar tekst og bilder per side ────────────────────
 const settTekst = (sel, val) => { const el = document.querySelector(sel); if (el && val) el.textContent = val; };
-const settFlerlinje = (sel, val) => { const el = document.querySelector(sel); if (el && val) el.innerHTML = val.split('\n').map(esc).join('<br>'); };
+const settFlerlinje = (sel, val) => {
+  const el = document.querySelector(sel);
+  if (el && val) el.innerHTML = val.split('\n').map(esc).join('<br>').replace(/\*([^*]+)\*/g, '<em>$1</em>');
+};
 const settBilde = (sel, url) => { const el = document.querySelector(sel); if (el && url) el.src = url; };
 
 // Forsiden (gjelder også fargetest-kopien)
@@ -897,3 +900,25 @@ async function cmsSideSupport() {
 }
 
 [cmsSideForside, cmsSideSupport].forEach((fn) => fn().catch((e) => console.warn('CMS:', fn.name, e.message)));
+
+// Øvrige undersider (generisk side-dokument: side-<filnavn>)
+async function cmsSideGenerisk() {
+  const sti = location.pathname.split('/').pop().replace(/\.html$/, '');
+  if (!sti || ['index', 'support', 'fargetest'].includes(sti)) return;
+  const s = await sanityQuery(`*[_type == "side" && _id == "side-${sti}"][0]`);
+  if (!s) return;
+  settTekst('.hero-eyebrow', s.heroEyebrow);
+  settFlerlinje('.hero h1, .article-title', s.heroTittel);
+  settTekst('.hero .hero-lead, .article-lead', s.heroLead);
+  (s.seksjoner || []).forEach((sek, i) => {
+    const head = document.querySelectorAll('.section-head')[i];
+    if (!head) return;
+    const h2 = head.querySelector('h2');
+    if (h2 && sek.tittel) h2.innerHTML = sek.tittel.split('\n').map(esc).join('<br>');
+    const p = head.querySelector(':scope > p');
+    if (p && sek.intro) p.textContent = sek.intro;
+  });
+  settTekst('.cta-card h2', s.ctaTittel);
+  settTekst('.cta-card .lead', s.ctaLead);
+}
+cmsSideGenerisk().catch((e) => console.warn('CMS: cmsSideGenerisk', e.message));
