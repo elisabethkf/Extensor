@@ -49,9 +49,18 @@ export default defineConfig({
                   )
               ),
             S.divider(),
-            ...S.documentTypeListItems().filter(
-              (li) => !['side', 'sideForside', 'sideSupport'].includes(li.getId())
-            ),
+            S.listItem()
+              .title('CMS')
+              .id('cms')
+              .child(
+                S.list()
+                  .title('CMS')
+                  .items(
+                    S.documentTypeListItems().filter(
+                      (li) => !['side', 'sideForside', 'sideSupport'].includes(li.getId())
+                    )
+                  )
+              ),
           ]),
     }),
   ],
