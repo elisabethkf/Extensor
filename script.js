@@ -402,8 +402,8 @@ function initHelpBubble() {
 }
 
 // ── Hero picker ─────────────────────────────────────────────────────────────
-// Samme rekkefølge som faggrupper-listen. «Fysio- og manuellterapeuter» og
-// «Andre behandlere» får full bredde så labelen ikke brekker og gridet går opp.
+// Samme rekkefølge som faggrupper-listen. Alle knappene er like store;
+// lange labeler får brekke over to linjer.
 const heroPickerOrder = ['bedrift', 'rehab', 'rus', 'barnevern', 'sykehus', 'leger', 'fysio', 'psyk', 'kiro', 'andre'];
 
 function renderHeroPicker() {
@@ -414,7 +414,7 @@ function renderHeroPicker() {
     const f = faggrupper.find((fg) => fg.id === id);
     if (!f) return;
     const link = document.createElement('a');
-    link.className = 'picker-btn' + (id === 'fysio' || id === 'andre' ? ' picker-btn-wide' : '');
+    link.className = 'picker-btn';
     link.href = faggruppeHref(f);
     link.textContent = f.label;
     grid.appendChild(link);

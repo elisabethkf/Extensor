@@ -422,11 +422,12 @@ img { display: block; max-width: 100%; }
 .picker-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr; /* alle radene like høye — alle boksene like store */
   gap: 6px;
 }
-.picker-btn-wide { grid-column: 1 / -1; white-space: nowrap; }
 .picker-btn {
-  display: block;
+  display: flex;
+  align-items: center;
   background: #fff;
   border: 2px solid rgba(26,26,24,.12);
   border-radius: 9px;
