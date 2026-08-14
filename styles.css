@@ -397,7 +397,7 @@ img { display: block; max-width: 100%; }
 .picker-card {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: -44px; /* skjøvet inn i mellomrommet mot teksten, så mer av bildet synes */
   width: 86%; /* bred nok til at «Fysio- og manuellterapeuter» står på én linje */
   background: #fff;
   border-radius: 20px;
@@ -1233,7 +1233,7 @@ img { display: block; max-width: 100%; }
   .hero h1 { font-size: 40px; letter-spacing: -1.2px; }
   .hero-right { min-height: 460px; margin-top: 8px; }
   .hero-photo { width: 100%; height: 60%; }
-  .picker-card { width: 92%; }
+  .picker-card { width: 92%; left: 0; }
   .section { padding: 56px 16px; }
   .section-card,
   .about-card { padding: 40px 24px; }
