@@ -2,6 +2,7 @@ import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {schemaTypes} from './schemaTypes'
 import {extensorTheme} from './theme'
+import {ExtensorIkon} from './ExtensorIkon'
 
 // «Sider»-gruppen: ett dokument per underside, i samme rekkefølge som menyen
 const sider = [
@@ -26,6 +27,7 @@ const sider = [
 export default defineConfig({
   name: 'default',
   title: 'Extensor',
+  icon: ExtensorIkon,
   projectId: '79jm8nbd',
   dataset: 'production',
   theme: extensorTheme,
