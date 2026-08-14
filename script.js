@@ -4,30 +4,35 @@ const faggrupper = [
     id: 'bedrift',
     label: 'Bedriftshelsetjenester',
     desc: 'HMS-arbeid, arbeidsevnevurdering og DIFA-tilpasset rapportering for tverrfaglige team.',
+    page: 'bedriftshelsetjenester.html',
     icon: `<svg viewBox="0 0 32 32" fill="none" width="28" height="28"><rect x="4" y="12" width="24" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M10 12V9a2 2 0 012-2h8a2 2 0 012 2v3" stroke="currentColor" stroke-width="1.5"/><path d="M16 17v6M13 20h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`
   },
   {
     id: 'rehab',
     label: 'Rehabilitering',
     desc: 'Tverrfaglig samhandling i felles journal. Målstyring og dokumentasjon for hele teamet.',
+    page: 'rehabilitering.html',
     icon: `<svg viewBox="0 0 32 32" fill="none" width="28" height="28"><circle cx="16" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 20c0-4 3.5-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M6 28c2-3 5-5 10-5s8 2 10 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-opacity=".4"/></svg>`
   },
   {
     id: 'rus',
     label: 'Rus og psykiatri',
     desc: 'Skjermet journal, tverrfaglig samhandling og trygg dokumentasjon for rus- og psykiatritjenester.',
+    page: 'rus-og-psykiatri.html',
     icon: `<svg viewBox="0 0 32 32" fill="none" width="28" height="28"><path d="M16 27s-9-5.5-9-12a5 5 0 019-3 5 5 0 019 3c0 6.5-9 12-9 12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M11 15h3l1.5-3 2 6 1.5-3h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
   },
   {
     id: 'barnevern',
     label: 'Omsorg og barnevern',
     desc: 'Trygg og sporbar journalføring med høy datasikkerhet for barne- og ungdomstjenester.',
+    page: 'omsorg-og-barnevern.html',
     icon: `<svg viewBox="0 0 32 32" fill="none" width="28" height="28"><path d="M16 6c0 0-8 4-8 11a8 8 0 0016 0C24 10 16 6 16 6z" stroke="currentColor" stroke-width="1.5"/><path d="M12 16l2.5 2.5L20 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
   },
   {
     id: 'sykehus',
     label: 'Private sykehus',
     desc: 'Skalerbar plattform for tverrfaglige helseinstitusjoner med avansert ressursstyring.',
+    page: 'private-sykehus.html',
     icon: `<svg viewBox="0 0 32 32" fill="none" width="28" height="28"><rect x="4" y="8" width="24" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M12 8V5h8v3" stroke="currentColor" stroke-width="1.5"/><path d="M16 13v8M12 17h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`
   },
   {
@@ -41,24 +46,28 @@ const faggrupper = [
     id: 'fysio',
     label: 'Fysio- og manuellterapeuter',
     desc: 'Journalmaler basert på SOAP-notat, automatisk HELFO-oppgjør og timebok med online booking.',
+    page: 'fysio-og-manuellterapeuter.html',
     icon: `<svg viewBox="0 0 32 32" fill="none" width="28" height="28"><path d="M16 4c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M8 28v-8c0-3 1.5-5 4-6h8c2.5 1 4 3 4 6v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 20l2 4 2-3 2 3 2-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`
   },
   {
     id: 'psyk',
     label: 'Psykologer',
     desc: 'Sikkert og diskret system tilpasset terapeutiske prosesser. Enkel notattaking og fakturering.',
+    page: 'psykologer.html',
     icon: `<svg viewBox="0 0 32 32" fill="none" width="28" height="28"><path d="M16 5c-5 0-9 3.6-9 8 0 3 1.6 5.5 4 7v4h10v-4c2.4-1.5 4-4 4-7 0-4.4-4-8-9-8z" stroke="currentColor" stroke-width="1.5"/><path d="M13 24h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`
   },
   {
     id: 'kiro',
     label: 'Kiropraktorer',
     desc: 'Anatomiske kroppskart, diagnoseregistrering og behandlingsplaner tilpasset kiropraktorfaget.',
+    page: 'kiropraktorer.html',
     icon: `<svg viewBox="0 0 32 32" fill="none" width="28" height="28"><path d="M16 4v24M12 8l4-4 4 4M10 14h12M10 19h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="27" r="1.5" fill="currentColor"/></svg>`
   },
   {
     id: 'andre',
     label: 'Andre behandlere',
     desc: 'Fleksibelt system som tilpasses din faggruppe og arbeidsform.',
+    page: 'andre-behandlere.html',
     icon: `<svg viewBox="0 0 32 32" fill="none" width="28" height="28"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M16 11v10M11 16h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`
   }
 ];

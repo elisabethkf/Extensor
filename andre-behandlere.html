@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extensor for andre behandlere — Fleksibelt system som tilpasses din praksis</title>
+  <meta name="description" content="Fleksibelt journalsystem som tilpasses din faggruppe og arbeidsform — journal, timebok, betaling og online booking i ett norsk system." />
+  <link rel="canonical" href="https://www.extensor.no/andre-behandlere" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="faggruppe-side">
+
+  <!-- ── Navbar ─────────────────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="assets/extensor-logo.png" alt="Extensor — Helhetlig pasientadministrasjon" />
+      </a>
+      <button class="nav-burger" type="button" aria-expanded="false" aria-label="Åpne meny"><span></span><span></span><span></span></button>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="index.html#produktet" class="nav-dropdown-trigger">Produktet <span class="nav-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="nav-dropdown-menu is-text-menu">
+            <a class="nav-dropdown-item is-text" href="index.html#produktet">Produktet</a>
+            <a class="nav-dropdown-item is-text" href="extensor-ki.html">Extensor KI</a>
+            <a class="nav-dropdown-item is-text" href="tilleggsprodukter.html">Tilleggsprodukter</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="faggrupper.html" class="nav-dropdown-trigger is-active">Faggrupper <span class="nav-dropdown-arrow" aria-hidden="true"></span></a>
+          <div class="nav-dropdown-menu" id="faggrupper-dropdown"></div>
+        </div>
+        <a href="webinar.html">Webinar</a>
+        <a href="nyheter.html">Nyheter</a>
+        <a href="om-oss.html">Om oss</a>
+        <a href="support.html">Support</a>
+      </div>
+      <a class="nav-cta" href="kontakt.html">Kontakt oss</a>
+    </div>
+  </nav>
+
+  <div class="help-bubble">
+    <button class="help-bubble-trigger" type="button" aria-expanded="false" aria-label="Trenger du hjelp?">
+      <span class="help-bubble-trigger-icon" aria-hidden="true">?</span>
+      Trenger du hjelp?
+    </button>
+    <div class="help-bubble-panel" role="dialog" aria-label="Support">
+      <div class="help-bubble-panel-header">
+        <h4>Hvordan kan vi hjelpe?</h4>
+        <p>Norsk support — ingen outsourcing. Vi svarer raskt.</p>
+      </div>
+      <a href="tel:75533300" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Ring support</span>
+          <span class="help-bubble-item-sub">75 53 33 00 · tast 1</span>
+        </span>
+      </a>
+      <a href="mailto:support@extensor.no" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Send e-post</span>
+          <span class="help-bubble-item-sub">support@extensor.no</span>
+        </span>
+      </a>
+      <a href="support.html" class="help-bubble-item">
+        <span class="help-bubble-item-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9 9a3 3 0 016 0c0 2-3 2-3 4M12 17.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <span class="help-bubble-item-text">
+          <span class="help-bubble-item-label">Gå til Support-siden</span>
+          <span class="help-bubble-item-sub">Driftsmeldinger, opplæring og nedlastninger</span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+    <section class="hero hero-sub">
+      <div class="hero-inner">
+        <div class="hero-grid">
+          <div class="faggruppe-tag">
+            <div class="faggruppe-tag-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" width="28" height="28"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M16 11v10M11 16h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="faggruppe-tag-text">
+              <a class="faggruppe-tag-eyebrow" href="faggrupper.html">← Faggrupper</a>
+              <span class="faggruppe-tag-name">Andre behandlere</span>
+            </div>
+          </div>
+          <h1>Et fleksibelt system som<br>tilpasses din praksis.</h1>
+          <p class="hero-lead">
+            Fotterapeut, logoped, ernæringsfysiolog eller akupunktør? Extensor samler journal, timebok, betaling og booking i ett norsk system — tilpasset din faggruppe og arbeidsform.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn-primary" href="#kontakt">Be om demo</a>
+            <a class="btn-warm" href="#inkludert">Se hva som er inkludert</a>
+          </div>
+          <p class="hero-phone-line">
+            Eller ring <a href="tel:75533300">75 53 33 00</a> (tast 3) for tilbud.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Hero photo-band ──────────────────────────────────────────────── -->
+    <section class="hero-photo-band">
+      <div class="rv hero-photo-band-img">
+        <img src="assets/lege-par.png" alt="Behandler med Extensor som journalsystem" />
+        <div class="hero-photo-band-caption">
+          <span class="hpb-pill"><span class="hpb-dot"></span>Norsk helse-IT siden 2004</span>
+          <span class="hpb-pill alt">Brukt av behandlere i mange fag over hele Norge</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Hva er inkludert ─────────────────────────────────────────────── -->
+    <section id="inkludert" class="section">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div class="rv section-head">
+          <div>
+            <span class="pill" style="margin-bottom:16px; display:block; width:fit-content;">Inkludert</span>
+            <h2>Alt praksisen trenger.<br>I samme system.</h2>
+          </div>
+          <p>Fra første konsultasjon til ferdig oppgjør — journalmaler, timebok og betaling tilpasses faget ditt, enten du jobber alene eller i en flerfaglig klinikk.</p>
+        </div>
+
+        <div class="modules-grid">
+
+          <div class="rv d1 module-card">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 3h9l5 5v13H6V3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 3v5h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 13h7M9 17h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Journalmaler tilpasset faget</h3>
+            <p>Fleksible maler som tilpasses din faggruppe og arbeidsform — dokumentasjonen følger din praksis.</p>
+          </div>
+
+          <div class="rv d2 module-card">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8 15h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Timebok og online booking</h3>
+            <p>Full oversikt over avtaler, og mulighet for at pasientene bestiller time selv fra nettsiden.</p>
+          </div>
+
+          <div class="rv d3 module-card">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M2 11h20" stroke="currentColor" stroke-width="1.6"/><path d="M6 15h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Betaling og regnskap</h3>
+            <p>Kortbetaling, e-faktura og innbetalingsoppfølging — med ryddig reskontro for regnskapet.</p>
+          </div>
+
+          <div class="rv d4 module-card">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 12c0 5-4 8-9 8-1.6 0-3-.3-4.3-.8L3 21l1.3-4C3.4 16 3 14 3 12c0-5 4-8 9-8s9 3 9 8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>SMS-påminnelser</h3>
+            <p>Automatiske SMS-påminnelser før time reduserer antall ubenyttede timer.</p>
+          </div>
+
+          <div class="rv d1 module-card">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 19c.6-3 2.8-5 5.5-5s4.9 2 5.5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="9" r="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 14.2c2.4.3 4.3 2 4.9 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Én eller mange behandlere</h3>
+            <p>Fungerer like godt for solopraksisen som for flerfaglige klinikker med delt timebok.</p>
+          </div>
+
+          <div class="rv d2 module-card">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Norsk Helsenett ved behov</h3>
+            <p>Koble på sikker meldingsutveksling med fastleger og spesialister når faget ditt krever det.</p>
+          </div>
+
+          <div class="rv d3 module-card">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="7" y="2.5" width="10" height="19" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M11 18.5h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Extensor GO!</h3>
+            <p>Timebok og pasientinfo på mobilen — full oversikt også utenfor praksisen.</p>
+          </div>
+
+          <div class="rv d4 module-card">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20V8M10 20V4M16 20v-9M22 20H2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Rapportering og statistikk</h3>
+            <p>Hent ut oversikt over aktivitet, omsetning og oppfølging — når du trenger det.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Testimonial ──────────────────────────────────────────────────── -->
+    <section class="section testimonial-section">
+      <div class="rv testimonial">
+        <svg class="quote-mark" width="56" height="44" viewBox="0 0 56 44" fill="none" aria-hidden="true">
+          <path d="M0 44V26C0 13 8 4 22 0v8C13 11 8 17 8 26h14v18H0zm34 0V26C34 13 42 4 56 0v8c-9 3-14 9-14 18h14v18H34z" fill="currentColor"/>
+        </svg>
+        <p class="testimonial-quote">
+          Siden 2006 har jeg ført elektronisk journal og brukt Extensor som leverandør. Det føles trygt at både journalføring, regnskap og reskontro kunder blir ivaretatt på en forskriftsmessig måte. Jeg anbefaler gjerne å bruke Extensor.
+        </p>
+        <div class="testimonial-meta">
+          <div class="testimonial-name">Christina S. Holmen</div>
+          <div class="testimonial-role">Fotterapeut</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tilleggsprodukter (callout) ─────────────────────────────────── -->
+    <section class="section">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div class="rv addon-callout">
+          <div class="addon-callout-text">
+            <span class="pill" style="margin-bottom:14px; display:inline-block;">Tilleggsprodukter</span>
+            <h2>Bygg på når behovet vokser.</h2>
+            <p>Norsk Helsenett-oppkobling, SMS, Extensor GO!, vaksinemodul, online booking og flere moduler du kan koble på etter behov.</p>
+            <div class="addon-callout-tags">
+              <span>Norsk Helsenett</span>
+              <span>SMS</span>
+              <span>Extensor GO!</span>
+              <span>Online booking</span>
+              <span>SYSVAK</span>
+              <span>+ flere</span>
+            </div>
+          </div>
+          <a class="btn-primary" href="tilleggsprodukter.html">Se alle tilleggsprodukter →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+    <section id="faq" class="section">
+      <div style="max-width:1280px; margin:0 auto;">
+        <div class="rv section-head">
+          <div>
+            <span class="pill" style="margin-bottom:16px; display:block; width:fit-content;">FAQ</span>
+            <h2>Vanlige spørsmål.</h2>
+          </div>
+          <p>Finner du ikke svaret du leter etter? Ring oss på 75 53 33 00 — vi tar gjerne praten direkte.</p>
+        </div>
+
+        <div class="faq">
+          <!-- TODO: bekreft alle svar med produkt-/markedsavdeling før publisering -->
+
+          <details class="faq-item">
+            <summary>
+              <span>Passer Extensor for min faggruppe?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-body">
+              <p>Sannsynligvis — Extensor brukes av behandlere i mange fag, fra fotterapeuter til logopeder. Journalmaler og moduler tilpasses din arbeidsform. Ring oss, så finner vi ut av det sammen.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Hva inngår i grunnpakken, og hva er tilleggsprodukter?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-body">
+              <p>Grunnpakken inkluderer journal, timebok og betalingsmodul. Tilleggsprodukter som Norsk Helsenett-oppkobling, SMS, Extensor GO!, online booking og rapporteringsmodul kobles på etter behov.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Kan vi migrere fra andre journalsystemer?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-body">
+              <p>Ja. Vi har erfaring med migrering fra de fleste norske journalsystemer. Pasientdata, journalhistorikk og takster konverteres trygt, og vi følger deg gjennom hele overgangen.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Hva koster Extensor for min praksis?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-body">
+              <p>Vi tilpasser pris til virksomhetens størrelse og hvilke moduler du trenger. Ring salgsavdelingen på 75 53 33 00 (tast 3) for tilbud — vi gir markedets beste priser.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Hvordan er support og opplæring?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-body">
+              <p>Norsk support av kompetente medarbeidere — ingen outsourcing. Opplæring leveres digitalt eller på stedet, og du har tilgang til webinarer og dokumentasjon.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ──────────────────────────────────────────────────────────── -->
+    <section id="kontakt" class="cta-section">
+      <div class="rv cta-card">
+        <div>
+          <span class="pill warm" style="margin-bottom:20px; display:inline-block;">Kom i gang</span>
+          <h2>Klar for en enklere hverdag i praksisen?</h2>
+          <p class="lead">Fyll ut skjemaet for å bestille en demo. Vi viser deg Extensor i praksis og setter sammen rett pakke for din virksomhet — uten forpliktelser.</p>
+          <p class="phone">Ring oss: <a href="tel:75533300">75 53 33 00</a> (tast 3)</p>
+        </div>
+
+        <form class="cta-form" onsubmit="event.preventDefault();">
+          <div class="cta-form-fields">
+            <input type="text" placeholder="Fullt navn" />
+            <input type="text" placeholder="Praksis / virksomhet" />
+            <input type="email" placeholder="E-postadresse" />
+            <select id="cta-faggruppe" data-default="andre">
+              <option value="" disabled>Velg faggruppe</option>
+            </select>
+          </div>
+          <button type="submit" class="cta-submit">Send forespørsel om demo</button>
+          <p class="cta-disclaimer">Vi deler aldri informasjonen din med tredjepart.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <img class="footer-logo" src="assets/extensor-logo.png" alt="Extensor" />
+          <p class="footer-tag">Helhetlig pasientadministrasjon for norsk helsesektor siden 2004.</p>
+          <div class="footer-contact">
+            <a href="tel:75533300">75 53 33 00</a>
+            <span>Bodø · Oslo</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Produkt</h4>
+          <a href="faggrupper.html">Faggrupper</a>
+          <a href="index.html#produktet">Produktet</a>
+          <a href="tilleggsprodukter.html">Tilleggsprodukter</a>
+          <a href="extensor-ki.html">Extensor KI</a>
+          <a href="nyheter.html">Nyheter</a>
+          <a href="webinar.html">Webinar</a>
+        </div>
+        <div class="footer-col">
+          <h4>Selskapet</h4>
+          <a href="om-oss.html">Om oss</a>
+          <a href="karriere.html">Karriere</a>
+          <a href="kontakt.html">Kontakt</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hjelp</h4>
+          <a href="support.html">Support</a>
+          <a href="brukermanualer.html">Dokumentasjon</a>
+          <a href="personvern.html">Personvern</a>
+          <a href="vilkar.html">Vilkår</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Extensor AS · Org.nr: 982 690 800</p>
+        <div class="footer-bottom-links">
+          <a href="personvern.html">Personvernerklæring</a>
+          <a href="vilkar.html">Vilkår</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
