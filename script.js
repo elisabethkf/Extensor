@@ -561,3 +561,262 @@ initNyhetsfilter();
 renderRelatertNyheter();
 initNavDropdowns();
 initBurger();
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ── Sanity CMS ──────────────────────────────────────────────────────────────
+// Innhold redigeres på https://extensor.sanity.studio/ — siden viser statisk
+// fallback-innhold til API-et svarer, så en CMS-feil aldri knekker siden.
+const SANITY = { projectId: '79jm8nbd', dataset: 'production', apiVersion: '2024-01-01' };
+
+async function sanityQuery(query) {
+  const url = `https://${SANITY.projectId}.apicdn.sanity.io/v${SANITY.apiVersion}/data/query/${SANITY.dataset}?query=${encodeURIComponent(query)}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Sanity-feil ' + res.status);
+  return (await res.json()).result;
+}
+
+function ytId(url) {
+  const m = /[?&]v=([\w-]+)|youtu\.be\/([\w-]+)/.exec(url || '');
+  return m ? (m[1] || m[2]) : null;
+}
+
+function esc(s) {
+  const div = document.createElement('div');
+  div.textContent = s == null ? '' : s;
+  return div.innerHTML;
+}
+
+function norskDato(iso) {
+  if (!iso) return '';
+  const mnd = ['januar','februar','mars','april','mai','juni','juli','august','september','oktober','november','desember'];
+  const [aar, m, dag] = iso.split('-');
+  return `${parseInt(dag, 10)}. ${mnd[parseInt(m, 10) - 1]} ${aar}`;
+}
+
+// Forside: driftsmelding-bar
+async function cmsDriftBar() {
+  const bar = document.querySelector('.drift-bar');
+  if (!bar) return;
+  const m = await sanityQuery(`*[_type == "driftsmelding" && visPaForsiden == true] | order(dato desc)[0]{tittel, tekst, type}`);
+  if (!m) {
+    bar.remove();
+    document.body.classList.remove('has-driftbar');
+    document.documentElement.style.setProperty('--driftbar-h', '0px');
+    return;
+  }
+  bar.classList.toggle('is-critical', m.type === 'kritisk');
+  bar.querySelector('.drift-bar-text').innerHTML = `<strong>${esc(m.tittel)}:</strong> ${esc(m.tekst)}`;
+  window.dispatchEvent(new Event('resize')); // re-mål barhøyden etter tekstbytte
+}
+
+// Support: driftsmelding-liste
+async function cmsDriftListe() {
+  const liste = document.querySelector('.status-list');
+  if (!liste) return;
+  const rader = await sanityQuery(`*[_type == "driftsmelding"] | order(dato desc)[0...8]{tittel, tekst, type, dato}`);
+  if (!rader || !rader.length) return;
+  liste.innerHTML = rader.map((m, i) => `
+    <article class="rv in d${i % 4 + 1} status-item ${m.type === 'info' ? 'status-info' : 'status-warning'}">
+      <div class="status-item-meta">
+        <span class="status-item-tag">${m.type === 'info' ? 'Info' : m.type === 'kritisk' ? 'Kritisk' : 'Viktig'}</span>
+        <span class="status-item-date">${norskDato(m.dato)}</span>
+      </div>
+      <h3>${esc(m.tittel)}</h3>
+      <p>${esc(m.tekst)}</p>
+    </article>`).join('');
+}
+
+// Forside: kundelogoer
+async function cmsKundelogoer() {
+  const track = document.querySelector('.client-logos-track');
+  if (!track) return;
+  const logoer = await sanityQuery(`*[_type == "kundelogo"] | order(rekkefolge asc){navn, "logoUrl": logo.asset->url}`);
+  if (!logoer || !logoer.length) return;
+  const item = (l, skjult) => l.logoUrl
+    ? `<img class="client-logo-img" src="${l.logoUrl}" alt="${skjult ? '' : esc(l.navn)}"${skjult ? ' aria-hidden="true"' : ''} loading="lazy" />`
+    : `<span class="client-logo"${skjult ? ' aria-hidden="true"' : ''}>${esc(l.navn)}</span>`;
+  track.innerHTML = logoer.map((l) => item(l, false)).join('') + logoer.map((l) => item(l, true)).join('');
+}
+
+// Nyheter (forside-relatert + nyhetsside) — bytt ut innholdet i arrayen og re-render
+async function cmsNyheter() {
+  if (!document.querySelector('#news-grid') && !document.querySelector('#related-news-grid')) return;
+  const rader = await sanityQuery(`*[_type == "nyhet"] | order(dato desc){
+    "id": string::split(_id, ".")[1], tittel, dato, kategori, ingress, lenke,
+    "img": coalesce(bilde.asset->url, bildeUrl)}`);
+  if (!rader || !rader.length) return;
+  const katLabel = { kunder: 'Kunder', besok: 'Besøk', produkt: 'Produkt', karriere: 'Karriere', integrasjon: 'Integrasjon' };
+  nyheter.length = 0;
+  rader.forEach((r) => nyheter.push({
+    id: r.id, title: r.tittel,
+    date: r.dato ? r.dato.split('-').reverse().join('.') : '',
+    category: r.kategori, categoryLabel: katLabel[r.kategori] || r.kategori,
+    excerpt: r.ingress || '', image: r.img || '', url: r.lenke || '#',
+  }));
+  const aktivtFilter = document.querySelector('.news-filter-btn.is-active');
+  renderNyheter(aktivtFilter ? aktivtFilter.dataset.cat : 'all');
+  renderRelatertNyheter();
+}
+
+// Testimonials-marquee
+async function cmsTestimonials() {
+  if (!document.querySelector('#testimonials-track')) return;
+  const rader = await sanityQuery(`*[_type == "testimonial"]{navn, rolle, faggruppe, sitat, avatarFarge, "img": coalesce(bilde.asset->url, bildeUrl)}`);
+  if (!rader || !rader.length) return;
+  testimonials.length = 0;
+  rader.forEach((r) => testimonials.push({
+    name: r.navn, role: r.rolle || '', faggruppe: r.faggruppe || '',
+    quote: r.sitat, image: r.img || undefined, avatar: r.avatarFarge || '#d4c8b8',
+  }));
+  renderTestimonialsMarquee();
+}
+
+// Webinar-siden: featured + arkiv
+async function cmsWebinarer() {
+  const featured = document.querySelector('.webinar-featured');
+  const grid = document.querySelector('.webinar-grid');
+  if (!featured && !grid) return;
+  if (document.querySelector('#videoguide-side')) return; // videoguider gjenbruker webinar-grid
+  const rader = await sanityQuery(`*[_type == "webinar"] | order(dato desc){
+    tittel, dato, status, beskrivelse, videoUrl, lenke, fremhevet,
+    "img": coalesce(bilde.asset->url, bildeUrl)}`);
+  if (!rader || !rader.length) return;
+  const hoved = rader.find((r) => r.fremhevet) || rader[0];
+  const rest = rader.filter((r) => r !== hoved);
+  const play = `<span class="webinar-play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5l12 7-12 7V5z" fill="currentColor"/></svg></span>`;
+  if (featured && hoved) {
+    featured.href = hoved.lenke || hoved.videoUrl || '#';
+    featured.querySelector('.webinar-featured-img img').src = hoved.img || '';
+    featured.querySelector('.webinar-featured-title').textContent = hoved.tittel;
+    featured.querySelector('.webinar-featured-desc').textContent = hoved.beskrivelse || '';
+    const datoEl = featured.querySelectorAll('.webinar-meta-item')[0];
+    if (datoEl) datoEl.textContent = norskDato(hoved.dato);
+  }
+  if (grid && rest.length) {
+    grid.innerHTML = rest.map((w, i) => `
+      <a href="${w.lenke || w.videoUrl || '#'}" class="rv in d${i % 4 + 1} webinar-card">
+        <div class="webinar-card-img"><img src="${w.img || ''}" alt="" />${play}</div>
+        <div class="webinar-card-body">
+          <div class="webinar-meta">
+            <span class="webinar-meta-item">${norskDato(w.dato)}</span>
+            <span class="webinar-meta-item">Online</span>
+          </div>
+          <h3 class="webinar-card-title">${esc(w.tittel)}</h3>
+          <p class="webinar-card-desc">${esc(w.beskrivelse || '')}</p>
+          <span class="webinar-cta">Se opptak <span aria-hidden="true">→</span></span>
+        </div>
+      </a>`).join('');
+  }
+}
+
+// Kurs-siden
+async function cmsKurs() {
+  const liste = document.querySelector('.kurs-list');
+  if (!liste) return;
+  const rader = await sanityQuery(`*[_type == "kurs" && aktiv == true] | order(rekkefolge asc){tittel, tidspunkt, varighet, beskrivelse, malgruppe}`);
+  if (!rader || !rader.length) return;
+  liste.innerHTML = rader.map((c, i) => `
+    <article class="rv in d${i % 4 + 1} kurs-item">
+      <div class="kurs-item-meta">
+        <span class="kurs-item-tid">${esc(c.tidspunkt || '')}</span>
+        <span class="kurs-item-varighet">${esc(c.varighet || '')}</span>
+      </div>
+      <h2>${esc(c.tittel)}</h2>
+      <p>${esc(c.beskrivelse || '')}</p>
+      <p class="kurs-item-malgruppe"><strong>Målgruppe:</strong> ${esc(c.malgruppe || 'Alle')}</p>
+      <a class="kurs-item-cta" href="mailto:support@extensor.no?subject=${encodeURIComponent('Kurspåmelding: ' + c.tittel)}">Meld deg på <span aria-hidden="true">→</span></a>
+    </article>`).join('');
+}
+
+// Videoguider-siden (markeres med #videoguide-side på grid-en)
+async function cmsVideoguider() {
+  const grid = document.querySelector('#videoguide-side');
+  if (!grid) return;
+  const rader = await sanityQuery(`*[_type == "videoguide"] | order(rekkefolge asc){tittel, beskrivelse, videoUrl}`);
+  if (!rader || !rader.length) return;
+  const play = `<span class="webinar-play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5l12 7-12 7V5z" fill="currentColor"/></svg></span>`;
+  grid.innerHTML = rader.map((v, i) => `
+    <a href="${v.videoUrl}" target="_blank" rel="noopener" class="rv in d${i % 4 + 1} webinar-card">
+      <div class="webinar-card-img"><img src="https://img.youtube.com/vi/${ytId(v.videoUrl)}/hqdefault.jpg" alt="" loading="lazy" />${play}</div>
+      <div class="webinar-card-body">
+        <h2 class="webinar-card-title">${esc(v.tittel)}</h2>
+        <p class="webinar-card-desc">${esc(v.beskrivelse || 'Kort videogjennomgang av funksjonen.')}</p>
+        <span class="webinar-cta">Se video <span aria-hidden="true">→</span></span>
+      </div>
+    </a>`).join('');
+}
+
+// Brukermanualer-siden
+async function cmsBrukermanualer() {
+  const grupper = document.querySelectorAll('.manual-gruppe');
+  if (!grupper.length) return;
+  const rader = await sanityQuery(`*[_type == "brukermanual"] | order(rekkefolge asc){tittel, gruppe, "fil": coalesce(fil.asset->url, url)}`);
+  if (!rader || !rader.length) return;
+  const rekkefolge = [];
+  const perGruppe = {};
+  rader.forEach((m) => {
+    if (!perGruppe[m.gruppe]) { perGruppe[m.gruppe] = []; rekkefolge.push(m.gruppe); }
+    perGruppe[m.gruppe].push(m);
+  });
+  const ikon = `<span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>`;
+  const forelder = grupper[0].parentNode;
+  grupper.forEach((g) => g.remove());
+  rekkefolge.forEach((navn) => {
+    const div = document.createElement('div');
+    div.className = 'rv in manual-gruppe';
+    div.innerHTML = `<h2>${esc(navn)}</h2><div class="manual-grid">` +
+      perGruppe[navn].map((m) => `<a class="manual-link" href="${m.fil}" target="_blank" rel="noopener">${ikon}${esc(m.tittel)}</a>`).join('') +
+      `</div>`;
+    forelder.appendChild(div);
+  });
+}
+
+// FAQ-siden
+async function cmsFaq() {
+  const kategorier = document.querySelectorAll('.faq-kategori');
+  if (!kategorier.length) return;
+  const rader = await sanityQuery(`*[_type == "faqItem"] | order(rekkefolge asc){sporsmal, kategori, svar}`);
+  if (!rader || !rader.length) return;
+  const rekkefolge = [];
+  const perKat = {};
+  rader.forEach((q) => {
+    if (!perKat[q.kategori]) { perKat[q.kategori] = []; rekkefolge.push(q.kategori); }
+    perKat[q.kategori].push(q);
+  });
+  const forelder = kategorier[0].parentNode;
+  kategorier.forEach((k) => k.remove());
+  rekkefolge.forEach((navn) => {
+    const div = document.createElement('div');
+    div.className = 'rv in faq-kategori';
+    div.innerHTML = `<h2>${esc(navn)}</h2><div class="partner-grid">` +
+      perKat[navn].map((q) => `
+        <details class="partner-item">
+          <summary><span class="partner-name">${esc(q.sporsmal)}</span><span class="partner-icon" aria-hidden="true"></span></summary>
+          <div class="partner-body">${q.svar.split(/\n\n+/).map((a) => `<p>${esc(a)}</p>`).join('')}</div>
+        </details>`).join('') +
+      `</div>`;
+    forelder.appendChild(div);
+  });
+}
+
+// Nedlastninger-siden (lenkelistene per seksjon)
+async function cmsNedlastninger() {
+  const seksjoner = ['oppdateringer', 'versjonsnytt', 'programtillegg', 'filer']
+    .map((id) => document.querySelector(`#${id} .manual-grid`)).filter(Boolean);
+  if (!seksjoner.length) return;
+  const rader = await sanityQuery(`*[_type == "nedlastning"] | order(rekkefolge asc){tittel, seksjon, dato, "fil": coalesce(fil.asset->url, url)}`);
+  if (!rader || !rader.length) return;
+  const ikon = `<span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>`;
+  ['oppdateringer', 'versjonsnytt', 'programtillegg', 'filer'].forEach((id) => {
+    const grid = document.querySelector(`#${id} .manual-grid`);
+    const mine = rader.filter((r) => r.seksjon === id);
+    if (!grid || !mine.length) return;
+    grid.innerHTML = mine.map((l) => `
+      <a class="manual-link" href="${l.fil}" target="_blank" rel="noopener">${ikon}${esc(l.tittel)}${l.dato ? `<span class="manual-link-dato">${esc(l.dato)}</span>` : ''}</a>`).join('');
+  });
+}
+
+// Kjør alt — hver funksjon feiler stille og lar statisk innhold stå
+[cmsDriftBar, cmsDriftListe, cmsKundelogoer, cmsNyheter, cmsTestimonials,
+ cmsWebinarer, cmsKurs, cmsVideoguider, cmsBrukermanualer, cmsFaq, cmsNedlastninger]
+  .forEach((fn) => fn().catch((e) => console.warn('CMS:', fn.name, e.message)));
