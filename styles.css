@@ -398,7 +398,7 @@ img { display: block; max-width: 100%; }
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 72%;
+  width: 86%; /* bred nok til at «Fysio- og manuellterapeuter» står på én linje */
   background: #fff;
   border-radius: 20px;
   padding: 22px 22px 20px;
