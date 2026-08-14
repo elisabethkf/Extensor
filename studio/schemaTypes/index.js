@@ -8,6 +8,8 @@ import faqItem from './faqItem'
 import nedlastning from './nedlastning'
 import testimonial from './testimonial'
 import kundelogo from './kundelogo'
+import sideForside from './sideForside'
+import sideSupport from './sideSupport'
 
 export const schemaTypes = [
   driftsmelding,
@@ -20,4 +22,6 @@ export const schemaTypes = [
   nedlastning,
   testimonial,
   kundelogo,
+  sideForside,
+  sideSupport,
 ]

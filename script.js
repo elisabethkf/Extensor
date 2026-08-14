@@ -820,3 +820,80 @@ async function cmsNedlastninger() {
 [cmsDriftBar, cmsDriftListe, cmsKundelogoer, cmsNyheter, cmsTestimonials,
  cmsWebinarer, cmsKurs, cmsVideoguider, cmsBrukermanualer, cmsFaq, cmsNedlastninger]
   .forEach((fn) => fn().catch((e) => console.warn('CMS:', fn.name, e.message)));
+
+// ── Side-dokumenter: redigerbar tekst og bilder per side ────────────────────
+const settTekst = (sel, val) => { const el = document.querySelector(sel); if (el && val) el.textContent = val; };
+const settFlerlinje = (sel, val) => { const el = document.querySelector(sel); if (el && val) el.innerHTML = val.split('\n').map(esc).join('<br>'); };
+const settBilde = (sel, url) => { const el = document.querySelector(sel); if (el && url) el.src = url; };
+
+// Forsiden (gjelder også fargetest-kopien)
+async function cmsSideForside() {
+  if (!document.querySelector('.hero-kpis')) return;
+  const s = await sanityQuery(`*[_id == "side-forside"][0]{..., "heroBildeUrl": heroBilde.asset->url, "produktetBildeUrl": produktetBilde.asset->url}`);
+  if (!s) return;
+  settTekst('.hero .pill.teal', s.heroPill);
+  settFlerlinje('.hero h1', s.heroTittel);
+  settTekst('.hero .hero-lead', s.heroLead);
+  settBilde('.hero-photo img', s.heroBildeUrl);
+  settTekst('.hero-ctas .btn-primary', s.ctaPrimar);
+  settTekst('.hero-ctas .btn-warm', s.ctaSekundar);
+  if (s.heroKpier && s.heroKpier.length) {
+    const kpis = document.querySelector('.hero-kpis');
+    kpis.style.gridTemplateColumns = `repeat(${s.heroKpier.length}, 1fr)`;
+    kpis.innerHTML = s.heroKpier.map((k) => `
+      <div class="hero-kpi">
+        <span class="hero-kpi-value">${esc(k.verdi)}</span>
+        <span class="hero-kpi-label">${esc(k.etikett)}</span>
+      </div>`).join('');
+  }
+  settTekst('.client-logos-label', s.logoStripeLabel);
+  settFlerlinje('#produktet h2', s.produktetTittel);
+  if (s.produktetPunkter && s.produktetPunkter.length) {
+    const kolonne = document.querySelector('.features-grid > div:first-child');
+    if (kolonne) {
+      const hake = `<div class="feature-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+      kolonne.innerHTML = s.produktetPunkter.map((pkt, i) => `
+        <div class="rv in d${i % 4 + 1} feature-row">${hake}
+          <div><h3>${esc(pkt.tittel)}</h3><p>${esc(pkt.tekst)}</p></div>
+        </div>`).join('');
+    }
+  }
+  settBilde('.features-portrait img', s.produktetBildeUrl);
+  settTekst('#faggrupper .section-head h2', s.faggrupperTittel);
+  settTekst('#faggrupper .section-head > p', s.faggrupperIntro);
+  settTekst('.ki-spotlight .pill', s.kiPill);
+  settFlerlinje('.ki-spotlight h2', s.kiTittel);
+  settTekst('.ki-spotlight-lead', s.kiLead);
+  if (s.kiPunkter && s.kiPunkter.length) {
+    const liste = document.querySelector('.ki-spotlight-list');
+    if (liste) liste.innerHTML = s.kiPunkter.map((t) => `<li><span class="ki-check" aria-hidden="true"></span>${esc(t)}</li>`).join('');
+  }
+  settTekst('.ki-spotlight .btn-warm', s.kiKnapp);
+  settFlerlinje('.testimonials-head h2', s.kunderTittel);
+  settTekst('.testimonials-head > p', s.kunderIntro);
+  settTekst('#kontakt .cta-card h2', s.ctaTittel);
+  settTekst('#kontakt .cta-card .lead', s.ctaLead);
+}
+
+// Support-siden
+async function cmsSideSupport() {
+  if (!document.querySelector('.hero-support')) return;
+  const s = await sanityQuery(`*[_id == "side-support"][0]{..., "heroBildeUrl": heroBilde.asset->url}`);
+  if (!s) return;
+  settTekst('.hero-support h1', s.heroTittel);
+  settTekst('.hero-support .hero-lead', s.heroLead);
+  settBilde('.hero-support-photo img', s.heroBildeUrl);
+  settTekst('.hero-anchor-label', s.snarveiLabel);
+  settTekst('#kontakt-support .section-head h2', s.kontaktTittel);
+  settTekst('#kontakt-support .section-head > p', s.kontaktIntro);
+  settTekst('#quicksupport .section-head h2', s.quicksupportTittel);
+  settTekst('#quicksupport .section-head > p', s.quicksupportIntro);
+  settTekst('#opplaering .section-head h2', s.opplaeringTittel);
+  settTekst('#opplaering .section-head > p', s.opplaeringIntro);
+  settTekst('#nedlastninger .section-head h2', s.nedlastningerTittel);
+  settTekst('#nedlastninger .section-head > p', s.nedlastningerIntro);
+  settTekst('#driftsmeldinger .section-head h2', s.driftTittel);
+  settTekst('#driftsmeldinger .section-head > p', s.driftIntro);
+}
+
+[cmsSideForside, cmsSideSupport].forEach((fn) => fn().catch((e) => console.warn('CMS:', fn.name, e.message)));
