@@ -4932,3 +4932,121 @@ body.nav-open .nav-burger span:nth-child(3) {
 @media (max-width: 560px) {
   .manual-grid, .nedlast-tekst .manual-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Driftsmelding-bar (forsiden) ────────────────────────────────────────────
+   Vises når en driftsmelding er merket «Vis på forsiden» i backend.
+   Høyden måles av script.js og legges i --driftbar-h, slik at navbar og
+   hero flyttes tilsvarende ned — også når teksten brekker over flere linjer. */
+:root { --driftbar-h: 0px; }
+
+.drift-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 210;
+  background: var(--warm-yellow);
+  border-bottom: 1px solid var(--warm-yellow-dk);
+}
+.drift-bar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 9px 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.drift-bar-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+  animation: driftpulse 1.8s ease-in-out infinite;
+}
+.drift-bar-tag {
+  flex: none;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: rgba(26,26,24,.09);
+  color: var(--ink);
+}
+.drift-bar-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  min-width: 0;
+}
+.drift-bar-text strong { font-weight: 800; }
+.drift-bar-link {
+  flex: none;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.drift-bar-link-arrow { transition: transform .15s; }
+.drift-bar-link:hover .drift-bar-link-arrow { transform: translateX(3px); }
+.drift-bar-close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background .15s;
+}
+.drift-bar-close:hover { background: rgba(26,26,24,.1); }
+
+/* Rød variant for alvorlige hendelser (nedetid o.l.) */
+.drift-bar.is-critical {
+  background: #c84a3a;
+  border-bottom-color: #b03d2e;
+}
+.drift-bar.is-critical .drift-bar-dot,
+.drift-bar.is-critical .drift-bar-text,
+.drift-bar.is-critical .drift-bar-link,
+.drift-bar.is-critical .drift-bar-tag,
+.drift-bar.is-critical .drift-bar-close { color: #fff; }
+.drift-bar.is-critical .drift-bar-dot { background: #fff; }
+.drift-bar.is-critical .drift-bar-tag { background: rgba(255,255,255,.16); }
+.drift-bar.is-critical .drift-bar-close:hover { background: rgba(255,255,255,.16); }
+
+/* Navbar og innhold flyttes ned når baren er synlig */
+body.has-driftbar .nav { top: var(--driftbar-h); }
+body.has-driftbar .hero { padding-top: calc(64px + var(--driftbar-h)); }
+
+@media (max-width: 960px) {
+  body.has-driftbar .nav-links { top: calc(64px + var(--driftbar-h)); }
+}
+@media (max-width: 720px) {
+  .drift-bar-inner {
+    position: relative;
+    padding: 9px 44px 9px 20px;
+    flex-wrap: wrap;
+    row-gap: 2px;
+    gap: 10px;
+  }
+  .drift-bar-tag { display: none; }
+  .drift-bar-text { font-size: 12.5px; flex: 1 1 0; }
+  .drift-bar-link {
+    font-size: 12.5px;
+    flex-basis: 100%;
+    margin-left: 18px;
+  }
+  .drift-bar-close {
+    position: absolute;
+    top: 7px;
+    right: 12px;
+  }
+}

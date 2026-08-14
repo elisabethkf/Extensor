@@ -13,6 +13,21 @@
 </head>
 <body>
 
+  <!-- ── Driftsmelding-bar ──────────────────────────────────────────────── -->
+  <!-- Vises kun når en driftsmelding er merket «Vis på forsiden» i backend.
+       Bytt klasse til .is-critical for rød variant ved alvorlige hendelser. -->
+  <div class="drift-bar" role="status">
+    <div class="drift-bar-inner">
+      <span class="drift-bar-dot" aria-hidden="true"></span>
+      <span class="drift-bar-tag">Driftsmelding</span>
+      <p class="drift-bar-text"><strong>Persontjenesten og HelseID:</strong> Personregister erstattes av Persontjenesten — krever HelseID.</p>
+      <a class="drift-bar-link" href="support.html#driftsmeldinger">Les mer<span class="drift-bar-link-arrow" aria-hidden="true">→</span></a>
+      <button class="drift-bar-close" type="button" aria-label="Lukk driftsmelding">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
   <!-- ── Navbar ─────────────────────────────────────────────────────────── -->
   <nav class="nav">
     <div class="nav-inner">

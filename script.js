@@ -343,6 +343,24 @@ const revealObserver = new IntersectionObserver(
 );
 document.querySelectorAll('.rv, .rvl, .rvr').forEach((el) => revealObserver.observe(el));
 
+// ── Driftsmelding-bar ───────────────────────────────────────────────────────
+// Måler barens høyde (kan variere ved linjebrekk) og eksponerer den som
+// --driftbar-h, slik at navbar og hero forskyves nøyaktig like mye.
+const driftBar = document.querySelector('.drift-bar');
+if (driftBar) {
+  const setDriftbarHeight = () => {
+    document.documentElement.style.setProperty('--driftbar-h', driftBar.offsetHeight + 'px');
+  };
+  document.body.classList.add('has-driftbar');
+  setDriftbarHeight();
+  window.addEventListener('resize', setDriftbarHeight);
+  driftBar.querySelector('.drift-bar-close')?.addEventListener('click', () => {
+    driftBar.remove();
+    document.body.classList.remove('has-driftbar');
+    document.documentElement.style.setProperty('--driftbar-h', '0px');
+  });
+}
+
 // ── Navbar scroll state ─────────────────────────────────────────────────────
 const nav = document.querySelector('.nav');
 window.addEventListener('scroll', () => {
