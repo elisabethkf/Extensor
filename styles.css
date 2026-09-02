@@ -4201,6 +4201,41 @@ img { display: block; max-width: 100%; }
   justify-content: center;
 }
 
+/* Aktive stillingsutlysninger (CMS-drevet, se cmsKarriereStillinger i script.js) */
+.karriere-stillinger {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.stilling-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+}
+.stilling-card h3 {
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--ink);
+  letter-spacing: -0.4px;
+  margin-bottom: 10px;
+}
+.stilling-card p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.stilling-frist {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+
 /* ─────────────────────────────────────────────────────────────────────────── */
 /* ── Artikkel-side (blogg-innlegg) ────────────────────────────────────────── */
 /* ─────────────────────────────────────────────────────────────────────────── */

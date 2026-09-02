@@ -680,6 +680,38 @@ async function cmsPartnere() {
   }
 }
 
+// Tilleggsprodukter
+async function cmsAddonProdukter() {
+  const grid = document.querySelector('.addon-grid');
+  if (!grid) return;
+  const rader = await sanityQuery(`*[_type == "addonProdukt"] | order(rekkefolge asc){tag, tittel, beskrivelse}`);
+  if (!rader || !rader.length) return;
+  grid.innerHTML = rader.map((a, i) => `
+    <div class="rv in d${i % 4 + 1} addon-card">
+      <span class="addon-tag">${esc(a.tag)}</span>
+      <h3>${esc(a.tittel)}</h3>
+      <p>${esc(a.beskrivelse)}</p>
+    </div>`).join('');
+}
+
+// Karriere: aktive stillingsutlysninger (nyhet med kategori=karriere og erAktivStilling=true)
+async function cmsKarriereStillinger() {
+  const seksjon = document.querySelector('#karriere-stillinger-seksjon');
+  if (!seksjon) return;
+  const rader = await sanityQuery(`*[_type == "nyhet" && kategori == "karriere" && erAktivStilling == true] | order(dato desc){tittel, ingress, soknadsfrist, lenke}`);
+  if (!rader || !rader.length) return;
+  document.querySelector('#karriere-stillinger').innerHTML = rader.map((s) => `
+    <article class="stilling-card">
+      <h3>${esc(s.tittel)}</h3>
+      <p>${esc(s.ingress || '')}</p>
+      ${s.soknadsfrist ? `<span class="stilling-frist">Søknadsfrist: ${norskDato(s.soknadsfrist)}</span>` : ''}
+      <div><a class="btn-primary btn-sm" href="${esc(s.lenke || 'mailto:karriere@extensor.no')}">Les mer og søk →</a></div>
+    </article>`).join('');
+  seksjon.hidden = false;
+  const tom = document.querySelector('#karriere-empty-seksjon');
+  if (tom) tom.hidden = true;
+}
+
 // Nyheter (forside-relatert + nyhetsside) — bytt ut innholdet i arrayen og re-render
 async function cmsNyheter() {
   if (!document.querySelector('#news-grid') && !document.querySelector('#related-news-grid')) return;
@@ -859,8 +891,8 @@ async function cmsNedlastninger() {
 }
 
 // Kjør alt — hver funksjon feiler stille og lar statisk innhold stå
-[cmsDriftBar, cmsDriftListe, cmsKundelogoer, cmsTeam, cmsPartnere, cmsNyheter, cmsTestimonials,
- cmsWebinarer, cmsKurs, cmsVideoguider, cmsBrukermanualer, cmsFaq, cmsNedlastninger]
+[cmsDriftBar, cmsDriftListe, cmsKundelogoer, cmsTeam, cmsPartnere, cmsAddonProdukter, cmsKarriereStillinger,
+ cmsNyheter, cmsTestimonials, cmsWebinarer, cmsKurs, cmsVideoguider, cmsBrukermanualer, cmsFaq, cmsNedlastninger]
   .forEach((fn) => fn().catch((e) => console.warn('CMS:', fn.name, e.message)));
 
 // ── Side-dokumenter: redigerbar tekst og bilder per side ────────────────────

@@ -99,9 +99,14 @@
       </div>
     </section>
 
+    <!-- ── Aktive stillingsutlysninger (CMS-drevet — se cmsKarriereStillinger i script.js) ── -->
+    <!-- Skjult som standard; vises automatisk når en nyhet med kategori=karriere er merket «Aktiv stillingsutlysning» i Sanity. -->
+    <section class="section" id="karriere-stillinger-seksjon" hidden>
+      <div class="rv karriere-stillinger" id="karriere-stillinger"></div>
+    </section>
+
     <!-- ── Status: ingen utlyste stillinger ──────────────────────────────── -->
-    <!-- TODO: erstatt med faktisk stillingsliste når Extensor lyser ut nye stillinger -->
-    <section class="section">
+    <section class="section" id="karriere-empty-seksjon">
       <div class="rv karriere-empty">
         <div class="karriere-empty-icon" aria-hidden="true">
           <svg width="48" height="48" viewBox="0 0 32 32" fill="none">

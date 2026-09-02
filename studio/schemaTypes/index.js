@@ -10,6 +10,7 @@ import testimonial from './testimonial'
 import kundelogo from './kundelogo'
 import ansatt from './ansatt'
 import partner from './partner'
+import addonProdukt from './addonProdukt'
 import side from './side'
 import sideForside from './sideForside'
 import sideSupport from './sideSupport'
@@ -22,6 +23,8 @@ export const schemaTypes = [
   // Om oss-innhold
   ansatt,
   partner,
+  // Produkt-innhold
+  addonProdukt,
   // Support / opplæring-innhold (samme rekkefølge som ressurskortene på Support-siden)
   webinar,
   kurs,

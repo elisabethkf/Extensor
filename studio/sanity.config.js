@@ -78,6 +78,8 @@ export default defineConfig({
                       ['ansatt', 'partner'].includes(li.getId())
                     ),
                     S.divider(),
+                    ...S.documentTypeListItems().filter((li) => li.getId() === 'addonProdukt'),
+                    S.divider(),
                     ...S.documentTypeListItems().filter((li) =>
                       ['webinar', 'kurs', 'videoguide', 'brukermanual', 'faqItem', 'nedlastning'].includes(
                         li.getId()
