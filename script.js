@@ -410,25 +410,6 @@ function initHelpBubble() {
   });
 }
 
-// ── Hero picker ─────────────────────────────────────────────────────────────
-// Samme rekkefølge som faggrupper-listen. Alle knappene er like store;
-// lange labeler får brekke over to linjer.
-const heroPickerOrder = ['bedrift', 'rehab', 'rus', 'barnevern', 'sykehus', 'leger', 'fysio', 'psyk', 'kiro', 'andre'];
-
-function renderHeroPicker() {
-  const grid = document.querySelector('#hero-picker-grid');
-  if (!grid) return;
-
-  heroPickerOrder.forEach((id) => {
-    const f = faggrupper.find((fg) => fg.id === id);
-    if (!f) return;
-    const link = document.createElement('a');
-    link.className = 'picker-btn';
-    link.href = faggruppeHref(f);
-    link.textContent = f.label;
-    grid.appendChild(link);
-  });
-}
 
 // ── Faggrupper section (icon grid + detail) ─────────────────────────────────
 function renderFaggrupperSection() {
@@ -465,7 +446,6 @@ function renderFaggrupperOverview() {
         ${f.page ? 'Les mer' : 'Ta kontakt'}
         <span aria-hidden="true">→</span>
       </a>
-      ${f.page ? '<span class="faggruppe-overview-tag">Egen side</span>' : ''}
     </article>
   `).join('');
 }
@@ -479,7 +459,6 @@ function renderNavDropdown() {
     <a href="${faggruppeHref(f)}" class="nav-dropdown-item">
       <span class="nav-dropdown-item-icon">${f.icon}</span>
       <span class="nav-dropdown-item-label">${f.label}</span>
-      ${f.page ? '<span class="nav-dropdown-item-tag">Egen side</span>' : ''}
     </a>
   `).join('');
 }
@@ -565,7 +544,6 @@ function populateCtaSelect() {
 }
 
 // ── Init ────────────────────────────────────────────────────────────────────
-renderHeroPicker();
 renderFaggrupperSection();
 renderFaggrupperOverview();
 renderNavDropdown();

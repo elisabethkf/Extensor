@@ -69,12 +69,23 @@ export default defineConfig({
               .child(
                 S.list()
                   .title('CMS')
-                  .items(
-                    S.documentTypeListItems().filter(
-                      (li) => !['side', 'sideForside', 'sideSupport'].includes(li.getId())
-                    )
-                  )
+                  .items([
+                    ...S.documentTypeListItems().filter((li) =>
+                      ['nyhet', 'testimonial', 'kundelogo'].includes(li.getId())
+                    ),
+                    S.divider(),
+                    ...S.documentTypeListItems().filter((li) =>
+                      ['webinar', 'kurs', 'videoguide', 'brukermanual', 'faqItem', 'nedlastning'].includes(
+                        li.getId()
+                      )
+                    ),
+                  ])
               ),
+            S.divider(),
+            S.listItem()
+              .title('Driftsmelding')
+              .id('driftsmelding')
+              .child(S.documentTypeList('driftsmelding').title('Driftsmelding')),
           ]),
     }),
   ],

@@ -10,8 +10,9 @@
   --teal-lt:  #e0eaeb;
   --warm:     #7a7a50;
   --warm-lt:  #f5f5e0;
-  --warm-yellow: #f7e596;
-  --warm-yellow-dk: #f0d84a;
+  --warm-yellow: #ffd23f;
+  --warm-yellow-dk: #f0b400;
+  --accent-text: #4a3505;
   --ink:      #1a1a18;
   --muted:    #6e6c66;
   --border:   rgba(26,26,24,.09);
@@ -48,6 +49,7 @@ img { display: block; max-width: 100%; }
 .d2 { transition-delay: .13s; }
 .d3 { transition-delay: .20s; }
 .d4 { transition-delay: .27s; }
+.d5 { transition-delay: .34s; }
 
 /* ── Pills ───────────────────────────────────────────────────────────────── */
 /* Én gjennomgående pill-farge på lys bakgrunn (teal-lt); gul kun på mørke flater */
@@ -65,7 +67,7 @@ img { display: block; max-width: 100%; }
   border: 1px solid transparent;
 }
 .pill.teal { background: var(--teal-lt); color: var(--teal-dk); border-color: transparent; }
-.pill.warm { background: var(--warm-yellow); color: #3a3510; border-color: transparent; }
+.pill.warm { background: var(--warm-yellow); color: var(--accent-text); border-color: transparent; }
 
 /* ── Animations ──────────────────────────────────────────────────────────── */
 @keyframes ticker {
@@ -100,13 +102,6 @@ img { display: block; max-width: 100%; }
 }
 .nudge-arrow { animation: nudgeArrow 1.4s ease-in-out infinite; display: inline-block; }
 
-.picker-btn { transition: transform .18s ease, box-shadow .18s ease, background .18s, border-color .18s; }
-.picker-btn:hover:not(.is-active) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,39,44,.12);
-  border-color: var(--teal);
-}
-
 /* ── Navbar ──────────────────────────────────────────────────────────────── */
 .nav {
   position: fixed;
@@ -126,12 +121,12 @@ img { display: block; max-width: 100%; }
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 40px;
-  height: 64px;
+  height: 74px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.nav-logo img { height: 46px; width: auto; }
+.nav-logo img { height: 56px; width: auto; }
 .nav-links { display: flex; gap: 2px; }
 .nav-links a {
   font-size: 13px;
@@ -298,7 +293,7 @@ img { display: block; max-width: 100%; }
 /* ── Hero ────────────────────────────────────────────────────────────────── */
 .hero {
   background: transparent;
-  padding-top: 64px;
+  padding-top: 74px;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -377,13 +372,11 @@ img { display: block; max-width: 100%; }
 }
 
 /* Hero right column */
-.hero-right { position: relative; min-height: 520px; }
+.hero-right { display: flex; flex-direction: column; gap: 20px; }
+.hero-photo-frame { position: relative; }
 .hero-photo {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 62%;
-  height: 88%;
+  width: 100%;
+  height: clamp(300px, 48vh, 480px);
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 8px 40px rgba(0,39,44,.12);
@@ -394,62 +387,17 @@ img { display: block; max-width: 100%; }
   object-fit: cover;
 }
 
-.picker-card {
-  position: absolute;
-  bottom: 0;
-  left: -44px; /* skjøvet inn i mellomrommet mot teksten, så mer av bildet synes */
-  width: 86%; /* bred nok til at «Fysio- og manuellterapeuter» står på én linje */
-  background: #fff;
-  border-radius: 20px;
-  padding: 22px 22px 20px;
-  border: 1px solid rgba(0,39,44,.10);
-  z-index: 2;
+.hero-quote {
+  padding-left: 18px;
+  border-left: 3px solid var(--warm-yellow-dk);
+  max-width: 420px;
 }
-.picker-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--teal);
-  background: rgba(43,138,130,.10);
-  padding: 5px 12px;
-  border-radius: 100px;
-  margin-bottom: 14px;
-}
-.picker-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 1fr; /* alle radene like høye — alle boksene like store */
-  gap: 6px;
-}
-.picker-btn {
-  display: flex;
-  align-items: center;
-  background: #fff;
-  border: 2px solid rgba(26,26,24,.12);
-  border-radius: 9px;
-  padding: 11px 13px;
-  cursor: pointer;
-  font-size: 12px;
+.hero-quote p {
+  font-size: 17px;
   font-weight: 600;
-  color: var(--ink);
-  text-align: left;
-  text-decoration: none;
-  font-family: inherit;
-  transition: border-color .15s, background .15s, color .15s;
-}
-.picker-btn:hover {
-  border-color: var(--teal);
+  font-style: italic;
+  line-height: 1.5;
   color: var(--teal);
-}
-.picker-btn.is-active {
-  background: var(--teal);
-  border-color: var(--teal);
-  color: #fff;
-  font-weight: 700;
 }
 .picker-detail {
   margin-top: 12px;
@@ -1218,7 +1166,7 @@ img { display: block; max-width: 100%; }
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 960px) {
   .nav-inner { padding: 0 20px; }
-  .hero { min-height: 0; align-items: flex-start; padding-top: 64px; }
+  .hero { min-height: 0; align-items: flex-start; padding-top: 74px; }
   .hero-inner { padding: 24px 20px 40px; }
   .hero-grid,
   .section-head,
@@ -1231,9 +1179,7 @@ img { display: block; max-width: 100%; }
     gap: 32px;
   }
   .hero h1 { font-size: 40px; letter-spacing: -1.2px; }
-  .hero-right { min-height: 460px; margin-top: 8px; }
-  .hero-photo { width: 100%; height: 60%; }
-  .picker-card { width: 92%; left: 0; }
+  .hero-right { margin-top: 8px; }
   .section { padding: 56px 16px; }
   .section-card,
   .about-card { padding: 40px 24px; }
@@ -1245,14 +1191,7 @@ img { display: block; max-width: 100%; }
   .about-photos .tall { height: 280px; }
 }
 
-@media (max-width: 720px) {
-  .picker-card { display: none; }
-  .hero-right { min-height: 320px; }
-  .hero-photo { height: 280px; }
-}
-
 @media (max-width: 560px) {
-  .picker-grid,
   .fag-icons,
   .fag-features,
   .about-stats {
@@ -1267,7 +1206,7 @@ img { display: block; max-width: 100%; }
 /* ── Designsystem-side (design-system.html) ───────────────────────────────── */
 /* ─────────────────────────────────────────────────────────────────────────── */
 
-.ds-body { padding-top: 64px; }
+.ds-body { padding-top: 74px; }
 
 /* Header */
 .ds-header {
@@ -2060,7 +1999,7 @@ img { display: block; max-width: 100%; }
 /* ── Underside-hero: matcher forsiden, men med mindre H1 ─────────────────── */
 .hero-sub {
   min-height: auto;
-  padding-top: 64px;
+  padding-top: 74px;
   display: block;
   position: relative;
   overflow: hidden;
@@ -3194,20 +3133,6 @@ img { display: block; max-width: 100%; }
   gap: 10px;
   color: var(--teal-dk);
 }
-.faggruppe-overview-tag {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--warm);
-  background: var(--warm-yellow);
-  padding: 4px 10px;
-  border-radius: 100px;
-}
-
 /* ─────────────────────────────────────────────────────────────────────────── */
 /* ── Navbar-dropdown for faggrupper ───────────────────────────────────────── */
 /* ─────────────────────────────────────────────────────────────────────────── */
@@ -3305,18 +3230,6 @@ img { display: block; max-width: 100%; }
   flex: 1;
   line-height: 1.3;
 }
-.nav-dropdown-item-tag {
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--warm);
-  background: var(--warm-yellow);
-  padding: 3px 8px;
-  border-radius: 100px;
-  flex-shrink: 0;
-}
-
 /* ─────────────────────────────────────────────────────────────────────────── */
 /* ── Webinar-side ─────────────────────────────────────────────────────────── */
 /* ─────────────────────────────────────────────────────────────────────────── */
@@ -3793,10 +3706,10 @@ img { display: block; max-width: 100%; }
   color: var(--teal-dk);
 }
 
-/* Opplærings-ressurser (4 kort) */
+/* Opplærings-ressurser (5 kort) */
 .support-resource-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 14px;
 }
 .support-resource {
@@ -4292,7 +4205,7 @@ img { display: block; max-width: 100%; }
 /* ── Artikkel-side (blogg-innlegg) ────────────────────────────────────────── */
 /* ─────────────────────────────────────────────────────────────────────────── */
 
-.article { padding-top: 64px; }
+.article { padding-top: 74px; }
 .article-header {
   padding: 64px 40px 40px;
   max-width: 1280px;
@@ -4598,7 +4511,7 @@ body.nav-open .nav-burger span:nth-child(3) {
   .nav-burger { display: flex; }
   .nav-links {
     position: fixed;
-    top: 64px;
+    top: 74px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -5026,10 +4939,10 @@ body.nav-open .nav-burger span:nth-child(3) {
 
 /* Navbar og innhold flyttes ned når baren er synlig */
 body.has-driftbar .nav { top: var(--driftbar-h); }
-body.has-driftbar .hero { padding-top: calc(64px + var(--driftbar-h)); }
+body.has-driftbar .hero { padding-top: calc(74px + var(--driftbar-h)); }
 
 @media (max-width: 960px) {
-  body.has-driftbar .nav-links { top: calc(64px + var(--driftbar-h)); }
+  body.has-driftbar .nav-links { top: calc(74px + var(--driftbar-h)); }
 }
 @media (max-width: 720px) {
   .drift-bar-inner {

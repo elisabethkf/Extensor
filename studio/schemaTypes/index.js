@@ -13,16 +13,20 @@ import sideForside from './sideForside'
 import sideSupport from './sideSupport'
 
 export const schemaTypes = [
-  driftsmelding,
+  // Forsiden-innhold
   nyhet,
+  testimonial,
+  kundelogo,
+  // Support / opplæring-innhold (samme rekkefølge som ressurskortene på Support-siden)
   webinar,
   kurs,
   videoguide,
   brukermanual,
   faqItem,
   nedlastning,
-  testimonial,
-  kundelogo,
+  // Driftsmelding har egen linje i strukturen (se sanity.config.js)
+  driftsmelding,
+  // Sider
   side,
   sideForside,
   sideSupport,
