@@ -75,6 +75,10 @@ export default defineConfig({
                     ),
                     S.divider(),
                     ...S.documentTypeListItems().filter((li) =>
+                      ['ansatt', 'partner'].includes(li.getId())
+                    ),
+                    S.divider(),
+                    ...S.documentTypeListItems().filter((li) =>
                       ['webinar', 'kurs', 'videoguide', 'brukermanual', 'faqItem', 'nedlastning'].includes(
                         li.getId()
                       )

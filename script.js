@@ -631,6 +631,55 @@ async function cmsKundelogoer() {
   track.innerHTML = logoer.map((l) => item(l, false)).join('') + logoer.map((l) => item(l, true)).join('');
 }
 
+// Om oss: teamet
+async function cmsTeam() {
+  const grid = document.querySelector('.team-grid');
+  if (!grid) return;
+  const rader = await sanityQuery(`*[_type == "ansatt"] | order(rekkefolge asc){navn, rolle, "bildeUrl": bilde.asset->url}`);
+  if (!rader || !rader.length) return;
+  grid.innerHTML = rader.map((a) => `
+    <div class="rv in team-card">
+      <img class="team-avatar" src="${a.bildeUrl || ''}" alt="${esc(a.navn)}" loading="lazy" />
+      <div class="team-name">${esc(a.navn)}</div>
+      <div class="team-role">${esc(a.rolle)}</div>
+    </div>`).join('');
+}
+
+// Samarbeidspartnere: Om oss-akkordeonen + logostripen på forsiden
+async function cmsPartnere() {
+  const grid = document.querySelector('.partner-grid');
+  const strip = document.querySelector('.partners-strip-logos');
+  if (!grid && !strip) return;
+  const rader = await sanityQuery(`*[_type == "partner"] | order(rekkefolge asc){
+    navn, beskrivelse, lenke, visIStripe,
+    "logoUrl": logo.asset->url, "logoMime": logo.asset->mimeType}`);
+  if (!rader || !rader.length) return;
+
+  if (grid) {
+    grid.innerHTML = rader.map((p) => `
+      <details class="partner-item">
+        <summary>
+          <span class="partner-name">${esc(p.navn)}</span>
+          <span class="partner-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="partner-body">
+          <p>${esc(p.beskrivelse)}</p>
+          ${p.lenke ? `<a class="partner-link" href="${esc(p.lenke)}" target="_blank" rel="noopener">${esc(p.lenke.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))} →</a>` : ''}
+        </div>
+      </details>`).join('');
+  }
+
+  if (strip) {
+    const stripPartnere = rader.filter((p) => p.visIStripe && p.logoUrl);
+    if (stripPartnere.length) {
+      strip.innerHTML = stripPartnere.map((p) => `
+        <a class="partners-strip-logo" href="${esc(p.lenke || '#')}" target="_blank" rel="noopener" aria-label="${esc(p.navn)}">
+          <img${p.logoMime === 'image/jpeg' ? ' class="partners-strip-logo-blend"' : ''} src="${p.logoUrl}" alt="${esc(p.navn)}" loading="lazy" />
+        </a>`).join('');
+    }
+  }
+}
+
 // Nyheter (forside-relatert + nyhetsside) — bytt ut innholdet i arrayen og re-render
 async function cmsNyheter() {
   if (!document.querySelector('#news-grid') && !document.querySelector('#related-news-grid')) return;
@@ -810,7 +859,7 @@ async function cmsNedlastninger() {
 }
 
 // Kjør alt — hver funksjon feiler stille og lar statisk innhold stå
-[cmsDriftBar, cmsDriftListe, cmsKundelogoer, cmsNyheter, cmsTestimonials,
+[cmsDriftBar, cmsDriftListe, cmsKundelogoer, cmsTeam, cmsPartnere, cmsNyheter, cmsTestimonials,
  cmsWebinarer, cmsKurs, cmsVideoguider, cmsBrukermanualer, cmsFaq, cmsNedlastninger]
   .forEach((fn) => fn().catch((e) => console.warn('CMS:', fn.name, e.message)));
 
