@@ -913,7 +913,7 @@ async function cmsSideForside() {
   settTekst('.hero .hero-lead', s.heroLead);
   settBilde('.hero-photo img', s.heroBildeUrl);
   settTekst('.hero-ctas .btn-primary', s.ctaPrimar);
-  settTekst('.hero-ctas .btn-warm', s.ctaSekundar);
+  settTekst('.hero-ctas .btn-outline, .hero-ctas .btn-warm', s.ctaSekundar);
   if (s.heroKpier && s.heroKpier.length) {
     const kpis = document.querySelector('.hero-kpis');
     kpis.style.gridTemplateColumns = `repeat(${s.heroKpier.length}, 1fr)`;
@@ -945,7 +945,7 @@ async function cmsSideForside() {
     const liste = document.querySelector('.ki-spotlight-list');
     if (liste) liste.innerHTML = s.kiPunkter.map((t) => `<li><span class="ki-check" aria-hidden="true"></span>${esc(t)}</li>`).join('');
   }
-  settTekst('.ki-spotlight .btn-warm', s.kiKnapp);
+  settTekst('.ki-spotlight .btn-primary, .ki-spotlight .btn-warm', s.kiKnapp);
   settFlerlinje('.testimonials-head h2', s.kunderTittel);
   settTekst('.testimonials-head > p', s.kunderIntro);
   settTekst('#kontakt .cta-card h2', s.ctaTittel);

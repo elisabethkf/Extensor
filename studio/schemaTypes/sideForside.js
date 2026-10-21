@@ -43,7 +43,7 @@ export default defineType({
         {name: 'tekst', title: 'Tekst', type: 'text', rows: 2},
       ], preview: {select: {title: 'tittel'}}}],
     }),
-    defineField({name: 'produktetBilde', title: 'Bilde (høyre side)', type: 'image', options: {hotspot: true}, fieldset: 'produktet'}),
+    defineField({name: 'produktetBilde', title: 'Bilde (venstre side)', type: 'image', options: {hotspot: true}, fieldset: 'produktet'}),
 
     defineField({name: 'faggrupperTittel', title: 'Overskrift', type: 'string', fieldset: 'faggrupper'}),
     defineField({name: 'faggrupperIntro', title: 'Introtekst', type: 'text', rows: 3, fieldset: 'faggrupper'}),

@@ -304,7 +304,7 @@ img { display: block; max-width: 100%; }
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
-  padding: 60px 40px;
+  padding: 40px 40px;
   font-size: 14px;
 }
 .hero-grid {
@@ -333,7 +333,8 @@ img { display: block; max-width: 100%; }
 /* Knapper — to hovedstiler med identisk geometri, bare ulik farge.
    Variant: .btn-sm for kompakt (navbar/inline), .btn-block for full bredde, .btn-pill for rund. */
 .btn-primary,
-.btn-warm {
+.btn-warm,
+.btn-outline {
   font-family: inherit;
   font-weight: 700;
   font-size: 14px;
@@ -355,10 +356,17 @@ img { display: block; max-width: 100%; }
   color: var(--ink);
 }
 .btn-primary:hover,
-.btn-warm:hover {
+.btn-warm:hover,
+.btn-outline:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(0,39,44,.12);
 }
+.btn-outline {
+  background: transparent;
+  color: var(--teal);
+  box-shadow: inset 0 0 0 1.5px var(--teal);
+}
+.btn-outline:hover { background: var(--teal-lt); }
 .btn-sm {
   font-size: 13px;
   padding: 10px 22px;
@@ -373,10 +381,10 @@ img { display: block; max-width: 100%; }
 
 /* Hero right column */
 .hero-right { display: flex; flex-direction: column; gap: 20px; }
-.hero-photo-frame { position: relative; }
+.hero-photo-frame { position: relative; width: min(100% - 56px, 500px, calc((100vh - 190px) * 0.8)); margin-left: auto; margin-right: 56px; }
 .hero-photo {
   width: 100%;
-  height: clamp(300px, 48vh, 480px);
+  aspect-ratio: 4 / 5;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 8px 40px rgba(0,39,44,.12);
@@ -385,6 +393,7 @@ img { display: block; max-width: 100%; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 35% center;
 }
 
 .hero-quote {
@@ -420,8 +429,8 @@ img { display: block; max-width: 100%; }
 }
 .hero-stamp {
   position: absolute;
-  bottom: 16px;
-  right: 0;
+  bottom: 40px;
+  right: -48px;
   z-index: 3;
   width: 96px;
   height: 96px;
@@ -457,9 +466,9 @@ img { display: block; max-width: 100%; }
 }
 
 /* ── Section frame (cards) ───────────────────────────────────────────────── */
-.section { padding: 88px 24px; }
+.section { padding: 88px 40px; }
 .section-card {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   background: rgba(255,255,255,.82);
   backdrop-filter: blur(10px);
@@ -467,6 +476,17 @@ img { display: block; max-width: 100%; }
   padding: 72px 64px;
   border: 1px solid rgba(0,39,44,.06);
   box-shadow: 0 4px 20px rgba(0,39,44,.04);
+}
+/* Faggrupper rett etter tilbakemeldingene: tilbakemeldingsseksjonen har allerede bunnluft */
+.testimonials-section + #faggrupper { padding-top: 0; }
+#produktet + .testimonials-section { padding-top: 0; }
+.testimonials-section:has(+ #faggrupper) { padding-bottom: 40px; }
+.section-card.section-card-bare {
+  background: none;
+  backdrop-filter: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
 }
 .section-head {
   display: grid;
@@ -590,9 +610,10 @@ img { display: block; max-width: 100%; }
 /* ── Features section ────────────────────────────────────────────────────── */
 .features-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 40px;
+  grid-template-columns: 400px 1fr;
+  gap: 56px;
 }
+.features-side { order: -1; }
 .feature-row {
   padding: 26px 0;
   border-bottom: 1px solid var(--border);
@@ -627,6 +648,7 @@ img { display: block; max-width: 100%; }
 
 .features-side { display: flex; flex-direction: column; gap: 14px; }
 .features-portrait { flex: 1; }
+.features-portrait img { object-position: 55% center; }
 @media (max-width: 960px) {
   .features-portrait { aspect-ratio: 4 / 3; }
 }
@@ -760,60 +782,72 @@ img { display: block; max-width: 100%; }
 }
 
 /* ── Extensor KI spotlight ───────────────────────────────────────────────── */
-.ki-spotlight-section { padding: 32px 24px; }
+.ki-spotlight-section { padding: 32px 40px; }
 .ki-spotlight {
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
-  background: linear-gradient(135deg, var(--box-dk) 0%, var(--box) 100%);
+  background: var(--teal-lt);
   border-radius: 24px;
-  padding: 48px 56px;
+  padding: 56px 56px;
   position: relative;
   overflow: hidden;
 }
-.ki-spotlight::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 85% 15%, rgba(247,229,150,.12) 0%, transparent 55%);
-  pointer-events: none;
+.ki-spotlight-text {
+  position: relative;
+  z-index: 1;
+  color: var(--teal-dk);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  column-gap: 64px;
+  align-items: start;
 }
-.ki-spotlight-text { position: relative; z-index: 1; color: #fff; }
+.ki-spotlight-text > * { grid-column: 1; }
+.ki-spotlight-text .pill { justify-self: start; }
+.ki-spotlight .pill { background: #fff; color: var(--teal-dk); }
 .ki-spotlight-text h2 {
   font-weight: 800;
   font-size: clamp(24px, 2.6vw, 36px);
   letter-spacing: -1.2px;
   line-height: 1.08;
   margin-bottom: 16px;
-  color: #fff;
+  color: var(--teal-dk);
 }
 .ki-spotlight-lead {
   font-size: 15px;
   line-height: 1.8;
-  color: rgba(255,255,255,.82);
-  margin-bottom: 24px;
-  max-width: 640px;
+  color: var(--teal);
+  margin-bottom: 28px;
+  max-width: 520px;
 }
+.ki-spotlight-text .btn-warm,
+.ki-spotlight-text .btn-primary { justify-self: start; }
 .ki-spotlight-list {
+  grid-column: 2;
+  grid-row: 1 / span 4;
   list-style: none;
   padding: 0;
-  margin: 0 0 28px;
+  margin: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px 28px;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 .ki-spotlight-list li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  color: rgba(255,255,255,.92);
-  font-weight: 500;
+  gap: 14px;
+  padding: 16px 20px;
+  background: #fff;
+  border-radius: 14px;
+  font-size: 15px;
+  color: var(--teal-dk);
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0,39,44,.05);
 }
 .ki-check {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: var(--warm-yellow);
+  background: var(--teal);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -824,20 +858,23 @@ img { display: block; max-width: 100%; }
   content: '';
   width: 9px;
   height: 5px;
-  border-left: 2px solid var(--teal-dk);
-  border-bottom: 2px solid var(--teal-dk);
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
   transform: rotate(-45deg) translate(1px, -1px);
 }
 
-@media (max-width: 720px) {
-  .ki-spotlight { padding: 36px 28px; }
-  .ki-spotlight-list { grid-template-columns: 1fr; }
+@media (max-width: 960px) {
+  .ki-spotlight { padding: 36px 24px; }
+  .ki-spotlight-text { grid-template-columns: 1fr; }
+  .ki-spotlight-list { grid-column: 1; grid-row: auto; margin-bottom: 28px; }
+  .ki-spotlight-text .btn-warm,
+  .ki-spotlight-text .btn-primary { order: 5; }
 }
 
 /* ── CTA section ─────────────────────────────────────────────────────────── */
-.cta-section { padding: 40px 24px 80px; }
+.cta-section { padding: 40px 40px 80px; }
 .cta-card {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   background: linear-gradient(135deg, var(--box-dk) 0%, var(--box) 100%);
   border-radius: 24px;
@@ -1180,11 +1217,13 @@ img { display: block; max-width: 100%; }
   }
   .hero h1 { font-size: 40px; letter-spacing: -1.2px; }
   .hero-right { margin-top: 8px; }
+  .features-side { order: 0; }
   .section { padding: 56px 16px; }
   .section-card,
   .about-card { padding: 40px 24px; }
   .fag-detail { position: static; }
   .cta-section { padding: 24px 16px 56px; }
+  .ki-spotlight-section { padding-left: 16px; padding-right: 16px; }
   .cta-card { padding: 40px 24px; }
   .footer { padding: 40px 20px 24px; border-radius: 20px 20px 0 0; }
   .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
@@ -2031,6 +2070,10 @@ img { display: block; max-width: 100%; }
   margin-bottom: 40px;
 }
 .hero-sub .hero-ctas { gap: 12px; }
+/* Faggrupper-oversikt: kortene tettere på overskriften */
+.hero-sub-overview .hero-inner { padding-bottom: 8px; }
+.hero-sub-overview .hero-lead { margin-bottom: 0; }
+.section-overview { padding-top: 40px; }
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -2097,6 +2140,32 @@ img { display: block; max-width: 100%; }
   margin-top: 2px;
 }
 
+/* Faggruppesider: større typografi + dekor som bløder ut til høyre (ingen bilder ennå) */
+.hero:has(.faggruppe-tag) h1 {
+  font-size: clamp(34px, 4.6vw, 64px);
+  letter-spacing: -2.4px;
+  max-width: 900px;
+}
+.hero:has(.faggruppe-tag) .hero-lead { max-width: 540px; }
+.hero:has(.faggruppe-tag)::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  right: max(-14vw, -240px);
+  top: 50%;
+  width: min(56vw, 620px);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 58% 42%, rgba(255,210,63,.42) 0, rgba(255,210,63,0) 34%),
+    radial-gradient(circle at 40% 62%, rgba(45,75,80,.16) 0, rgba(45,75,80,0) 46%),
+    repeating-radial-gradient(circle at 50% 50%, transparent 0 46px, rgba(45,75,80,.10) 46px 47px);
+  -webkit-mask-image: radial-gradient(circle, #000 38%, transparent 70%);
+  mask-image: radial-gradient(circle, #000 38%, transparent 70%);
+}
+
 .hero-phone-line {
   font-size: 13px;
   color: var(--muted);
@@ -2113,6 +2182,8 @@ img { display: block; max-width: 100%; }
   margin: 0 auto;
   padding: 0 24px 56px;
 }
+/* Skjult på faggruppesidene (hero med faggruppe-tag) — fjern regelen for å vise bildet igjen */
+.hero:has(.faggruppe-tag) + .hero-photo-band { display: none; }
 .hero-photo-band-img {
   position: relative;
   width: 100%;
@@ -2377,6 +2448,7 @@ img { display: block; max-width: 100%; }
   .hero-photo-band-img { aspect-ratio: 16 / 10; border-radius: 18px; }
   .hero-photo-band-caption { bottom: 16px; left: 16px; gap: 6px; }
   .hpb-pill { font-size: 10.5px; padding: 6px 11px; }
+  .hero:has(.faggruppe-tag)::after { width: 120vw; right: -60vw; opacity: .6; }
   .faggruppe-tag-name { font-size: 19px; }
   .faggruppe-tag-icon { width: 48px; height: 48px; }
   .faggruppe-tag-icon svg { width: 24px; height: 24px; }
@@ -4999,4 +5071,61 @@ body.has-driftbar .hero { padding-top: calc(74px + var(--driftbar-h)); }
     top: 7px;
     right: 12px;
   }
+}
+
+/* ── Partnere & integrasjoner i footeren (forsiden) ───────────────────── */
+.footer-partners {
+  margin-top: 40px;
+  padding: 28px 0;
+  border-top: 1px solid rgba(255,255,255,.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+}
+.footer-partners .partners-strip-label {
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.45);
+}
+.footer-partners .partners-strip-logos {
+  width: auto;
+  justify-content: flex-end;
+  gap: 40px;
+}
+.footer-partners .partners-strip-logo { height: 24px; opacity: 1; }
+.footer-partners .partners-strip-logo:hover { opacity: 1; transform: none; }
+.footer-partners .partners-strip-logo img { filter: brightness(0) invert(1); opacity: .6; transition: opacity .25s ease; }
+.footer-partners .partners-strip-logo:hover img { opacity: .95; }
+.footer-partners .partners-strip-logo img.partners-strip-logo-blend {
+  filter: grayscale(1) invert(1);
+  mix-blend-mode: screen;
+}
+@media (max-width: 720px) {
+  .footer-partners { flex-direction: column; align-items: flex-start; }
+  .footer-partners .partners-strip-logos { justify-content: flex-start; gap: 24px 32px; }
+}
+
+/* ── Visjon i footeren (forsiden) ─────────────────────────────────────── */
+.footer-vision {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 220px;
+}
+.footer-vision-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+}
+.footer-vision-quote {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(255,255,255,.85);
 }
