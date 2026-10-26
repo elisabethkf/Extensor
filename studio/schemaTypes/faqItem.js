@@ -14,7 +14,7 @@ export default defineType({
       validation: (r) => r.required(),
     }),
     defineField({name: 'svar', title: 'Svar', type: 'text', rows: 8, validation: (r) => r.required()}),
-    defineField({name: 'rekkefolge', title: 'Rekkefølge', type: 'number', initialValue: 0}),
+    defineField({name: 'rekkefolge', title: 'Plassering i listen (valgfritt)', type: 'number', description: 'Lavt tall vises først. La stå tom for å legge den sist.'}),
   ],
   preview: {select: {title: 'sporsmal', subtitle: 'kategori'}},
 })

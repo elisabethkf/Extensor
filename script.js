@@ -623,7 +623,7 @@ async function cmsDriftListe() {
 async function cmsKundelogoer() {
   const track = document.querySelector('.client-logos-track');
   if (!track) return;
-  const logoer = await sanityQuery(`*[_type == "kundelogo"] | order(rekkefolge asc){navn, "logoUrl": logo.asset->url}`);
+  const logoer = await sanityQuery(`*[_type == "kundelogo"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){navn, "logoUrl": logo.asset->url}`);
   if (!logoer || !logoer.length) return;
   const item = (l, skjult) => l.logoUrl
     ? `<img class="client-logo-img" src="${l.logoUrl}" alt="${skjult ? '' : esc(l.navn)}"${skjult ? ' aria-hidden="true"' : ''} loading="lazy" />`
@@ -635,7 +635,7 @@ async function cmsKundelogoer() {
 async function cmsTeam() {
   const grid = document.querySelector('.team-grid');
   if (!grid) return;
-  const rader = await sanityQuery(`*[_type == "ansatt"] | order(rekkefolge asc){navn, rolle, "bildeUrl": bilde.asset->url}`);
+  const rader = await sanityQuery(`*[_type == "ansatt"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){navn, rolle, "bildeUrl": bilde.asset->url}`);
   if (!rader || !rader.length) return;
   grid.innerHTML = rader.map((a) => `
     <div class="rv in team-card">
@@ -650,7 +650,7 @@ async function cmsPartnere() {
   const grid = document.querySelector('.partner-grid');
   const strip = document.querySelector('.partners-strip-logos');
   if (!grid && !strip) return;
-  const rader = await sanityQuery(`*[_type == "partner"] | order(rekkefolge asc){
+  const rader = await sanityQuery(`*[_type == "partner"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){
     navn, beskrivelse, lenke, visIStripe,
     "logoUrl": logo.asset->url, "logoMime": logo.asset->mimeType}`);
   if (!rader || !rader.length) return;
@@ -684,7 +684,7 @@ async function cmsPartnere() {
 async function cmsAddonProdukter() {
   const grid = document.querySelector('.addon-grid');
   if (!grid) return;
-  const rader = await sanityQuery(`*[_type == "addonProdukt"] | order(rekkefolge asc){tag, tittel, beskrivelse}`);
+  const rader = await sanityQuery(`*[_type == "addonProdukt"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){tag, tittel, beskrivelse}`);
   if (!rader || !rader.length) return;
   grid.innerHTML = rader.map((a, i) => `
     <div class="rv in d${i % 4 + 1} addon-card">
@@ -787,7 +787,7 @@ async function cmsWebinarer() {
 async function cmsKurs() {
   const liste = document.querySelector('.kurs-list');
   if (!liste) return;
-  const rader = await sanityQuery(`*[_type == "kurs" && aktiv == true] | order(rekkefolge asc){tittel, tidspunkt, varighet, beskrivelse, malgruppe}`);
+  const rader = await sanityQuery(`*[_type == "kurs" && aktiv == true] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){tittel, tidspunkt, varighet, beskrivelse, malgruppe}`);
   if (!rader || !rader.length) return;
   liste.innerHTML = rader.map((c, i) => `
     <article class="rv in d${i % 4 + 1} kurs-item">
@@ -806,7 +806,7 @@ async function cmsKurs() {
 async function cmsVideoguider() {
   const grid = document.querySelector('#videoguide-side');
   if (!grid) return;
-  const rader = await sanityQuery(`*[_type == "videoguide"] | order(rekkefolge asc){tittel, beskrivelse, videoUrl}`);
+  const rader = await sanityQuery(`*[_type == "videoguide"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){tittel, beskrivelse, videoUrl}`);
   if (!rader || !rader.length) return;
   const play = `<span class="webinar-play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5l12 7-12 7V5z" fill="currentColor"/></svg></span>`;
   grid.innerHTML = rader.map((v, i) => `
@@ -824,7 +824,7 @@ async function cmsVideoguider() {
 async function cmsBrukermanualer() {
   const grupper = document.querySelectorAll('.manual-gruppe');
   if (!grupper.length) return;
-  const rader = await sanityQuery(`*[_type == "brukermanual"] | order(rekkefolge asc){tittel, gruppe, "fil": coalesce(fil.asset->url, url)}`);
+  const rader = await sanityQuery(`*[_type == "brukermanual"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){tittel, gruppe, "fil": coalesce(fil.asset->url, url)}`);
   if (!rader || !rader.length) return;
   const rekkefolge = [];
   const perGruppe = {};
@@ -849,7 +849,7 @@ async function cmsBrukermanualer() {
 async function cmsFaq() {
   const kategorier = document.querySelectorAll('.faq-kategori');
   if (!kategorier.length) return;
-  const rader = await sanityQuery(`*[_type == "faqItem"] | order(rekkefolge asc){sporsmal, kategori, svar}`);
+  const rader = await sanityQuery(`*[_type == "faqItem"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){sporsmal, kategori, svar}`);
   if (!rader || !rader.length) return;
   const rekkefolge = [];
   const perKat = {};
@@ -878,7 +878,7 @@ async function cmsNedlastninger() {
   const seksjoner = ['oppdateringer', 'versjonsnytt', 'programtillegg', 'filer']
     .map((id) => document.querySelector(`#${id} .manual-grid`)).filter(Boolean);
   if (!seksjoner.length) return;
-  const rader = await sanityQuery(`*[_type == "nedlastning"] | order(rekkefolge asc){tittel, seksjon, dato, "fil": coalesce(fil.asset->url, url)}`);
+  const rader = await sanityQuery(`*[_type == "nedlastning"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){tittel, seksjon, dato, "fil": coalesce(fil.asset->url, url)}`);
   if (!rader || !rader.length) return;
   const ikon = `<span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>`;
   ['oppdateringer', 'versjonsnytt', 'programtillegg', 'filer'].forEach((id) => {

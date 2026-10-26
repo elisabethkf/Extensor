@@ -6,7 +6,7 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({name: 'tittel', title: 'Tittel', type: 'string', validation: (r) => r.required()}),
-    defineField({name: 'dato', title: 'Dato', type: 'date', validation: (r) => r.required()}),
+    defineField({name: 'dato', title: 'Dato', type: 'date', initialValue: () => new Date().toISOString().slice(0, 10), validation: (r) => r.required()}),
     defineField({
       name: 'type',
       title: 'Type',
@@ -14,19 +14,19 @@ export default defineType({
       options: {list: [
         {title: 'Info', value: 'info'},
         {title: 'Viktig', value: 'viktig'},
-        {title: 'Kritisk', value: 'kritisk'},
+        {title: 'Kritisk (rød bar)', value: 'kritisk'},
       ], layout: 'radio'},
       initialValue: 'info',
     }),
     defineField({name: 'tekst', title: 'Tekst', type: 'text', rows: 4, validation: (r) => r.required()}),
     defineField({
       name: 'visPaForsiden',
-      title: 'Vis som varsel-bar på forsiden',
-      description: 'Kun den nyeste meldingen med denne på vises i den gule baren øverst.',
+      title: 'Vis i den gule baren øverst på forsiden',
+      description: 'Kun den nyeste meldingen med dette valget på vises i baren. Slå av når driftsforstyrrelsen er over.',
       type: 'boolean',
       initialValue: false,
     }),
   ],
   orderings: [{title: 'Nyeste først', name: 'datoDesc', by: [{field: 'dato', direction: 'desc'}]}],
-  preview: {select: {title: 'tittel', subtitle: 'dato'}},
+  preview: {select: {title: 'tittel', subtitle: 'dato', vis: 'visPaForsiden'}, prepare: ({title, subtitle, vis}) => ({title, subtitle: `${subtitle || ''}${vis ? '  ·  Vises på forsiden nå' : ''}`})},
 })

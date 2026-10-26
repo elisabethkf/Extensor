@@ -1,12 +1,13 @@
 import {defineType, defineField} from 'sanity'
+import {kunUtvikler} from '../utvikler'
 
 export default defineType({
   name: 'nyhet',
-  title: 'Nyhet',
+  title: 'Artikkel',
   type: 'document',
   fields: [
     defineField({name: 'tittel', title: 'Tittel', type: 'string', validation: (r) => r.required()}),
-    defineField({name: 'dato', title: 'Dato', type: 'date', validation: (r) => r.required()}),
+    defineField({name: 'dato', title: 'Dato', type: 'date', initialValue: () => new Date().toISOString().slice(0, 10), validation: (r) => r.required()}),
     defineField({
       name: 'kategori',
       title: 'Kategori',
@@ -21,20 +22,46 @@ export default defineType({
       validation: (r) => r.required(),
     }),
     defineField({name: 'ingress', title: 'Ingress', type: 'text', rows: 3}),
-    defineField({name: 'bilde', title: 'Bilde', type: 'image', options: {hotspot: true}}),
+    defineField({name: 'bilde', title: 'Hovedbilde', type: 'image', options: {hotspot: true}}),
     defineField({
       name: 'bildeUrl',
       title: 'Bilde-URL (alternativ til opplastet bilde)',
       type: 'url',
+      hidden: kunUtvikler,
       description: 'Brukes hvis ikke bilde er lastet opp — f.eks. eksisterende CDN-lenke.',
     }),
     defineField({
       name: 'lenke',
       title: 'Lenke til artikkelside',
       type: 'string',
+      hidden: kunUtvikler,
       description: 'F.eks. ny-kunde-i-extensor.html — til artikkelsidene er CMS-drevet.',
     }),
-    defineField({name: 'brodtekst', title: 'Brødtekst', type: 'array', of: [{type: 'block'}, {type: 'image'}]}),
+    defineField({
+      name: 'brodtekst',
+      title: 'Brødtekst',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            {title: 'Vanlig tekst', value: 'normal'},
+            {title: 'Mellomtittel', value: 'h2'},
+          ],
+          lists: [{title: 'Punktliste', value: 'bullet'}],
+          marks: {
+            decorators: [
+              {title: 'Fet', value: 'strong'},
+              {title: 'Kursiv', value: 'em'},
+            ],
+            annotations: [
+              {name: 'lenke', type: 'object', title: 'Lenke', fields: [{name: 'href', type: 'url', title: 'Adresse'}]},
+            ],
+          },
+        },
+        {type: 'image', options: {hotspot: true}},
+      ],
+    }),
     defineField({
       name: 'erAktivStilling',
       title: 'Aktiv stillingsutlysning',

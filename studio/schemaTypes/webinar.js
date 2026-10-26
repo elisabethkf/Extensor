@@ -1,4 +1,5 @@
 import {defineType, defineField} from 'sanity'
+import {kunUtvikler} from '../utvikler'
 
 export default defineType({
   name: 'webinar',
@@ -18,10 +19,10 @@ export default defineType({
       initialValue: 'opptak',
     }),
     defineField({name: 'beskrivelse', title: 'Beskrivelse', type: 'text', rows: 4}),
-    defineField({name: 'videoUrl', title: 'Video-URL (YouTube)', type: 'url'}),
+    defineField({name: 'videoUrl', title: 'Lenke til YouTube-video', type: 'url'}),
     defineField({name: 'bilde', title: 'Bilde', type: 'image', options: {hotspot: true}}),
-    defineField({name: 'bildeUrl', title: 'Bilde-URL (alternativ)', type: 'url'}),
-    defineField({name: 'lenke', title: 'Lenke til webinar-side', type: 'string', description: 'F.eks. webinar-extensor-ki.html'}),
+    defineField({name: 'bildeUrl', title: 'Bilde-URL (alternativ)', type: 'url', hidden: kunUtvikler}),
+    defineField({name: 'lenke', title: 'Lenke til webinar-side', type: 'string', description: 'F.eks. webinar-extensor-ki.html', hidden: kunUtvikler}),
     defineField({name: 'fremhevet', title: 'Vis som «Siste webinar»', type: 'boolean', initialValue: false}),
   ],
   orderings: [{title: 'Nyeste først', name: 'datoDesc', by: [{field: 'dato', direction: 'desc'}]}],

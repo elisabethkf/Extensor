@@ -11,8 +11,9 @@ export default defineType({
     defineField({name: 'heroLead', title: 'Ingress', type: 'text', rows: 4}),
     defineField({
       name: 'seksjoner', title: 'Seksjoner på siden',
-      description: 'Rekkefølgen tilsvarer rekkefølgen på siden. Ikke legg til eller fjern seksjoner — rediger tekstene.',
+      description: 'Rekkefølgen tilsvarer rekkefølgen på siden. Klikk på en seksjon for å endre teksten.',
       type: 'array',
+      options: {sortable: false, disableActions: ['add', 'addBefore', 'addAfter', 'duplicate', 'remove', 'removeAll']},
       of: [{type: 'object', name: 'seksjon', fields: [
         {name: 'etikett', title: 'Seksjon (til orientering)', type: 'string', readOnly: true},
         {name: 'tittel', title: 'Overskrift', type: 'text', rows: 2},

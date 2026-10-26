@@ -3,35 +3,39 @@ import {structureTool} from 'sanity/structure'
 import {schemaTypes} from './schemaTypes'
 import {extensorTheme} from './theme'
 import {ExtensorIkon} from './ExtensorIkon'
+import {erUtvikler, sideTyper, avanserteTyper} from './utvikler'
 
-// «Sider»-gruppen: ett dokument per underside, i samme rekkefølge som menyen
-const sider = [
-  {tittel: 'Forsiden', type: 'sideForside', id: 'side-forside'},
-  {tittel: 'Support', type: 'sideSupport', id: 'side-support'},
-  {tittel: 'Om oss', type: 'side', id: 'side-om-oss'},
-  {tittel: 'Faggrupper', type: 'side', id: 'side-faggrupper'},
-  // Faggruppe-sidene, i samme rekkefølge som på nettsiden
-  {tittel: 'Bedriftshelsetjenester', type: 'side', id: 'side-bedriftshelsetjenester'},
-  {tittel: 'Rehabilitering', type: 'side', id: 'side-rehabilitering'},
-  {tittel: 'Rus og psykiatri', type: 'side', id: 'side-rus-og-psykiatri'},
-  {tittel: 'Omsorg og barnevern', type: 'side', id: 'side-omsorg-og-barnevern'},
-  {tittel: 'Private sykehus', type: 'side', id: 'side-private-sykehus'},
-  {tittel: 'Leger', type: 'side', id: 'side-leger'},
-  {tittel: 'Fysio- og manuellterapeuter', type: 'side', id: 'side-fysio-og-manuellterapeuter'},
-  {tittel: 'Psykologer', type: 'side', id: 'side-psykologer'},
-  {tittel: 'Kiropraktorer', type: 'side', id: 'side-kiropraktorer'},
-  {tittel: 'Andre behandlere', type: 'side', id: 'side-andre-behandlere'},
-  {tittel: 'Extensor KI', type: 'side', id: 'side-extensor-ki'},
-  {tittel: 'Tilleggsprodukter', type: 'side', id: 'side-tilleggsprodukter'},
-  {tittel: 'Webinar', type: 'side', id: 'side-webinar'},
-  {tittel: 'Nyheter', type: 'side', id: 'side-nyheter'},
-  {tittel: 'Karriere', type: 'side', id: 'side-karriere'},
-  {tittel: 'Kontakt', type: 'side', id: 'side-kontakt'},
-  {tittel: 'Kurs', type: 'side', id: 'side-kurs'},
-  {tittel: 'Videoguider', type: 'side', id: 'side-videoguider'},
-  {tittel: 'Brukermanualer', type: 'side', id: 'side-brukermanualer'},
-  {tittel: 'FAQ', type: 'side', id: 'side-faq'},
-  {tittel: 'Nedlastninger', type: 'side', id: 'side-nedlastninger'},
+const side = (tittel, type, id) => ({tittel, type, id})
+
+const forsiden = side('Forsiden', 'sideForside', 'side-forside')
+const omOss = side('Om oss', 'side', 'side-om-oss')
+
+const faggruppeSider = [
+  side('Oversikt over faggrupper', 'side', 'side-faggrupper'),
+  side('Bedriftshelsetjenester', 'side', 'side-bedriftshelsetjenester'),
+  side('Rehabilitering', 'side', 'side-rehabilitering'),
+  side('Rus og psykiatri', 'side', 'side-rus-og-psykiatri'),
+  side('Omsorg og barnevern', 'side', 'side-omsorg-og-barnevern'),
+  side('Private sykehus', 'side', 'side-private-sykehus'),
+  side('Leger', 'side', 'side-leger'),
+  side('Fysio- og manuellterapeuter', 'side', 'side-fysio-og-manuellterapeuter'),
+  side('Psykologer', 'side', 'side-psykologer'),
+  side('Kiropraktorer', 'side', 'side-kiropraktorer'),
+  side('Andre behandlere', 'side', 'side-andre-behandlere'),
+]
+
+const andreSider = [
+  side('Extensor KI', 'side', 'side-extensor-ki'),
+  side('Tilleggsprodukter', 'side', 'side-tilleggsprodukter'),
+  side('Webinar', 'side', 'side-webinar'),
+  side('Nyheter', 'side', 'side-nyheter'),
+  side('Karriere', 'side', 'side-karriere'),
+  side('Kontakt', 'side', 'side-kontakt'),
+  side('Kurs', 'side', 'side-kurs'),
+  side('Videoguider', 'side', 'side-videoguider'),
+  side('Brukermanualer', 'side', 'side-brukermanualer'),
+  side('FAQ', 'side', 'side-faq'),
+  side('Nedlastninger', 'side', 'side-nedlastninger'),
 ]
 
 export default defineConfig({
@@ -43,59 +47,100 @@ export default defineConfig({
   theme: extensorTheme,
   plugins: [
     structureTool({
-      structure: (S) =>
-        S.list()
-          .title('Innhold')
-          .items([
-            S.listItem()
+      structure: (S, context) => {
+        const sideItem = (s) =>
+          S.listItem()
+            .title(s.tittel)
+            .id(s.id)
+            .child(S.document().schemaType(s.type).documentId(s.id))
+
+        const liste = (tittel, type, id) =>
+          S.listItem()
+            .title(tittel)
+            .id(id || type)
+            .schemaType(type)
+            .child(S.documentTypeList(type).title(tittel))
+
+        const items = [
+          // Det redaktørene bruker mest, øverst
+          S.listItem().title('Support-siden').id('support').child(
+            S.list()
+              .title('Support-siden')
+              .items([
+                sideItem(side('Tekster og bilde på Support-siden', 'sideSupport', 'side-support')),
+                S.divider(),
+                liste('Spørsmål og svar (FAQ)', 'faqItem'),
+                liste('Videoguider', 'videoguide'),
+                liste('Brukermanualer', 'brukermanual'),
+                liste('Nedlastninger', 'nedlastning'),
+                liste('Webinarer', 'webinar'),
+                liste('Kurs', 'kurs'),
+              ])
+          ),
+          liste('Driftsmeldinger', 'driftsmelding'),
+          S.listItem()
+            .title('Ansatte')
+            .id('ansatt')
+            .schemaType('ansatt')
+            .child(
+              S.documentTypeList('ansatt')
+                .title('Ansatte')
+                .defaultOrdering([{field: 'rekkefolge', direction: 'asc'}])
+            ),
+          liste('Artikler', 'nyhet'),
+          S.divider(),
+          // Tekster og bilder på de øvrige sidene
+          S.listItem().title('Sider').id('sider').child(
+            S.list()
               .title('Sider')
-              .id('sider')
-              .child(
-                S.list()
-                  .title('Sider')
-                  .items(
-                    sider.map((s) =>
-                      S.listItem()
-                        .title(s.tittel)
-                        .id(s.id)
-                        .child(S.document().schemaType(s.type).documentId(s.id))
-                    )
-                  )
-              ),
+              .items([
+                sideItem(forsiden),
+                sideItem(omOss),
+                S.listItem().title('Faggrupper').id('faggrupper').child(
+                  S.list().title('Faggrupper').items(faggruppeSider.map(sideItem))
+                ),
+                S.divider(),
+                ...andreSider.map(sideItem),
+              ])
+          ),
+        ]
+
+        // Kun for M51: innhold vi hjelper til med
+        if (erUtvikler(context.currentUser)) {
+          items.push(
             S.divider(),
-            S.listItem()
-              .title('CMS')
-              .id('cms')
-              .child(
-                S.list()
-                  .title('CMS')
-                  .items([
-                    ...S.documentTypeListItems().filter((li) =>
-                      ['nyhet', 'testimonial', 'kundelogo'].includes(li.getId())
-                    ),
-                    S.divider(),
-                    ...S.documentTypeListItems().filter((li) =>
-                      ['ansatt', 'partner'].includes(li.getId())
-                    ),
-                    S.divider(),
-                    ...S.documentTypeListItems().filter((li) => li.getId() === 'addonProdukt'),
-                    S.divider(),
-                    ...S.documentTypeListItems().filter((li) =>
-                      ['webinar', 'kurs', 'videoguide', 'brukermanual', 'faqItem', 'nedlastning'].includes(
-                        li.getId()
-                      )
-                    ),
-                  ])
-              ),
-            S.divider(),
-            S.listItem()
-              .title('Driftsmelding')
-              .id('driftsmelding')
-              .child(S.documentTypeList('driftsmelding').title('Driftsmelding')),
-          ]),
+            S.listItem().title('Avansert (kun M51)').id('avansert').child(
+              S.list()
+                .title('Avansert')
+                .items([
+                  liste('Kundelogoer', 'kundelogo'),
+                  liste('Kundesitater', 'testimonial'),
+                  liste('Samarbeidspartnere', 'partner'),
+                  liste('Tilleggsprodukter', 'addonProdukt'),
+                ])
+            )
+          )
+        }
+
+        return S.list().title('Innhold').items(items)
+      },
     }),
   ],
   schema: {
     types: schemaTypes,
+  },
+  document: {
+    // «Opprett»-menyen: aldri sider, og avanserte typer kun for M51
+    newDocumentOptions: (prev, {currentUser}) =>
+      prev.filter(
+        (o) =>
+          !sideTyper.includes(o.templateId) &&
+          (erUtvikler(currentUser) || !avanserteTyper.includes(o.templateId))
+      ),
+    // Sidene skal kunne redigeres, men ikke slettes, kopieres eller avpubliseres
+    actions: (prev, {schemaType}) =>
+      sideTyper.includes(schemaType)
+        ? prev.filter(({action}) => ['publish', 'discardChanges', 'restore'].includes(action))
+        : prev,
   },
 })

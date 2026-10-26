@@ -11,7 +11,7 @@ export default defineType({
     defineField({name: 'beskrivelse', title: 'Beskrivelse', type: 'text', rows: 4}),
     defineField({name: 'malgruppe', title: 'Målgruppe', type: 'string'}),
     defineField({name: 'aktiv', title: 'Vis på kurssiden', type: 'boolean', initialValue: true}),
-    defineField({name: 'rekkefolge', title: 'Rekkefølge', type: 'number', initialValue: 0}),
+    defineField({name: 'rekkefolge', title: 'Plassering i listen (valgfritt)', type: 'number', description: 'Lavt tall vises først. La stå tom for å legge den sist.'}),
   ],
   orderings: [{title: 'Rekkefølge', name: 'rekkefolge', by: [{field: 'rekkefolge', direction: 'asc'}]}],
   preview: {select: {title: 'tittel', subtitle: 'tidspunkt'}},
