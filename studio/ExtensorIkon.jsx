@@ -1,7 +1,7 @@
 import React from 'react'
-import ikon from './static/extensor-ikon.png'
+import ikon from './ikonData'
 
-// Heksagon-merket fra Extensor-logoen, vises øverst til venstre i Studio
+// Heksagon-merket fra Extensor-logoen, vises øverst til venstre i Studio og i Sanity-dashbordet
 export function ExtensorIkon() {
   return (
     <img
