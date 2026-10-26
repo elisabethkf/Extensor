@@ -3,7 +3,9 @@ import {structureTool} from 'sanity/structure'
 import {schemaTypes} from './schemaTypes'
 import {extensorTheme} from './theme'
 import {ExtensorIkon} from './ExtensorIkon'
-import {erUtvikler, sideTyper, avanserteTyper} from './utvikler'
+
+// Sider finnes ett sted hver og skal ikke opprettes, dupliseres eller slettes
+const sideTyper = ['side', 'sideForside', 'sideSupport']
 
 const side = (tittel, type, id) => ({tittel, type, id})
 
@@ -47,7 +49,7 @@ export default defineConfig({
   theme: extensorTheme,
   plugins: [
     structureTool({
-      structure: (S, context) => {
+      structure: (S) => {
         const sideItem = (s) =>
           S.listItem()
             .title(s.tittel)
@@ -105,23 +107,6 @@ export default defineConfig({
           ),
         ]
 
-        // Kun for M51: innhold vi hjelper til med
-        if (erUtvikler(context.currentUser)) {
-          items.push(
-            S.divider(),
-            S.listItem().title('Avansert (kun M51)').id('avansert').child(
-              S.list()
-                .title('Avansert')
-                .items([
-                  liste('Kundelogoer', 'kundelogo'),
-                  liste('Kundesitater', 'testimonial'),
-                  liste('Samarbeidspartnere', 'partner'),
-                  liste('Tilleggsprodukter', 'addonProdukt'),
-                ])
-            )
-          )
-        }
-
         return S.list().title('Innhold').items(items)
       },
     }),
@@ -130,13 +115,8 @@ export default defineConfig({
     types: schemaTypes,
   },
   document: {
-    // «Opprett»-menyen: aldri sider, og avanserte typer kun for M51
-    newDocumentOptions: (prev, {currentUser}) =>
-      prev.filter(
-        (o) =>
-          !sideTyper.includes(o.templateId) &&
-          (erUtvikler(currentUser) || !avanserteTyper.includes(o.templateId))
-      ),
+    // «Opprett»-menyen: aldri sider
+    newDocumentOptions: (prev) => prev.filter((o) => !sideTyper.includes(o.templateId)),
     // Sidene skal kunne redigeres, men ikke slettes, kopieres eller avpubliseres
     actions: (prev, {schemaType}) =>
       sideTyper.includes(schemaType)

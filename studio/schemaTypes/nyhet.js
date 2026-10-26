@@ -1,5 +1,5 @@
 import {defineType, defineField} from 'sanity'
-import {kunUtvikler} from '../utvikler'
+import {kategoriFelt} from './kategoriFelt'
 
 export default defineType({
   name: 'nyhet',
@@ -8,33 +8,21 @@ export default defineType({
   fields: [
     defineField({name: 'tittel', title: 'Tittel', type: 'string', validation: (r) => r.required()}),
     defineField({name: 'dato', title: 'Dato', type: 'date', initialValue: () => new Date().toISOString().slice(0, 10), validation: (r) => r.required()}),
-    defineField({
-      name: 'kategori',
-      title: 'Kategori',
-      type: 'string',
-      options: {list: [
-        {title: 'Kunder', value: 'kunder'},
-        {title: 'Besøk', value: 'besok'},
-        {title: 'Produkt', value: 'produkt'},
-        {title: 'Karriere', value: 'karriere'},
-        {title: 'Integrasjon', value: 'integrasjon'},
-      ]},
-      validation: (r) => r.required(),
-    }),
+    kategoriFelt({name: 'kategori', title: 'Kategori', dokumentType: 'nyhet', visningsnavn: {kunder: 'Kunder', besok: 'Besøk', produkt: 'Produkt', karriere: 'Karriere', integrasjon: 'Integrasjon'}}),
     defineField({name: 'ingress', title: 'Ingress', type: 'text', rows: 3}),
     defineField({name: 'bilde', title: 'Hovedbilde', type: 'image', options: {hotspot: true}}),
     defineField({
       name: 'bildeUrl',
       title: 'Bilde-URL (alternativ til opplastet bilde)',
       type: 'url',
-      hidden: kunUtvikler,
+      hidden: true,
       description: 'Brukes hvis ikke bilde er lastet opp — f.eks. eksisterende CDN-lenke.',
     }),
     defineField({
       name: 'lenke',
       title: 'Lenke til artikkelside',
       type: 'string',
-      hidden: kunUtvikler,
+      hidden: true,
       description: 'F.eks. ny-kunde-i-extensor.html — til artikkelsidene er CMS-drevet.',
     }),
     defineField({

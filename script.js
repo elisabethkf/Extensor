@@ -208,6 +208,12 @@ const nyheter = [
   }
 ];
 
+// CSS-klasse for kategori-merket, f.eks. «Besøk» → besok
+function kategoriKlasse(navn) {
+  return String(navn).toLowerCase()
+    .replace(/æ/g, 'ae').replace(/ø/g, 'o').replace(/å/g, 'a').replace(/[^a-z0-9]+/g, '-');
+}
+
 function newsCardHTML(n, headingTag = 'h2') {
   const external = n.url && n.url.startsWith('http');
   const linkAttrs = external ? ' target="_blank" rel="noopener"' : '';
@@ -218,7 +224,7 @@ function newsCardHTML(n, headingTag = 'h2') {
       </div>
       <div class="news-card-body">
         <div class="news-card-meta">
-          <span class="news-card-tag news-tag-${n.category}">${n.categoryLabel}</span>
+          <span class="news-card-tag news-tag-${kategoriKlasse(n.categoryLabel)}">${n.categoryLabel}</span>
           <span class="news-card-date">${n.date}</span>
         </div>
         <${headingTag} class="news-card-title">${n.title}</${headingTag}>
@@ -587,6 +593,17 @@ function norskDato(iso) {
 }
 
 // Forside: driftsmelding-bar
+// Samler rader per kategori (tekstverdi), i den rekkefølgen kategoriene først dukker opp
+function grupperPerKategori(rader, felt) {
+  const grupper = new Map();
+  rader.forEach((r) => {
+    const navn = r[felt] || 'Annet';
+    if (!grupper.has(navn)) grupper.set(navn, { navn, rader: [] });
+    grupper.get(navn).rader.push(r);
+  });
+  return [...grupper.values()];
+}
+
 async function cmsDriftBar() {
   const bar = document.querySelector('.drift-bar');
   if (!bar) return;
@@ -720,15 +737,29 @@ async function cmsNyheter() {
     "img": coalesce(bilde.asset->url, bildeUrl)}`);
   if (!rader || !rader.length) return;
   const katLabel = { kunder: 'Kunder', besok: 'Besøk', produkt: 'Produkt', karriere: 'Karriere', integrasjon: 'Integrasjon' };
+  // Faste kategorier først i filteret, nye kategorier etter i den rekkefølgen de dukker opp
+  const katRekkefolge = ['produkt', 'kunder', 'besok', 'karriere', 'integrasjon'];
+  const katRang = (k) => { const i = katRekkefolge.indexOf(k); return i < 0 ? katRekkefolge.length : i; };
   nyheter.length = 0;
   rader.forEach((r) => nyheter.push({
     id: r.id, title: r.tittel,
     date: r.dato ? r.dato.split('-').reverse().join('.') : '',
-    category: r.kategori, categoryLabel: katLabel[r.kategori] || r.kategori,
+    category: r.kategori || '', categoryLabel: katLabel[r.kategori] || r.kategori || '',
     excerpt: r.ingress || '', image: r.img || '', url: r.lenke || '#',
   }));
-  const aktivtFilter = document.querySelector('.news-filter-btn.is-active');
-  renderNyheter(aktivtFilter ? aktivtFilter.dataset.cat : 'all');
+  // Filterknappene bygges av kategoriene som faktisk har artikler
+  const filter = document.querySelector('.news-filter');
+  const aktivt = filter && filter.querySelector('.news-filter-btn.is-active');
+  let valgt = aktivt ? aktivt.dataset.cat : 'all';
+  if (filter) {
+    const kategorier = new Map();
+    nyheter.forEach((n) => { if (n.category) kategorier.set(n.category, n); });
+    if (!kategorier.has(valgt)) valgt = 'all';
+    filter.innerHTML = [`<button class="news-filter-btn${valgt === 'all' ? ' is-active' : ''}" data-cat="all">Alle</button>`]
+      .concat([...kategorier.values()].sort((a, b) => katRang(a.category) - katRang(b.category)).map((n) =>
+        `<button class="news-filter-btn${valgt === n.category ? ' is-active' : ''}" data-cat="${esc(n.category)}">${esc(n.categoryLabel)}</button>`)).join('');
+  }
+  renderNyheter(valgt);
   renderRelatertNyheter();
 }
 
@@ -826,20 +857,15 @@ async function cmsBrukermanualer() {
   if (!grupper.length) return;
   const rader = await sanityQuery(`*[_type == "brukermanual"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){tittel, gruppe, "fil": coalesce(fil.asset->url, url)}`);
   if (!rader || !rader.length) return;
-  const rekkefolge = [];
-  const perGruppe = {};
-  rader.forEach((m) => {
-    if (!perGruppe[m.gruppe]) { perGruppe[m.gruppe] = []; rekkefolge.push(m.gruppe); }
-    perGruppe[m.gruppe].push(m);
-  });
+  const grupperte = grupperPerKategori(rader, 'gruppe');
   const ikon = `<span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h10l6 6v10H4V4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>`;
   const forelder = grupper[0].parentNode;
   grupper.forEach((g) => g.remove());
-  rekkefolge.forEach((navn) => {
+  grupperte.forEach((g) => {
     const div = document.createElement('div');
     div.className = 'rv in manual-gruppe';
-    div.innerHTML = `<h2>${esc(navn)}</h2><div class="manual-grid">` +
-      perGruppe[navn].map((m) => `<a class="manual-link" href="${m.fil}" target="_blank" rel="noopener">${ikon}${esc(m.tittel)}</a>`).join('') +
+    div.innerHTML = `<h2>${esc(g.navn)}</h2><div class="manual-grid">` +
+      g.rader.map((m) => `<a class="manual-link" href="${m.fil}" target="_blank" rel="noopener">${ikon}${esc(m.tittel)}</a>`).join('') +
       `</div>`;
     forelder.appendChild(div);
   });
@@ -851,19 +877,14 @@ async function cmsFaq() {
   if (!kategorier.length) return;
   const rader = await sanityQuery(`*[_type == "faqItem"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){sporsmal, kategori, svar}`);
   if (!rader || !rader.length) return;
-  const rekkefolge = [];
-  const perKat = {};
-  rader.forEach((q) => {
-    if (!perKat[q.kategori]) { perKat[q.kategori] = []; rekkefolge.push(q.kategori); }
-    perKat[q.kategori].push(q);
-  });
+  const grupperte = grupperPerKategori(rader, 'kategori');
   const forelder = kategorier[0].parentNode;
   kategorier.forEach((k) => k.remove());
-  rekkefolge.forEach((navn) => {
+  grupperte.forEach((g) => {
     const div = document.createElement('div');
     div.className = 'rv in faq-kategori';
-    div.innerHTML = `<h2>${esc(navn)}</h2><div class="partner-grid">` +
-      perKat[navn].map((q) => `
+    div.innerHTML = `<h2>${esc(g.navn)}</h2><div class="partner-grid">` +
+      g.rader.map((q) => `
         <details class="partner-item">
           <summary><span class="partner-name">${esc(q.sporsmal)}</span><span class="partner-icon" aria-hidden="true"></span></summary>
           <div class="partner-body">${q.svar.split(/\n\n+/).map((a) => `<p>${esc(a)}</p>`).join('')}</div>
@@ -873,20 +894,35 @@ async function cmsFaq() {
   });
 }
 
-// Nedlastninger-siden (lenkelistene per seksjon)
+// Nedlastninger-siden: én seksjon per kategori. De fire opprinnelige seksjonene ligger i HTML-en;
+// nye kategorier får en ny seksjon nederst.
 async function cmsNedlastninger() {
-  const seksjoner = ['oppdateringer', 'versjonsnytt', 'programtillegg', 'filer']
-    .map((id) => document.querySelector(`#${id} .manual-grid`)).filter(Boolean);
-  if (!seksjoner.length) return;
-  const rader = await sanityQuery(`*[_type == "nedlastning"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){tittel, seksjon, dato, "fil": coalesce(fil.asset->url, url)}`);
+  const faste = ['oppdateringer', 'versjonsnytt', 'programtillegg', 'filer'];
+  const hoved = document.querySelector('#filer') && document.querySelector('#filer').parentNode;
+  if (!hoved) return;
+  const rader = await sanityQuery(`*[_type == "nedlastning"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){tittel, dato, seksjon, "fil": coalesce(fil.asset->url, url)}`);
   if (!rader || !rader.length) return;
   const ikon = `<span class="manual-link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>`;
-  ['oppdateringer', 'versjonsnytt', 'programtillegg', 'filer'].forEach((id) => {
-    const grid = document.querySelector(`#${id} .manual-grid`);
-    const mine = rader.filter((r) => r.seksjon === id);
-    if (!grid || !mine.length) return;
-    grid.innerHTML = mine.map((l) => `
-      <a class="manual-link" href="${l.fil}" target="_blank" rel="noopener">${ikon}${esc(l.tittel)}${l.dato ? `<span class="manual-link-dato">${esc(l.dato)}</span>` : ''}</a>`).join('');
+  const lenke = (l) => `
+      <a class="manual-link" href="${l.fil}" target="_blank" rel="noopener">${ikon}${esc(l.tittel)}${l.dato ? `<span class="manual-link-dato">${esc(l.dato)}</span>` : ''}</a>`;
+
+  grupperPerKategori(rader, 'seksjon').forEach((g) => {
+    let el = document.getElementById(g.navn);
+    if (!el && faste.includes(g.navn)) return;
+    if (!el) {
+      el = document.createElement('section');
+      el.className = 'section';
+      el.innerHTML = `<div style="max-width:1080px; margin:0 auto;">
+        <div class="rv in section-head"><div>
+          <span class="pill" style="margin-bottom:16px; display:block; width:fit-content;">Nedlastninger</span>
+          <h2></h2>
+        </div></div>
+        <div class="rv in nedlast-tekst"><div class="manual-grid"></div></div>
+      </div>`;
+      el.querySelector('h2').textContent = g.navn;
+      hoved.appendChild(el);
+    }
+    el.querySelector('.manual-grid').innerHTML = g.rader.map(lenke).join('');
   });
 }
 
