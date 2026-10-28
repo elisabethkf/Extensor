@@ -5192,3 +5192,17 @@ body.has-driftbar .hero { padding-top: calc(74px + var(--driftbar-h)); }
   .hero-sub .hero-grid.has-referanse { display: block; }
   .faggruppe-referanse { margin-top: 32px; }
 }
+
+/* Bilder på referanser er som regel logoer: vis hele logoen i stedet for å beskjære til sirkel */
+.testimonial-card-avatar.is-logo,
+.faggruppe-referanse-avatar.is-logo {
+  width: auto;
+  max-width: 132px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 3px 6px;
+}
+.testimonial-card-avatar.is-logo { height: 38px; max-width: 110px; }
+.faggruppe-referanse-avatar.is-logo { height: 42px; }

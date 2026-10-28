@@ -339,7 +339,7 @@ function renderTestimonialsMarquee() {
       </div>
       <div class="testimonial-card-meta">
         ${t.image
-          ? `<img class="testimonial-card-avatar" src="${t.image}" alt="${t.name}" loading="lazy" />`
+          ? `<img class="testimonial-card-avatar is-logo" src="${t.image}" alt="${t.name}" loading="lazy" />`
           : `<div class="testimonial-card-avatar" style="background:${t.avatar}"></div>`}
         <div>
           <div class="testimonial-card-name">${t.name}</div>
@@ -816,7 +816,7 @@ async function cmsFaggruppeReferanser() {
       <blockquote class="faggruppe-referanse-quote">«${esc(r.sitat)}»</blockquote>
       <div class="faggruppe-referanse-meta">
         ${r.img
-          ? `<img class="faggruppe-referanse-avatar" src="${esc(r.img)}" alt="" loading="lazy" />`
+          ? `<img class="faggruppe-referanse-avatar is-logo" src="${esc(r.img)}" alt="" loading="lazy" />`
           : `<div class="faggruppe-referanse-avatar" style="background:${esc(r.avatarFarge || '#d4c8b8')}"></div>`}
         <div>
           <div class="faggruppe-referanse-name">${esc(r.navn)}</div>
