@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/artikkel/:id",
+      "destination": "/artikkel.html"
+    }
+  ]
+}

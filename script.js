@@ -735,7 +735,7 @@ async function cmsAddonProdukter() {
     </div>`).join('');
 }
 
-// ── Artikkelside (artikkel.html?id=…): hele artikkelen fra Sanity ──────────
+// ── Artikkelside (artikkel/<id>): hele artikkelen fra Sanity ──────────
 function trygLenke(href) {
   return /^(https?:|mailto:|tel:|\/|#)/i.test(href || '') ? href : '#';
 }
@@ -804,7 +804,8 @@ function ptTilHtml(blokker) {
 async function cmsArtikkel() {
   const tekst = document.querySelector('#artikkel-tekst');
   if (!tekst) return;
-  const id = publisertId(new URLSearchParams(location.search).get('id'));
+  // Adressen er /artikkel/<id> (eldre lenker brukte ?id=)
+  const id = publisertId(decodeURIComponent(location.pathname.split('/artikkel/')[1] || '') || new URLSearchParams(location.search).get('id'));
   // Settes før artiklene hentes, så «Andre nyheter» utelater denne artikkelen
   const relatert = document.querySelector('#related-news-grid');
   if (relatert) relatert.dataset.current = id;
@@ -864,7 +865,7 @@ async function cmsNyheter() {
     date: r.dato ? r.dato.split('-').reverse().join('.') : '',
     category: r.kategori || '', categoryLabel: katLabel[r.kategori] || r.kategori || '',
     excerpt: r.ingress || '', image: r.img || '',
-    url: r.lenke || 'artikkel?id=' + encodeURIComponent(publisertId(r.id)),
+    url: r.lenke || 'artikkel/' + encodeURIComponent(publisertId(r.id)),
     fokus: fokusStil(r.fokusX, r.fokusY),
   }));
   // Filterknappene bygges av kategoriene som faktisk har artikler

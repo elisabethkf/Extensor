@@ -9,7 +9,7 @@ import {EyeOpenIcon} from '@sanity/icons'
 import {schemaTypes} from './schemaTypes'
 import {extensorTheme} from './theme'
 import {ExtensorIkon} from './ExtensorIkon'
-import {Navbar} from './Navbar'
+import {Navbar, SISTE_DOK} from './Navbar'
 
 // Sider finnes ett sted hver og skal ikke opprettes, dupliseres eller slettes
 const sideTyper = ['side', 'sideForside', 'sideSupport']
@@ -35,7 +35,7 @@ const sideForType = {
 const artikkelSti = (id, lenke) =>
   lenke && !/^https?:/i.test(lenke)
     ? '/' + String(lenke).replace(/^\//, '')
-    : '/artikkel?id=' + encodeURIComponent(String(id || '').replace(/^drafts\./, ''))
+    : '/artikkel/' + encodeURIComponent(String(id || '').replace(/^drafts\./, ''))
 const stiForDokument = (type, id, doc) => {
   if (type === 'nyhet') return artikkelSti(id, doc?.lenke)
   if (type === 'side') return '/' + String(id || '').replace(/^drafts\./, '').replace(/^side-/, '')
@@ -52,8 +52,11 @@ function ForhandsvisningAction(props) {
   const sti = stiForDokument(props.type, props.id, props.draft || props.published)
   useEffect(() => {
     if (!sti) return
-    try { sessionStorage.setItem(SISTE_STI, sti) } catch (e) { /* uten lagring faller fanen tilbake til forsiden */ }
-  }, [sti])
+    try {
+      sessionStorage.setItem(SISTE_STI, sti)
+      sessionStorage.setItem(SISTE_DOK, `${props.type}|${String(props.id).replace(/^drafts\./, '')}`)
+    } catch (e) { /* uten lagring faller fanen tilbake til forsiden */ }
+  }, [sti, props.type, props.id])
   if (!sti) return null
   return {
     label: 'Forhåndsvisning',
@@ -168,6 +171,10 @@ export default defineConfig({
     presentationTool({
       title: 'Forhåndsvisning',
       resolve: {
+        // Åpner artikkelen i redigeringsruten ved siden av forhåndsvisningen
+        mainDocuments: defineDocuments([
+          {route: '/artikkel/:id', filter: '_type == "nyhet" && _id == $id'},
+        ]),
         // Siden som vises i forhåndsvisningen når et dokument er åpent
         locations: {
           driftsmelding: defineLocations({locations: [{title: 'Support – Driftsmeldinger', href: '/support#driftsmeldinger'}]}),
