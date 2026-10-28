@@ -1,5 +1,6 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
+import {presentationTool} from 'sanity/presentation'
 import {schemaTypes} from './schemaTypes'
 import {extensorTheme} from './theme'
 import {ExtensorIkon} from './ExtensorIkon'
@@ -108,6 +109,12 @@ export default defineConfig({
         ]
 
         return S.list().title('Innhold').items(items)
+      },
+    }),
+    presentationTool({
+      title: 'Forhåndsvisning',
+      previewUrl: {
+        initial: window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://extensor-production-ec65.up.railway.app',
       },
     }),
   ],

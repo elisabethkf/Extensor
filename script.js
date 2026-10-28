@@ -567,7 +567,29 @@ initBurger();
 // fallback-innhold til API-et svarer, så en CMS-feil aldri knekker siden.
 const SANITY = { projectId: '79jm8nbd', dataset: 'production', apiVersion: '2024-01-01' };
 
+// Vises siden inni Presentation-fanen i studioet, hentes utkast via studioet i stedet for CDN-en.
+// preview.js lastes bare i den situasjonen, så vanlige besøkende merker ingenting.
+const iPreview = window.self !== window.top;
+let previewLastet;
+function lastPreview() {
+  if (!previewLastet) {
+    window.__SANITY_CFG = SANITY;
+    previewLastet = new Promise((resolve) => {
+      const s = document.createElement('script');
+      s.src = 'preview.js';
+      s.onload = () => window.__extensorPreview.ready.then((tilkoblet) => resolve(tilkoblet ? window.__extensorPreview : null));
+      s.onerror = () => resolve(null);
+      document.head.appendChild(s);
+    });
+  }
+  return previewLastet;
+}
+
 async function sanityQuery(query) {
+  if (iPreview) {
+    const preview = await lastPreview();
+    if (preview) return preview.query(query);
+  }
   const url = `https://${SANITY.projectId}.apicdn.sanity.io/v${SANITY.apiVersion}/data/query/${SANITY.dataset}?query=${encodeURIComponent(query)}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error('Sanity-feil ' + res.status);
