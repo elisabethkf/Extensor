@@ -5206,3 +5206,11 @@ body.has-driftbar .hero { padding-top: calc(74px + var(--driftbar-h)); }
 }
 .testimonial-card-avatar.is-logo { height: 38px; max-width: 110px; }
 .faggruppe-referanse-avatar.is-logo { height: 42px; }
+
+/* Forsiden: overskriften på to linjer på desktop */
+@media (min-width: 961px) {
+  .hero:has(.hero-kpis) h1 {
+    font-size: clamp(34px, 3.4vw, 50px);
+    letter-spacing: -1.6px;
+  }
+}
