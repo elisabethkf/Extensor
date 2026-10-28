@@ -7,12 +7,16 @@ import brukermanual from './brukermanual'
 import faqItem from './faqItem'
 import nedlastning from './nedlastning'
 import ansatt from './ansatt'
+import testimonial from './testimonial'
+import kundelogo from './kundelogo'
 import side from './side'
 import sideForside from './sideForside'
 import sideSupport from './sideSupport'
 
 export const schemaTypes = [
   nyhet,
+  testimonial,
+  kundelogo,
   ansatt,
   // Support / opplæring-innhold (samme rekkefølge som ressurskortene på Support-siden)
   webinar,

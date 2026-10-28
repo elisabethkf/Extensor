@@ -1,12 +1,52 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {presentationTool, defineLocations, defineDocuments} from 'sanity/presentation'
+import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
+import {codeInput} from '@sanity/code-input'
+import {useRouter} from 'sanity/router'
+import {EyeOpenIcon} from '@sanity/icons'
 import {schemaTypes} from './schemaTypes'
 import {extensorTheme} from './theme'
 import {ExtensorIkon} from './ExtensorIkon'
 
 // Sider finnes ett sted hver og skal ikke opprettes, dupliseres eller slettes
 const sideTyper = ['side', 'sideForside', 'sideSupport']
+
+// Hvilken side på nettstedet et dokument vises på (brukes av forhåndsvisningen)
+const sideForType = {
+  driftsmelding: '/support#driftsmeldinger',
+  ansatt: '/om-oss',
+  webinar: '/webinar',
+  kurs: '/kurs',
+  videoguide: '/videoguider',
+  brukermanual: '/brukermanualer',
+  faqItem: '/faq',
+  nedlastning: '/nedlastninger',
+  testimonial: '/',
+  kundelogo: '/',
+  sideForside: '/',
+  sideSupport: '/support',
+}
+const stiForDokument = (type, id, doc) => {
+  if (type === 'nyhet') return doc?.kategori === 'karriere' ? '/karriere' : '/nyheter'
+  if (type === 'side') return '/' + String(id || '').replace(/^drafts\./, '').replace(/^side-/, '')
+  return sideForType[type] || null
+}
+
+// Knapp i dokumentmenyen: åpner forhåndsvisningen direkte på siden dokumentet hører til
+function ForhandsvisningAction(props) {
+  const router = useRouter()
+  const sti = stiForDokument(props.type, props.id, props.draft || props.published)
+  if (!sti) return null
+  return {
+    label: 'Forhåndsvisning',
+    icon: EyeOpenIcon,
+    onHandle: () => {
+      router.navigateUrl({path: `/presentation?preview=${encodeURIComponent(sti)}`})
+      props.onComplete()
+    },
+  }
+}
 
 const side = (tittel, type, id) => ({tittel, type, id})
 
@@ -50,7 +90,7 @@ export default defineConfig({
   theme: extensorTheme,
   plugins: [
     structureTool({
-      structure: (S) => {
+      structure: (S, context) => {
         const sideItem = (s) =>
           S.listItem()
             .title(s.tittel)
@@ -81,16 +121,14 @@ export default defineConfig({
               ])
           ),
           liste('Driftsmeldinger', 'driftsmelding'),
-          S.listItem()
-            .title('Ansatte')
-            .id('ansatt')
-            .schemaType('ansatt')
-            .child(
-              S.documentTypeList('ansatt')
-                .title('Ansatte')
-                .defaultOrdering([{field: 'rekkefolge', direction: 'asc'}])
-            ),
+          orderableDocumentListDeskItem({type: 'ansatt', title: 'Ansatte (dra for å endre rekkefølge)', id: 'ansatt', S, context}),
           liste('Artikler', 'nyhet'),
+          S.divider(),
+          liste('Referanser', 'testimonial'),
+          orderableDocumentListDeskItem({type: 'kundelogo', title: 'Kundelogoer på forsiden (dra for å endre rekkefølge)', id: 'kundelogo', S, context}),
+          S.listItem().title('Faggrupper').id('faggrupper').child(
+            S.list().title('Faggrupper').items(faggruppeSider.map(sideItem))
+          ),
           S.divider(),
           // Tekster og bilder på de øvrige sidene
           S.listItem().title('Sider').id('sider').child(
@@ -99,10 +137,6 @@ export default defineConfig({
               .items([
                 sideItem(forsiden),
                 sideItem(omOss),
-                S.listItem().title('Faggrupper').id('faggrupper').child(
-                  S.list().title('Faggrupper').items(faggruppeSider.map(sideItem))
-                ),
-                S.divider(),
                 ...andreSider.map(sideItem),
               ])
           ),
@@ -111,6 +145,7 @@ export default defineConfig({
         return S.list().title('Innhold').items(items)
       },
     }),
+    codeInput(),
     presentationTool({
       title: 'Forhåndsvisning',
       resolve: {
@@ -132,6 +167,8 @@ export default defineConfig({
               ],
             }),
           }),
+          testimonial: defineLocations({locations: [{title: 'Forsiden og faggruppesidene', href: '/'}]}),
+          kundelogo: defineLocations({locations: [{title: 'Forsiden', href: '/'}]}),
           sideForside: defineLocations({locations: [{title: 'Forsiden', href: '/'}]}),
           sideSupport: defineLocations({locations: [{title: 'Support', href: '/support'}]}),
           side: defineLocations({
@@ -160,9 +197,11 @@ export default defineConfig({
     // «Opprett»-menyen: aldri sider
     newDocumentOptions: (prev) => prev.filter((o) => !sideTyper.includes(o.templateId)),
     // Sidene skal kunne redigeres, men ikke slettes, kopieres eller avpubliseres
-    actions: (prev, {schemaType}) =>
-      sideTyper.includes(schemaType)
+    actions: (prev, {schemaType}) => [
+      ForhandsvisningAction,
+      ...(sideTyper.includes(schemaType)
         ? prev.filter(({action}) => ['publish', 'discardChanges', 'restore'].includes(action))
-        : prev,
+        : prev),
+    ],
   },
 })

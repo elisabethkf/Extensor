@@ -662,7 +662,7 @@ async function cmsDriftListe() {
 async function cmsKundelogoer() {
   const track = document.querySelector('.client-logos-track');
   if (!track) return;
-  const logoer = await sanityQuery(`*[_type == "kundelogo"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){navn, "logoUrl": logo.asset->url}`);
+  const logoer = await sanityQuery(`*[_type == "kundelogo"] | order(orderRank asc, coalesce(rekkefolge, 9999) asc, _createdAt asc){navn, "logoUrl": logo.asset->url}`);
   if (!logoer || !logoer.length) return;
   const item = (l, skjult) => l.logoUrl
     ? `<img class="client-logo-img" src="${l.logoUrl}" alt="${skjult ? '' : esc(l.navn)}"${skjult ? ' aria-hidden="true"' : ''} loading="lazy" />`
@@ -674,7 +674,7 @@ async function cmsKundelogoer() {
 async function cmsTeam() {
   const grid = document.querySelector('.team-grid');
   if (!grid) return;
-  const rader = await sanityQuery(`*[_type == "ansatt"] | order(coalesce(rekkefolge, 9999) asc, _createdAt asc){navn, rolle, "bildeUrl": bilde.asset->url}`);
+  const rader = await sanityQuery(`*[_type == "ansatt"] | order(orderRank asc, coalesce(rekkefolge, 9999) asc, _createdAt asc){navn, rolle, "bildeUrl": bilde.asset->url}`);
   if (!rader || !rader.length) return;
   grid.innerHTML = rader.map((a) => `
     <div class="rv in team-card">
@@ -796,6 +796,40 @@ async function cmsTestimonials() {
     quote: r.sitat, image: r.img || undefined, avatar: r.avatarFarge || '#d4c8b8',
   }));
   renderTestimonialsMarquee();
+}
+
+// Faggruppesider: referanse for den aktuelle faggruppen, til høyre i heroseksjonen
+async function cmsFaggruppeReferanser() {
+  const navnEl = document.querySelector('.faggruppe-tag-name');
+  const grid = document.querySelector('.hero-sub .hero-grid');
+  if (!navnEl || !grid) return;
+  const rader = await sanityQuery(`*[_type == "testimonial" && faggruppe == $f]{navn, rolle, sitat, avatarFarge, "img": coalesce(bilde.asset->url, bildeUrl)}`.replace('$f', JSON.stringify(navnEl.textContent.trim())));
+  if (!rader || !rader.length) return;
+  grid.classList.add('has-referanse');
+  const boks = document.createElement('aside');
+  boks.className = 'faggruppe-referanse';
+  boks.setAttribute('aria-label', 'Referanse');
+  const vis = (i) => {
+    const r = rader[i];
+    boks.innerHTML = `
+      <div class="faggruppe-referanse-label">Hva kundene sier</div>
+      <blockquote class="faggruppe-referanse-quote">«${esc(r.sitat)}»</blockquote>
+      <div class="faggruppe-referanse-meta">
+        ${r.img
+          ? `<img class="faggruppe-referanse-avatar" src="${esc(r.img)}" alt="" loading="lazy" />`
+          : `<div class="faggruppe-referanse-avatar" style="background:${esc(r.avatarFarge || '#d4c8b8')}"></div>`}
+        <div>
+          <div class="faggruppe-referanse-name">${esc(r.navn)}</div>
+          <div class="faggruppe-referanse-role">${esc(r.rolle || '')}</div>
+        </div>
+      </div>
+      ${rader.length > 1 ? `<div class="faggruppe-referanse-dots">${rader.map((_, j) =>
+        `<button type="button" class="${j === i ? 'is-active' : ''}" data-i="${j}" aria-label="Referanse ${j + 1} av ${rader.length}"></button>`).join('')}</div>` : ''}`;
+    boks.querySelectorAll('.faggruppe-referanse-dots button').forEach((b) =>
+      b.addEventListener('click', () => vis(Number(b.dataset.i))));
+  };
+  vis(0);
+  grid.appendChild(boks);
 }
 
 // Webinar-siden: featured + arkiv
@@ -950,7 +984,7 @@ async function cmsNedlastninger() {
 
 // Kjør alt — hver funksjon feiler stille og lar statisk innhold stå
 [cmsDriftBar, cmsDriftListe, cmsKundelogoer, cmsTeam, cmsPartnere, cmsAddonProdukter, cmsKarriereStillinger,
- cmsNyheter, cmsTestimonials, cmsWebinarer, cmsKurs, cmsVideoguider, cmsBrukermanualer, cmsFaq, cmsNedlastninger]
+ cmsNyheter, cmsTestimonials, cmsFaggruppeReferanser, cmsWebinarer, cmsKurs, cmsVideoguider, cmsBrukermanualer, cmsFaq, cmsNedlastninger]
   .forEach((fn) => fn().catch((e) => console.warn('CMS:', fn.name, e.message)));
 
 // ── Side-dokumenter: redigerbar tekst og bilder per side ────────────────────
