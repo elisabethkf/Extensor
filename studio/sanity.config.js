@@ -4,10 +4,12 @@ import {presentationTool, defineLocations, defineDocuments} from 'sanity/present
 import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 import {codeInput} from '@sanity/code-input'
 import {useRouter} from 'sanity/router'
+import {useEffect} from 'react'
 import {EyeOpenIcon} from '@sanity/icons'
 import {schemaTypes} from './schemaTypes'
 import {extensorTheme} from './theme'
 import {ExtensorIkon} from './ExtensorIkon'
+import {Navbar} from './Navbar'
 
 // Sider finnes ett sted hver og skal ikke opprettes, dupliseres eller slettes
 const sideTyper = ['side', 'sideForside', 'sideSupport']
@@ -33,16 +35,24 @@ const stiForDokument = (type, id, doc) => {
   return sideForType[type] || null
 }
 
+const SISTE_STI = 'extensor:forhandsvisning-sti'
+const nettsted = () =>
+  window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://extensor-production-ec65.up.railway.app'
+
 // Knapp i dokumentmenyen: åpner forhåndsvisningen direkte på siden dokumentet hører til
 function ForhandsvisningAction(props) {
   const router = useRouter()
   const sti = stiForDokument(props.type, props.id, props.draft || props.published)
+  useEffect(() => {
+    if (!sti) return
+    try { sessionStorage.setItem(SISTE_STI, sti) } catch (e) { /* uten lagring faller fanen tilbake til forsiden */ }
+  }, [sti])
   if (!sti) return null
   return {
     label: 'Forhåndsvisning',
     icon: EyeOpenIcon,
     onHandle: () => {
-      router.navigateUrl({path: `/presentation?preview=${encodeURIComponent(sti)}`})
+      router.navigateUrl({path: `/presentation/${props.type}/${String(props.id).replace(/^drafts\./, '')}?preview=${encodeURIComponent(sti)}`})
       props.onComplete()
     },
   }
@@ -88,6 +98,8 @@ export default defineConfig({
   projectId: '79jm8nbd',
   dataset: 'production',
   theme: extensorTheme,
+  studio: {components: {navbar: Navbar}},
+  releases: {enabled: false},
   plugins: [
     structureTool({
       structure: (S, context) => {
@@ -178,15 +190,14 @@ export default defineConfig({
             }),
           }),
         },
-        // Åpner siden i redigeringsruten når man navigerer til den inne i forhåndsvisningen
-        mainDocuments: defineDocuments([
-          {route: '/', filter: '_id == "side-forside"'},
-          {route: '/support', filter: '_id == "side-support"'},
-          {route: '/:sti', filter: '_type == "side" && _id == "side-" + $sti'},
-        ]),
       },
       previewUrl: {
-        initial: window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://extensor-production-ec65.up.railway.app',
+        // Fanen «Forhåndsvisning» åpner på siden til dokumentet som sist var åpent i strukturen
+        initial: () => {
+          let sti = ''
+          try { sti = sessionStorage.getItem(SISTE_STI) || '' } catch (e) { /* ignorer */ }
+          return nettsted() + sti
+        },
       },
     }),
   ],
