@@ -1,6 +1,6 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
-import {presentationTool} from 'sanity/presentation'
+import {presentationTool, defineLocations, defineDocuments} from 'sanity/presentation'
 import {schemaTypes} from './schemaTypes'
 import {extensorTheme} from './theme'
 import {ExtensorIkon} from './ExtensorIkon'
@@ -113,6 +113,41 @@ export default defineConfig({
     }),
     presentationTool({
       title: 'Forhåndsvisning',
+      resolve: {
+        // Siden som vises i forhåndsvisningen når et dokument er åpent
+        locations: {
+          driftsmelding: defineLocations({locations: [{title: 'Support – Driftsmeldinger', href: '/support#driftsmeldinger'}]}),
+          ansatt: defineLocations({locations: [{title: 'Om oss – Teamet', href: '/om-oss'}]}),
+          webinar: defineLocations({locations: [{title: 'Webinar', href: '/webinar'}]}),
+          kurs: defineLocations({locations: [{title: 'Kurs', href: '/kurs'}]}),
+          videoguide: defineLocations({locations: [{title: 'Videoguider', href: '/videoguider'}]}),
+          brukermanual: defineLocations({locations: [{title: 'Brukermanualer', href: '/brukermanualer'}]}),
+          faqItem: defineLocations({locations: [{title: 'FAQ', href: '/faq'}]}),
+          nedlastning: defineLocations({locations: [{title: 'Nedlastninger', href: '/nedlastninger'}]}),
+          nyhet: defineLocations({
+            select: {tittel: 'tittel', kategori: 'kategori'},
+            resolve: (doc) => ({
+              locations: [
+                {title: doc?.tittel || 'Artikkel', href: doc?.kategori === 'karriere' ? '/karriere' : '/nyheter'},
+              ],
+            }),
+          }),
+          sideForside: defineLocations({locations: [{title: 'Forsiden', href: '/'}]}),
+          sideSupport: defineLocations({locations: [{title: 'Support', href: '/support'}]}),
+          side: defineLocations({
+            select: {id: '_id', navn: 'navn'},
+            resolve: (doc) => ({
+              locations: [{title: doc?.navn || 'Side', href: '/' + String(doc?.id || '').replace(/^drafts\./, '').replace(/^side-/, '')}],
+            }),
+          }),
+        },
+        // Åpner siden i redigeringsruten når man navigerer til den inne i forhåndsvisningen
+        mainDocuments: defineDocuments([
+          {route: '/', filter: '_id == "side-forside"'},
+          {route: '/support', filter: '_id == "side-support"'},
+          {route: '/:sti', filter: '_type == "side" && _id == "side-" + $sti'},
+        ]),
+      },
       previewUrl: {
         initial: window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://extensor-production-ec65.up.railway.app',
       },
