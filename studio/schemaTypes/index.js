@@ -12,6 +12,8 @@ import kundelogo from './kundelogo'
 import side from './side'
 import sideForside from './sideForside'
 import sideSupport from './sideSupport'
+import partner from './partner'
+import addonProdukt from './addonProdukt'
 
 export const schemaTypes = [
   nyhet,
@@ -31,4 +33,7 @@ export const schemaTypes = [
   side,
   sideForside,
   sideSupport,
+  // Ligger i datasettet og brukes av nettsiden, men er ikke i menyen (må ha skjema for at studioet ikke skal feile)
+  partner,
+  addonProdukt,
 ]

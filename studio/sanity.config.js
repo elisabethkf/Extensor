@@ -13,6 +13,8 @@ import {Navbar} from './Navbar'
 
 // Sider finnes ett sted hver og skal ikke opprettes, dupliseres eller slettes
 const sideTyper = ['side', 'sideForside', 'sideSupport']
+// Typer som ikke skal opprettes av redaktører
+const skjulteTyper = [...sideTyper, 'partner', 'addonProdukt']
 
 // Hvilken side på nettstedet et dokument vises på (brukes av forhåndsvisningen)
 const sideForType = {
@@ -206,7 +208,7 @@ export default defineConfig({
   },
   document: {
     // «Opprett»-menyen: aldri sider
-    newDocumentOptions: (prev) => prev.filter((o) => !sideTyper.includes(o.templateId)),
+    newDocumentOptions: (prev) => prev.filter((o) => !skjulteTyper.includes(o.templateId)),
     // Sidene skal kunne redigeres, men ikke slettes, kopieres eller avpubliseres
     actions: (prev, {schemaType}) => [
       ForhandsvisningAction,
