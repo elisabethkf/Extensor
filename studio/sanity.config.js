@@ -31,8 +31,13 @@ const sideForType = {
   sideForside: '/',
   sideSupport: '/support',
 }
+// Artikler med egen CMS-side vises på /artikkel; eldre artikler peker fortsatt til sin statiske side
+const artikkelSti = (id, lenke) =>
+  lenke && !/^https?:/i.test(lenke)
+    ? '/' + String(lenke).replace(/^\//, '')
+    : '/artikkel?id=' + encodeURIComponent(String(id || '').replace(/^drafts\./, ''))
 const stiForDokument = (type, id, doc) => {
-  if (type === 'nyhet') return doc?.kategori === 'karriere' ? '/karriere' : '/nyheter'
+  if (type === 'nyhet') return artikkelSti(id, doc?.lenke)
   if (type === 'side') return '/' + String(id || '').replace(/^drafts\./, '').replace(/^side-/, '')
   return sideForType[type] || null
 }
@@ -174,10 +179,11 @@ export default defineConfig({
           faqItem: defineLocations({locations: [{title: 'FAQ', href: '/faq'}]}),
           nedlastning: defineLocations({locations: [{title: 'Nedlastninger', href: '/nedlastninger'}]}),
           nyhet: defineLocations({
-            select: {tittel: 'tittel', kategori: 'kategori'},
+            select: {tittel: 'tittel', id: '_id', lenke: 'lenke'},
             resolve: (doc) => ({
               locations: [
-                {title: doc?.tittel || 'Artikkel', href: doc?.kategori === 'karriere' ? '/karriere' : '/nyheter'},
+                {title: doc?.tittel || 'Artikkel', href: artikkelSti(doc?.id, doc?.lenke)},
+                {title: 'Alle nyheter', href: '/nyheter'},
               ],
             }),
           }),

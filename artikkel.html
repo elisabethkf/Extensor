@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ledig stilling i Extensor — Extensor</title>
-  <meta name="description" content="Vi søker teknisk konsulent til vårt team — interessert?" />
-  <link rel="canonical" href="https://www.extensor.no/blogg/ledig-stilling-i-extensor" />
+  <title>Artikkel — Extensor</title>
+  <meta name="robots" content="index, follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -83,28 +82,26 @@
 
   <main>
 
-    <article class="article">
+    <!-- ── Artikkel-hero ────────────────────────────────────────────────── -->
+    <article class="article" id="artikkel">
       <header class="article-header">
         <div class="article-header-inner">
           <a class="article-back" href="nyheter.html">← Tilbake til Nyheter</a>
           <div class="article-meta">
-            <span class="news-card-tag news-tag-karriere">Karriere</span>
-            <span class="article-date">9. januar 2023</span>
+            <span class="news-card-tag" id="artikkel-tag" hidden></span>
+            <span class="article-date" id="artikkel-dato"></span>
           </div>
-          <h1 class="article-title">Ledig stilling i Extensor</h1>
-          <p class="article-lead">Vi søker teknisk konsulent til vårt team — interessert?</p>
+          <h1 class="article-title" id="artikkel-tittel">&nbsp;</h1>
+          <p class="article-lead" id="artikkel-ingress" hidden></p>
         </div>
       </header>
 
-      <figure class="article-cover">
-        <img src="https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/61ee4ebf0364edd3acfb286e_scott-graham-5fNmWej4tAA-unsplash.jpg" alt="" />
-        
+      <!-- Fylles fra Sanity (cmsArtikkel i script.js) -->
+      <figure class="article-cover" id="artikkel-bilde" hidden>
+        <img alt="" />
       </figure>
 
-      <div class="article-body">
-        <p>Har du lyst å jobbe i et selskap i vekst, et knakende godt arbeidsmiljø med spennende arbeidsoppgaver og ubegrensede muligheter? Da bør du vurdere denne stillingen.</p>
-        <p><a href="https://www.finn.no/job/fulltime/ad.html?finnkode=234715787" target="_blank" rel="noopener">Se stillingsannonsen på Finn.no →</a></p>
-      </div>
+      <div class="article-body" id="artikkel-tekst"></div>
 
       <div class="article-footer">
         <a class="article-back-link" href="nyheter.html">
@@ -114,6 +111,7 @@
       </div>
     </article>
 
+    <!-- ── Andre nyheter ────────────────────────────────────────────── -->
     <section class="section article-related-section">
       <div style="max-width:1280px; margin:0 auto;">
         <div class="rv section-head">
@@ -123,12 +121,13 @@
           </div>
           <p>Hold deg oppdatert på det som rører seg i norsk helse-IT.</p>
         </div>
-        <div class="news-grid" id="related-news-grid" data-current="ledig-stilling" data-limit="3"></div>
+        <div class="news-grid" id="related-news-grid" data-current="" data-limit="3"></div>
       </div>
     </section>
 
   </main>
 
+  <!-- ── Footer ───────────────────────────────────────────────────────── -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-grid">

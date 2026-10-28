@@ -127,16 +127,6 @@ const nyheter = [
     url: 'kundeforum-rehab.html'
   },
   {
-    id: 'ledig-stilling',
-    title: 'Ledig stilling i Extensor',
-    date: '09.01.2023',
-    category: 'karriere',
-    categoryLabel: 'Karriere',
-    excerpt: 'Vi søker teknisk konsulent til vårt team — interessert?',
-    image: 'https://cdn.prod.website-files.com/5d6e594614166128bdeacdfb/61ee4ebf0364edd3acfb286e_scott-graham-5fNmWej4tAA-unsplash.jpg',
-    url: 'ledig-stilling-i-extensor.html'
-  },
-  {
     id: 'samarbeid-flow',
     title: 'Samarbeid med Flow Technologies',
     date: '08.11.2022',
@@ -217,10 +207,11 @@ function kategoriKlasse(navn) {
 function newsCardHTML(n, headingTag = 'h2') {
   const external = n.url && n.url.startsWith('http');
   const linkAttrs = external ? ' target="_blank" rel="noopener"' : '';
+  const fokus = n.fokus ? ` style="object-position: ${n.fokus}"` : '';
   return `
     <a href="${n.url || '#'}"${linkAttrs} class="news-card" data-cat="${n.category}">
       <div class="news-card-img">
-        <img src="${n.image}" alt="" />
+        <img src="${n.image}" alt=""${fokus} />
       </div>
       <div class="news-card-body">
         <div class="news-card-meta">
@@ -601,6 +592,17 @@ function ytId(url) {
   return m ? (m[1] || m[2]) : null;
 }
 
+// Utkast har id «drafts.…»; adressen til en artikkel bruker alltid den publiserte id-en
+function publisertId(id) {
+  return String(id || '').replace(/^drafts\./, '');
+}
+
+// Hotspot fra Sanity (0–1 fra øverst til venstre) → CSS object-position, slik at ansikter holdes i bildet
+function fokusStil(x, y) {
+  if (typeof x !== 'number' || typeof y !== 'number') return '';
+  return `${Math.round(x * 100)}% ${Math.round(y * 100)}%`;
+}
+
 function esc(s) {
   const div = document.createElement('div');
   div.textContent = s == null ? '' : s;
@@ -733,41 +735,137 @@ async function cmsAddonProdukter() {
     </div>`).join('');
 }
 
-// Karriere: aktive stillingsutlysninger (nyhet med kategori=karriere og erAktivStilling=true)
-async function cmsKarriereStillinger() {
-  const seksjon = document.querySelector('#karriere-stillinger-seksjon');
-  if (!seksjon) return;
-  const rader = await sanityQuery(`*[_type == "nyhet" && kategori == "karriere" && erAktivStilling == true] | order(dato desc){tittel, ingress, soknadsfrist, lenke}`);
-  if (!rader || !rader.length) return;
-  document.querySelector('#karriere-stillinger').innerHTML = rader.map((s) => `
-    <article class="stilling-card">
-      <h3>${esc(s.tittel)}</h3>
-      <p>${esc(s.ingress || '')}</p>
-      ${s.soknadsfrist ? `<span class="stilling-frist">Søknadsfrist: ${norskDato(s.soknadsfrist)}</span>` : ''}
-      <div><a class="btn-primary btn-sm" href="${esc(s.lenke || 'mailto:karriere@extensor.no')}">Les mer og søk →</a></div>
-    </article>`).join('');
-  seksjon.hidden = false;
-  const tom = document.querySelector('#karriere-empty-seksjon');
-  if (tom) tom.hidden = true;
+// ── Artikkelside (artikkel.html?id=…): hele artikkelen fra Sanity ──────────
+function trygLenke(href) {
+  return /^(https?:|mailto:|tel:|\/|#)/i.test(href || '') ? href : '#';
+}
+
+function ptSpans(blokk) {
+  const defs = {};
+  (blokk.markDefs || []).forEach((d) => { defs[d._key] = d; });
+  return (blokk.children || []).map((span) => {
+    let html = esc(span.text).replace(/\n/g, '<br>');
+    (span.marks || []).forEach((m) => {
+      if (m === 'strong') html = `<strong>${html}</strong>`;
+      else if (m === 'em') html = `<em>${html}</em>`;
+      else if (m === 'underline') html = `<u>${html}</u>`;
+      else if (m === 'strike-through') html = `<s>${html}</s>`;
+      else if (m === 'code') html = `<code>${html}</code>`;
+      else if (defs[m] && defs[m]._type === 'lenke') {
+        const ny = defs[m].nyFane ? ' target="_blank" rel="noopener"' : '';
+        html = `<a href="${esc(trygLenke(defs[m].href))}"${ny}>${html}</a>`;
+      }
+    });
+    return html;
+  }).join('');
+}
+
+function ptVideo(url) {
+  const yt = ytId(url);
+  if (yt) return `https://www.youtube-nocookie.com/embed/${yt}`;
+  const vm = /vimeo\.com\/(?:video\/)?(\d+)/.exec(url || '');
+  return vm ? `https://player.vimeo.com/video/${vm[1]}` : null;
+}
+
+// Brødtekst (Portable Text) → HTML
+function ptTilHtml(blokker) {
+  let ut = '';
+  let liste = null; // 'ul' | 'ol' mens en liste pågår
+  const lukkListe = () => { if (liste) { ut += `</${liste}>`; liste = null; } };
+  (blokker || []).forEach((b) => {
+    if (b._type === 'block' && b.listItem) {
+      const type = b.listItem === 'number' ? 'ol' : 'ul';
+      if (liste !== type) { lukkListe(); ut += `<${type}>`; liste = type; }
+      ut += `<li>${ptSpans(b)}</li>`;
+      return;
+    }
+    lukkListe();
+    if (b._type === 'block') {
+      const innhold = ptSpans(b);
+      if (!innhold.trim()) return;
+      const tag = { h2: 'h2', h3: 'h3', h4: 'h4', blockquote: 'blockquote' }[b.style] || 'p';
+      ut += `<${tag}>${innhold}</${tag}>`;
+    } else if (b._type === 'image' && b.url) {
+      const fokus = fokusStil(b.fokusX, b.fokusY);
+      ut += `<figure class="article-figure"><img src="${esc(b.url)}?w=1600&auto=format" alt="${esc(b.alt || '')}" loading="lazy"${fokus ? ` style="object-position: ${fokus}"` : ''} />${b.bildetekst ? `<figcaption>${esc(b.bildetekst)}</figcaption>` : ''}</figure>`;
+    } else if (b._type === 'code') {
+      ut += `<pre class="article-code"><code>${esc(b.code || '')}</code></pre>`;
+    } else if (b._type === 'video') {
+      const embed = ptVideo(b.url);
+      ut += embed
+        ? `<figure class="article-embed"><iframe src="${embed}" title="${esc(b.bildetekst || 'Video')}" loading="lazy" allowfullscreen></iframe>${b.bildetekst ? `<figcaption>${esc(b.bildetekst)}</figcaption>` : ''}</figure>`
+        : `<p><a href="${esc(trygLenke(b.url))}" target="_blank" rel="noopener">${esc(b.bildetekst || b.url)}</a></p>`;
+    }
+  });
+  lukkListe();
+  return ut;
+}
+
+async function cmsArtikkel() {
+  const tekst = document.querySelector('#artikkel-tekst');
+  if (!tekst) return;
+  const id = publisertId(new URLSearchParams(location.search).get('id'));
+  // Settes før artiklene hentes, så «Andre nyheter» utelater denne artikkelen
+  const relatert = document.querySelector('#related-news-grid');
+  if (relatert) relatert.dataset.current = id;
+  const tittelEl = document.querySelector('#artikkel-tittel');
+  const mangler = () => {
+    tittelEl.textContent = 'Fant ikke artikkelen';
+    tekst.innerHTML = '<p>Artikkelen finnes ikke lenger. <a href="nyheter.html">Se alle nyheter</a>.</p>';
+  };
+  if (!id) return mangler();
+  const r = await sanityQuery(`*[_type == "nyhet" && _id == ${JSON.stringify(id)}][0]{
+    tittel, dato, kategori, ingress,
+    "img": coalesce(bilde.asset->url, bildeUrl), "fokusX": bilde.hotspot.x, "fokusY": bilde.hotspot.y,
+    brodtekst[]{..., markDefs[], _type == "image" => {"url": asset->url, alt, bildetekst, "fokusX": hotspot.x, "fokusY": hotspot.y}}}`);
+  if (!r) return mangler();
+
+  document.title = `${r.tittel} — Extensor`;
+  tittelEl.textContent = r.tittel;
+  if (r.dato) document.querySelector('#artikkel-dato').textContent = norskDato(r.dato);
+  const katNavn = {kunder: 'Kunder', besok: 'Besøk', produkt: 'Produkt', integrasjon: 'Integrasjon'}[r.kategori] || r.kategori;
+  const tag = document.querySelector('#artikkel-tag');
+  if (katNavn) {
+    tag.textContent = katNavn;
+    tag.className = `news-card-tag news-tag-${kategoriKlasse(katNavn)}`;
+    tag.hidden = false;
+  }
+  const ingress = document.querySelector('#artikkel-ingress');
+  ingress.textContent = r.ingress || '';
+  ingress.hidden = !r.ingress;
+  const bilde = document.querySelector('#artikkel-bilde');
+  if (r.img) {
+    const img = bilde.querySelector('img');
+    img.src = r.img;
+    img.alt = r.tittel;
+    img.style.objectPosition = fokusStil(r.fokusX, r.fokusY);
+    bilde.hidden = false;
+  } else {
+    bilde.hidden = true;
+  }
+  tekst.innerHTML = ptTilHtml(r.brodtekst);
 }
 
 // Nyheter (forside-relatert + nyhetsside) — bytt ut innholdet i arrayen og re-render
 async function cmsNyheter() {
   if (!document.querySelector('#news-grid') && !document.querySelector('#related-news-grid')) return;
   const rader = await sanityQuery(`*[_type == "nyhet"] | order(dato desc){
-    "id": string::split(_id, ".")[1], tittel, dato, kategori, ingress, lenke,
+    "id": _id, tittel, dato, kategori, ingress, lenke,
+    "fokusX": bilde.hotspot.x, "fokusY": bilde.hotspot.y,
     "img": coalesce(bilde.asset->url, bildeUrl)}`);
   if (!rader || !rader.length) return;
-  const katLabel = { kunder: 'Kunder', besok: 'Besøk', produkt: 'Produkt', karriere: 'Karriere', integrasjon: 'Integrasjon' };
+  const katLabel = { kunder: 'Kunder', besok: 'Besøk', produkt: 'Produkt', integrasjon: 'Integrasjon' };
   // Faste kategorier først i filteret, nye kategorier etter i den rekkefølgen de dukker opp
-  const katRekkefolge = ['produkt', 'kunder', 'besok', 'karriere', 'integrasjon'];
+  const katRekkefolge = ['produkt', 'kunder', 'besok', 'integrasjon'];
   const katRang = (k) => { const i = katRekkefolge.indexOf(k); return i < 0 ? katRekkefolge.length : i; };
   nyheter.length = 0;
   rader.forEach((r) => nyheter.push({
-    id: r.id, title: r.tittel,
+    id: publisertId(r.id), title: r.tittel,
     date: r.dato ? r.dato.split('-').reverse().join('.') : '',
     category: r.kategori || '', categoryLabel: katLabel[r.kategori] || r.kategori || '',
-    excerpt: r.ingress || '', image: r.img || '', url: r.lenke || '#',
+    excerpt: r.ingress || '', image: r.img || '',
+    url: r.lenke || 'artikkel?id=' + encodeURIComponent(publisertId(r.id)),
+    fokus: fokusStil(r.fokusX, r.fokusY),
   }));
   // Filterknappene bygges av kategoriene som faktisk har artikler
   const filter = document.querySelector('.news-filter');
@@ -983,7 +1081,7 @@ async function cmsNedlastninger() {
 }
 
 // Kjør alt — hver funksjon feiler stille og lar statisk innhold stå
-[cmsDriftBar, cmsDriftListe, cmsKundelogoer, cmsTeam, cmsPartnere, cmsAddonProdukter, cmsKarriereStillinger,
+[cmsDriftBar, cmsDriftListe, cmsKundelogoer, cmsTeam, cmsPartnere, cmsAddonProdukter, cmsArtikkel,
  cmsNyheter, cmsTestimonials, cmsFaggruppeReferanser, cmsWebinarer, cmsKurs, cmsVideoguider, cmsBrukermanualer, cmsFaq, cmsNedlastninger]
   .forEach((fn) => fn().catch((e) => console.warn('CMS:', fn.name, e.message)));
 

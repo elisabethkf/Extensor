@@ -8,7 +8,7 @@ export default defineType({
   fields: [
     defineField({name: 'tittel', title: 'Tittel', type: 'string', validation: (r) => r.required()}),
     defineField({name: 'dato', title: 'Dato', type: 'date', initialValue: () => new Date().toISOString().slice(0, 10), validation: (r) => r.required()}),
-    kategoriFelt({name: 'kategori', title: 'Kategori', dokumentType: 'nyhet', visningsnavn: {kunder: 'Kunder', besok: 'Besøk', produkt: 'Produkt', karriere: 'Karriere', integrasjon: 'Integrasjon'}}),
+    kategoriFelt({name: 'kategori', title: 'Kategori', dokumentType: 'nyhet', visningsnavn: {kunder: 'Kunder', besok: 'Besøk', produkt: 'Produkt', integrasjon: 'Integrasjon'}}),
     defineField({name: 'ingress', title: 'Ingress', type: 'text', rows: 3}),
     defineField({name: 'bilde', title: 'Hovedbilde', type: 'image', options: {hotspot: true}}),
     defineField({
@@ -90,20 +90,6 @@ export default defineType({
           preview: {select: {title: 'url', subtitle: 'bildetekst'}},
         },
       ],
-    }),
-    defineField({
-      name: 'erAktivStilling',
-      title: 'Aktiv stillingsutlysning',
-      description: 'Vis denne øverst på Karriere-siden som en utlyst stilling. Kun relevant for kategorien Karriere.',
-      type: 'boolean',
-      initialValue: false,
-      hidden: ({document}) => document?.kategori !== 'karriere',
-    }),
-    defineField({
-      name: 'soknadsfrist',
-      title: 'Søknadsfrist',
-      type: 'date',
-      hidden: ({document}) => document?.kategori !== 'karriere' || !document?.erAktivStilling,
     }),
   ],
   orderings: [{title: 'Nyeste først', name: 'datoDesc', by: [{field: 'dato', direction: 'desc'}]}],
