@@ -43,7 +43,7 @@ enableVisualEditing({
 window.__extensorPreview = {
   ready,
   // Samme signatur som sanityQuery i script.js; endringer i utkast laster siden på nytt
-  query(query) {
+  query(query, onChange) {
     return new Promise((resolve, reject) => {
       // Studioet husker spørringer det allerede svarer på og sender ikke resultatet på nytt når siden lastes om.
       // En unik kommentar gir hver innlasting sin egen spørring, så utkastet kommer også etter omlasting.
@@ -68,7 +68,7 @@ window.__extensorPreview = {
           return
         }
         const json = JSON.stringify(s.data)
-        if (json !== last) { last = json; reloadSoon() }
+        if (json !== last) { last = json; if (onChange) onChange(s.data); else reloadSoon() }
       })
     })
   },

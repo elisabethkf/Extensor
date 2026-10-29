@@ -576,10 +576,12 @@ function lastPreview() {
   return previewLastet;
 }
 
-async function sanityQuery(query) {
+// onChange (bare i forhåndsvisningen): kalles med nye data hver gang utkastet endres, så siden kan tegnes på nytt
+// uten omlasting. Uten onChange lastes siden på nytt ved endringer.
+async function sanityQuery(query, onChange) {
   if (iPreview) {
     const preview = await lastPreview();
-    if (preview) return preview.query(query);
+    if (preview) return preview.query(query, onChange);
   }
   const url = `https://${SANITY.projectId}.apicdn.sanity.io/v${SANITY.apiVersion}/data/query/${SANITY.dataset}?query=${encodeURIComponent(query)}`;
   const res = await fetch(url);
@@ -801,50 +803,54 @@ function ptTilHtml(blokker) {
   return ut;
 }
 
-async function cmsArtikkel() {
+// Tegner artikkelen; kalles på nytt for hver endring i utkastet
+function tegnArtikkel(r) {
   const tekst = document.querySelector('#artikkel-tekst');
-  if (!tekst) return;
-  // Adressen er /artikkel/<id> (eldre lenker brukte ?id=)
-  const id = publisertId(decodeURIComponent(location.pathname.split('/artikkel/')[1] || '') || new URLSearchParams(location.search).get('id'));
-  // Settes før artiklene hentes, så «Andre nyheter» utelater denne artikkelen
-  const relatert = document.querySelector('#related-news-grid');
-  if (relatert) relatert.dataset.current = id;
   const tittelEl = document.querySelector('#artikkel-tittel');
-  const mangler = () => {
+  if (!r) {
     tittelEl.textContent = 'Fant ikke artikkelen';
     tekst.innerHTML = '<p>Artikkelen finnes ikke lenger. <a href="nyheter.html">Se alle nyheter</a>.</p>';
-  };
-  if (!id) return mangler();
-  const r = await sanityQuery(`*[_type == "nyhet" && _id == ${JSON.stringify(id)}][0]{
-    tittel, dato, kategori, ingress,
-    "img": coalesce(bilde.asset->url, bildeUrl), "fokusX": bilde.hotspot.x, "fokusY": bilde.hotspot.y,
-    brodtekst[]{..., markDefs[], _type == "image" => {"url": asset->url, alt, bildetekst, "fokusX": hotspot.x, "fokusY": hotspot.y}}}`);
-  if (!r) return mangler();
-
+    return;
+  }
   document.title = `${r.tittel} — Extensor`;
   tittelEl.textContent = r.tittel;
-  if (r.dato) document.querySelector('#artikkel-dato').textContent = norskDato(r.dato);
+  document.querySelector('#artikkel-dato').textContent = r.dato ? norskDato(r.dato) : '';
   const katNavn = {kunder: 'Kunder', besok: 'Besøk', produkt: 'Produkt', integrasjon: 'Integrasjon'}[r.kategori] || r.kategori;
   const tag = document.querySelector('#artikkel-tag');
   if (katNavn) {
     tag.textContent = katNavn;
     tag.className = `news-card-tag news-tag-${kategoriKlasse(katNavn)}`;
-    tag.hidden = false;
   }
+  tag.hidden = !katNavn;
   const ingress = document.querySelector('#artikkel-ingress');
   ingress.textContent = r.ingress || '';
   ingress.hidden = !r.ingress;
   const bilde = document.querySelector('#artikkel-bilde');
   if (r.img) {
     const img = bilde.querySelector('img');
-    img.src = r.img;
+    if (img.getAttribute('src') !== r.img) img.src = r.img;
     img.alt = r.tittel;
     img.style.objectPosition = fokusStil(r.fokusX, r.fokusY);
-    bilde.hidden = false;
-  } else {
-    bilde.hidden = true;
   }
-  tekst.innerHTML = ptTilHtml(r.brodtekst);
+  bilde.hidden = !r.img;
+  // Bare brødteksten som er endret tegnes på nytt, så bilder og video ikke blinker
+  const html = ptTilHtml(r.brodtekst);
+  if (tekst.dataset.html !== html) { tekst.innerHTML = html; tekst.dataset.html = html; }
+}
+
+async function cmsArtikkel() {
+  if (!document.querySelector('#artikkel-tekst')) return;
+  // Adressen er /artikkel/<id> (eldre lenker brukte ?id=)
+  const id = publisertId(decodeURIComponent(location.pathname.split('/artikkel/')[1] || '') || new URLSearchParams(location.search).get('id'));
+  // Settes før artiklene hentes, så «Andre nyheter» utelater denne artikkelen
+  const relatert = document.querySelector('#related-news-grid');
+  if (relatert) relatert.dataset.current = id;
+  if (!id) return tegnArtikkel(null);
+  const r = await sanityQuery(`*[_type == "nyhet" && _id == ${JSON.stringify(id)}][0]{
+    tittel, dato, kategori, ingress,
+    "img": coalesce(bilde.asset->url, bildeUrl), "fokusX": bilde.hotspot.x, "fokusY": bilde.hotspot.y,
+    brodtekst[]{..., markDefs[], _type == "image" => {"url": asset->url, alt, bildetekst, "fokusX": hotspot.x, "fokusY": hotspot.y}}}`, tegnArtikkel);
+  tegnArtikkel(r);
 }
 
 // Nyheter (forside-relatert + nyhetsside) — bytt ut innholdet i arrayen og re-render
