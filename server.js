@@ -1,6 +1,8 @@
 // Statisk nettsted (som `serve`, via serve-handler og serve.json) + ett API-endepunkt: POST /api/kontakt.
 // Innsendinger fra kontaktskjemaene lagres som «henvendelse»-dokumenter i Sanity.
 // Krever miljøvariabelen SANITY_WRITE_TOKEN (Railway → Variables). Uten den svarer endepunktet 503.
+// E-postvarsel via Resend når RESEND_API_KEY og KONTAKT_EPOST_TIL (kommaseparert) er satt; ellers hoppes det over.
+// Sanity er alltid hovedlageret: feiler e-posten, er henvendelsen likevel lagret.
 const http = require('http');
 const crypto = require('crypto');
 const handler = require('serve-handler');
@@ -10,6 +12,55 @@ const config = require('./serve.json'); // serve-handler leser ikke serve.json s
 const PORT = process.env.PORT || 3000;
 const SANITY = { projectId: '79jm8nbd', dataset: 'production', apiVersion: '2024-01-01' };
 const TOKEN = process.env.SANITY_WRITE_TOKEN;
+const RESEND_KEY = process.env.RESEND_API_KEY;
+const EPOST_TIL = (process.env.KONTAKT_EPOST_TIL || '').split(',').map((s) => s.trim()).filter(Boolean);
+const EPOST_FRA = process.env.KONTAKT_EPOST_FRA || 'Extensor nettside <skjema@extensor.no>';
+
+const escHtml = (s) => String(s || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+
+async function sendVarsel(doc) {
+  if (!RESEND_KEY || !EPOST_TIL.length) return;
+  const studioLenke = `https://extensor.sanity.studio/structure/henvendelse;${doc._id}`;
+  const rader = [
+    ['Navn', doc.navn],
+    ['Virksomhet', doc.virksomhet],
+    ['E-post', doc.epost],
+    ['Faggruppe', doc.faggruppe],
+    ['Skjema', doc.type === 'demo' ? 'Forespørsel om demo' : 'Kontaktskjema'],
+    ['Sendt fra', 'www.extensor.no' + (doc.side || '/')],
+  ].filter(([, v]) => v);
+  const hva = doc.type === 'demo' ? 'Ny forespørsel om demo' : 'Ny henvendelse';
+  const tekst = [
+    `${hva} fra extensor.no`,
+    '',
+    ...rader.map(([k, v]) => `${k}: ${v}`),
+    ...(doc.melding ? ['', 'Melding:', doc.melding] : []),
+    '',
+    'Svar direkte på denne e-posten for å svare kunden.',
+    `Se og sett status i Sanity: ${studioLenke}`,
+  ].join('\n');
+  const html = `<div style="font-family:Arial,sans-serif;font-size:15px;color:#1a1a1a;line-height:1.5">
+<h2 style="font-size:18px;margin:0 0 16px">${escHtml(hva)} fra extensor.no</h2>
+<table cellpadding="6" style="border-collapse:collapse">${rader.map(([k, v]) => `<tr><td style="color:#666;vertical-align:top">${escHtml(k)}</td><td><strong>${escHtml(v)}</strong></td></tr>`).join('')}</table>
+${doc.melding ? `<p style="margin:16px 0 4px;color:#666">Melding:</p><p style="margin:0;white-space:pre-wrap">${escHtml(doc.melding)}</p>` : ''}
+<p style="margin:24px 0 0;color:#666;font-size:13px">Svar direkte på denne e-posten for å svare kunden.<br><a href="${studioLenke}">Se og sett status i Sanity</a></p>
+</div>`;
+
+  const r = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from: EPOST_FRA,
+      to: EPOST_TIL,
+      reply_to: doc.epost,
+      subject: `${hva}: ${doc.navn}${doc.virksomhet ? ' – ' + doc.virksomhet : ''}`.replace(/[\r\n]+/g, ' ').slice(0, 200),
+      text: tekst,
+      html,
+    }),
+    signal: AbortSignal.timeout(15000),
+  });
+  if (!r.ok) throw new Error(`Resend ${r.status}: ${(await r.text()).slice(0, 300)}`);
+}
 
 const GRENSER = { navn: 200, virksomhet: 200, epost: 254, faggruppe: 80, melding: 5000, side: 200, type: 40 };
 const MAKS_BODY = 20 * 1024;
@@ -110,7 +161,11 @@ async function kontakt(req, res) {
   }
 
   console.log('Henvendelse lagret', doc._id);
-  return json(res, 200, { ok: true });
+  json(res, 200, { ok: true });
+  // Etter svaret til besøkende: feil her skal aldri gi feilmelding i skjemaet, bare stå i Railway-loggen
+  sendVarsel(doc)
+    .then(() => RESEND_KEY && EPOST_TIL.length && console.log('E-postvarsel sendt for', doc._id))
+    .catch((e) => console.error('E-postvarsel feilet for', doc._id, e.message));
 }
 
 http
