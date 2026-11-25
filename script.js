@@ -540,11 +540,84 @@ function populateCtaSelect() {
   });
 }
 
+// ── Kontaktskjemaer: sendes til /api/kontakt og lagres som «henvendelse» i Sanity ──
+// Alle skjemaene har samme oppsett (navn, virksomhet, e-post, faggruppe, evt. melding), så de kobles her uten HTML-endringer.
+function initKontaktskjema() {
+  if (/design-system|fargetest/.test(location.pathname)) return; // interne visningssider
+  document.querySelectorAll('form.cta-form').forEach((form) => {
+    const [navn, virksomhet, epost] = form.querySelectorAll('input[type="text"], input[type="email"]');
+    const faggruppe = form.querySelector('select');
+    const melding = form.querySelector('textarea');
+    const knapp = form.querySelector('button[type="submit"]');
+    if (!navn || !epost || !knapp) return;
+
+    navn.name = 'navn'; navn.required = true; navn.autocomplete = 'name'; navn.setAttribute('aria-label', 'Fullt navn');
+    if (virksomhet && virksomhet !== epost) { virksomhet.name = 'virksomhet'; virksomhet.autocomplete = 'organization'; virksomhet.setAttribute('aria-label', 'Virksomhet'); }
+    epost.name = 'epost'; epost.required = true; epost.autocomplete = 'email'; epost.setAttribute('aria-label', 'E-postadresse');
+    if (faggruppe) faggruppe.setAttribute('aria-label', 'Faggruppe');
+    if (melding) melding.setAttribute('aria-label', 'Melding');
+
+    // Skjult felt som roboter fyller ut, men ikke mennesker
+    const honning = document.createElement('input');
+    honning.type = 'text'; honning.name = 'nettside'; honning.tabIndex = -1; honning.autocomplete = 'off';
+    honning.setAttribute('aria-hidden', 'true');
+    honning.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0;';
+    form.appendChild(honning);
+
+    const status = document.createElement('p');
+    status.className = 'cta-status';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    knapp.insertAdjacentElement('afterend', status);
+
+    const knappTekst = knapp.textContent;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.className = 'cta-status';
+      status.textContent = '';
+      if (!form.reportValidity()) return;
+      knapp.disabled = true;
+      knapp.textContent = 'Sender …';
+      try {
+        const valgt = faggruppe && faggruppe.selectedOptions[0];
+        const res = await fetch('/api/kontakt', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            navn: navn.value,
+            virksomhet: virksomhet && virksomhet !== epost ? virksomhet.value : '',
+            epost: epost.value,
+            faggruppe: valgt && valgt.value ? valgt.textContent : '',
+            melding: melding ? melding.value : '',
+            type: melding ? 'melding' : 'demo',
+            side: location.pathname,
+            nettside: honning.value,
+          }),
+        });
+        const svar = await res.json().catch(() => ({}));
+        if (!res.ok || !svar.ok) throw new Error(svar.feil || 'Noe gikk galt.');
+        form.reset();
+        status.className = 'cta-status ok';
+        status.textContent = 'Takk! Vi har mottatt meldingen din og tar kontakt så snart vi kan.';
+      } catch (err) {
+        status.className = 'cta-status feil';
+        status.textContent = err.message && err.message !== 'Failed to fetch'
+          ? err.message
+          : 'Kunne ikke sende meldingen. Prøv igjen, eller ring oss på 75 53 33 00.';
+      } finally {
+        knapp.disabled = false;
+        knapp.textContent = knappTekst;
+      }
+    });
+  });
+}
+
 // ── Init ────────────────────────────────────────────────────────────────────
 renderFaggrupperSection();
 renderFaggrupperOverview();
 renderNavDropdown();
 populateCtaSelect();
+initKontaktskjema();
 renderTestimonialsMarquee();
 initHelpBubble();
 initNyhetsfilter();

@@ -14,6 +14,7 @@ import sideForside from './sideForside'
 import sideSupport from './sideSupport'
 import partner from './partner'
 import addonProdukt from './addonProdukt'
+import henvendelse from './henvendelse'
 
 export const schemaTypes = [
   nyhet,
@@ -29,6 +30,8 @@ export const schemaTypes = [
   nedlastning,
   // Driftsmelding har egen linje i strukturen (se sanity.config.js)
   driftsmelding,
+  // Innsendinger fra kontaktskjemaene på nettsiden
+  henvendelse,
   // Sider
   side,
   sideForside,

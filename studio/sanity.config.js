@@ -14,7 +14,7 @@ import {Navbar, SISTE_DOK} from './Navbar'
 // Sider finnes ett sted hver og skal ikke opprettes, dupliseres eller slettes
 const sideTyper = ['side', 'sideForside', 'sideSupport']
 // Typer som ikke skal opprettes av redaktører
-const skjulteTyper = [...sideTyper, 'partner', 'addonProdukt']
+const skjulteTyper = [...sideTyper, 'partner', 'addonProdukt', 'henvendelse']
 
 // Hvilken side på nettstedet et dokument vises på (brukes av forhåndsvisningen)
 const sideForType = {
@@ -127,6 +127,17 @@ export default defineConfig({
             .child(S.documentTypeList(type).title(tittel))
 
         const items = [
+          // Innsendinger fra kontaktskjemaene, nyeste øverst
+          S.listItem()
+            .title('Henvendelser fra nettsiden')
+            .id('henvendelse')
+            .schemaType('henvendelse')
+            .child(
+              S.documentTypeList('henvendelse')
+                .title('Henvendelser fra nettsiden')
+                .defaultOrdering([{field: 'mottatt', direction: 'desc'}])
+            ),
+          S.divider(),
           // Det redaktørene bruker mest, øverst
           S.listItem().title('Support-siden').id('support').child(
             S.list()

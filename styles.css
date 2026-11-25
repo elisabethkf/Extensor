@@ -936,6 +936,12 @@ img { display: block; max-width: 100%; }
   resize: vertical;
   margin-bottom: 14px;
 }
+.cta-status { margin: 12px 0 0; font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.85); }
+.cta-status:empty { display: none; }
+.cta-status.ok { color: #f7e596; font-weight: 600; }
+.cta-status.feil { color: #ffd2cc; font-weight: 600; }
+.cta-submit:disabled { opacity: .6; cursor: progress; }
+.cta-form { position: relative; }
 .cta-form-message::placeholder { color: rgba(255,255,255,.55); }
 .cta-form-message:focus { outline: none; border-color: rgba(247,229,150,.6); }
 
